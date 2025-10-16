@@ -1,0 +1,6 @@
+[phases.setup]
+# Force Node 20
+nixPkgs = ["nodejs_20"]
+
+# Optional: install additional packages if needed
+aptPkgs = ["curl", "wget"]

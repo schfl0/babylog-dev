@@ -1,0 +1,23 @@
+{
+  "files": [
+    "loaders.server.js",
+    "actions.server.js"
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    },
+    {
+      "path": "./tsconfig.vite.json"
+    }
+  ],
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": false,
+    "verbatimModuleSyntax": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "noImplicitAny": false
+  }
+}
