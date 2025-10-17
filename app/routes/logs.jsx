@@ -10,7 +10,7 @@ export function meta({}) {
 }
 
 export async function loader({ request }) {
-  const res = await fetch(buildUrl(api/auth/session), {
+  const res = await fetch(buildUrl("api/auth/session"), {
     headers: {
       Cookie: request.headers.get("Cookie") ?? "",
     },
