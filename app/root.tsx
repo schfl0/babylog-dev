@@ -12,6 +12,7 @@ import "./app.css";
 
 import { SessionProvider } from "./sessionContext";
 import Nav from "../app/components/Nav.jsx";
+import { buildUrl } from "../appconfig";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -49,7 +50,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export async function loader({ request }) {
-  const res = await fetch("http://localhost:3000/api/auth/session", {
+  const res = await fetch(buildUrl("api/auth/session"), {
     headers: {
       Cookie: request.headers.get("Cookie") ?? "",
     },

@@ -3,12 +3,14 @@ import { getTodayViews, getLogs, getNapLogs } from "../../loaders.server";
 import AddTodayView from "../components/AddTodayView";
 import TodayViews from "../components/TodayViews";
 
+import { buildUrl } from "../appconfig";
+
 export function meta({}) {
   return [{ title: "Logs" }, { name: "description", content: "Logs page" }];
 }
 
 export async function loader({ request }) {
-  const res = await fetch("http://localhost:3000/api/auth/session", {
+  const res = await fetch(buildUrl(api/auth/session), {
     headers: {
       Cookie: request.headers.get("Cookie") ?? "",
     },

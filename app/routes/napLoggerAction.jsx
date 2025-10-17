@@ -1,9 +1,11 @@
 import { redirect } from "react-router";
 import { logNap } from "../../actions.server.js";
 
+import { buildUrl } from "../appconfig";
+
 export async function action({ context, request }) {
   // if (!context?.session?.user) throw redirect("/");
-  const resSession = await fetch("http://localhost:3000/api/auth/session", {
+  const resSession = await fetch(buildUrl(api/auth/session), {
     headers: {
       Cookie: request.headers.get("Cookie") ?? "",
     },

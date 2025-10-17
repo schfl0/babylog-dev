@@ -4,7 +4,8 @@
     "server.js",
     "vite.config.ts",
     "authMiddleware.js",
-    "auth.js"
+    "auth.js",
+    "appconfig.js",
   ],
   "compilerOptions": {
     "composite": true,
