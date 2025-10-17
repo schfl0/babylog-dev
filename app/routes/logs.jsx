@@ -3,7 +3,7 @@ import { getTodayViews, getLogs, getNapLogs } from "../../loaders.server";
 import AddTodayView from "../components/AddTodayView";
 import TodayViews from "../components/TodayViews";
 
-import { buildUrl } from "../appconfig";
+import { buildUrl } from "../../appconfig";
 
 export function meta({}) {
   return [{ title: "Logs" }, { name: "description", content: "Logs page" }];

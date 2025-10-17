@@ -1,7 +1,7 @@
 import { redirect } from "react-router";
 import { logNap } from "../../actions.server.js";
 
-import { buildUrl } from "../appconfig";
+import { buildUrl } from "../../appconfig";
 
 export async function action({ context, request }) {
   // if (!context?.session?.user) throw redirect("/");

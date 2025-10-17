@@ -1,7 +1,7 @@
 import { redirect } from "react-router";
 import { deleteLogger } from "../../actions.server.js";
 
-import { buildUrl } from "../appconfig";
+import { buildUrl } from "../../appconfig";
 
 export async function action({ request }) {
  const resSession = await fetch(buildUrl(api/auth/session), {
