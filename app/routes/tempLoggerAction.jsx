@@ -5,7 +5,7 @@ import { buildUrl } from "../appconfig";
 
 export async function action({ request }) {
   // if (!context?.session?.user) throw redirect("/");
-  const resSession = await fetch(buildUrl(http://localhost:3000/api/auth/session), {
+  const resSession = await fetch(buildUrl(api/auth/session), {
     headers: {
       Cookie: request.headers.get("Cookie") ?? "",
     },
