@@ -14,7 +14,7 @@ export default function Nav() {
     })();
   }, []);
   return (
-    <nav className="flex items-center gap-6 p-4 text-sm">
+    <nav className="flex items-center gap-4 p-4 text-sm">
       <NavLink
         to="/"
         className={({ isActive }) =>
@@ -35,7 +35,7 @@ export default function Nav() {
         <form
           action="/api/auth/signout"
           method="POST"
-          className="ml-auto flex items-center justify-center gap-4"
+          className="ml-auto flex items-center justify-center gap-2"
         >
           <img className="h-8 w-8 rounded-full" src={session.user.image} />
 
