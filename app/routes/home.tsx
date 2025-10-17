@@ -2,7 +2,7 @@ import Login from "../components/Login";
 import AddLogger from "../components/AddLogger";
 import Loggers from "../components/Loggers";
 
-import { buildUrl } from "../appconfig";
+import { buildUrl } from "../../appconfig";
 
 export function meta({}) {
   return [
