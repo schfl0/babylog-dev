@@ -118,3 +118,46 @@ export function getNapDuration(nap) {
 
   return formatted;
 }
+
+export function getTodayLogsDesc(...logsGroup) {
+  const now = new Date();
+
+  const startUTC = new Date(
+    Date.UTC(
+      now.getUTCFullYear(),
+      now.getUTCMonth(),
+      now.getUTCDate(),
+      0,
+      0,
+      0,
+      0,
+    ),
+  );
+  const endUTC = new Date(
+    Date.UTC(
+      now.getUTCFullYear(),
+      now.getUTCMonth(),
+      now.getUTCDate(),
+      23,
+      59,
+      59,
+      999,
+    ),
+  );
+
+  const allLogs = logsGroup.flat();
+  const todayLogs = allLogs.filter((log) => {
+    if (!log || (!log.date && !log.start)) {
+      console.log("Skipping invalid log:", log);
+      return false;
+    }
+    const sortDate = new Date(log.date || log.start);
+    return sortDate >= startUTC && sortDate <= endUTC;
+  });
+
+  const sortedDesc = todayLogs.sort(
+    (a, b) => new Date(b.date || b.start) - new Date(a.date || a.start),
+  );
+
+  return sortedDesc;
+}

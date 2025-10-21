@@ -30,11 +30,11 @@ export async function getLogs(collection, email) {
   return res;
 }
 
-export async function getTodayViews(email) {
+export async function getTodayView(email) {
   const client = await mongoClientPromise;
   const db = client.db();
-  const res = await db.collection("todayViews").findOne({ email });
-  return res?.todayViews ?? [];
+  const res = await db.collection("todayView").findOne({ email });
+  return res?.todayView || "overview";
 }
 
 export async function getNapLogs(email) {

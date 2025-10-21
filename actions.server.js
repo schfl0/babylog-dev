@@ -30,14 +30,18 @@ export async function logBottle(email, ml, date) {
   const client = await mongoClientPromise;
   const db = client.db();
 
-  const res = await db.collection("bottles").insertOne({ email, ml, date });
+  const res = await db
+    .collection("bottles")
+    .insertOne({ email, log: "bottle", ml, date });
 }
 
 export async function logFood(email, food, g, date) {
   const client = await mongoClientPromise;
   const db = client.db();
 
-  const res = await db.collection("foods").insertOne({ email, food, g, date });
+  const res = await db
+    .collection("foods")
+    .insertOne({ email, log: "food", food, g, date });
 }
 
 export async function logNap(email, triggerNap) {
@@ -54,7 +58,9 @@ export async function logNap(email, triggerNap) {
       return { error: "Nap already in progress" };
     }
 
-    const res = await db.collection("naps").insertOne({ email, start: date });
+    const res = await db
+      .collection("naps")
+      .insertOne({ email, log: "nap", start: date });
     return { status: "Nap started", start: date };
   }
 
@@ -77,29 +83,42 @@ export async function logNap(email, triggerNap) {
   return { error: "Unknown trigger" };
 }
 
+export async function logPoop(email, g, date) {
+  const client = await mongoClientPromise;
+  const db = client.db();
+
+  const res = await db
+    .collection("poops")
+    .insertOne({ email, log: "poop", g, date });
+}
+
 export async function logTemp(email, temp, date) {
   const client = await mongoClientPromise;
   const db = client.db();
 
-  const res = await db.collection("temps").insertOne({ email, temp, date });
+  const res = await db
+    .collection("temps")
+    .insertOne({ email, log: "temp", temp, date });
 }
 
 export async function logMed(email, med, g, date) {
   const client = await mongoClientPromise;
   const db = client.db();
 
-  const res = await db.collection("meds").insertOne({ email, med, g, date });
+  const res = await db
+    .collection("meds")
+    .insertOne({ email, log: "med", med, g, date });
 }
 
-export async function addTodayView(email, todayView) {
+export async function selectTodayView(email, todayView) {
   const client = await mongoClientPromise;
   const db = client.db();
 
   const res = await db
-    .collection("todayViews")
+    .collection("todayView")
     .findOneAndUpdate(
       { email },
-      { $addToSet: { todayViews: todayView } },
+      { $set: { todayView: todayView } },
       { upsert: true, returnDocument: "after" },
     );
 }

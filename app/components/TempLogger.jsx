@@ -38,7 +38,7 @@ export default function TempLogger({ session, logger }) {
         </div>
         <button
           type="submit"
-          className="mt-2 w-full cursor-pointer rounded-sm bg-red-200 p-2 transition-all hover:opacity-70"
+          className="mt-2 w-full cursor-pointer rounded-sm bg-red-100 p-2 transition-all hover:opacity-70"
         >
           🌡️ Temp
         </button>

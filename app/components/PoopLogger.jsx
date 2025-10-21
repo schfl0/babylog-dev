@@ -1,16 +1,11 @@
 import { useFetcher } from "react-router";
 import { useState, useEffect } from "react";
 
-export default function MedLogger({ session, logger }) {
+export default function PoopLogger({ session, logger }) {
   const fetcher = useFetcher();
-  const [inputMed, setInputMed] = useState("");
   const [inputG, setInputG] = useState("");
-
   useEffect(() => {
-    if (fetcher.state === "idle") {
-      setInputMed("");
-      setInputG("");
-    }
+    if (fetcher.state === "idle") setInputG("");
   }, [fetcher.state]);
 
   return (
@@ -29,19 +24,9 @@ export default function MedLogger({ session, logger }) {
         </button>
       </fetcher.Form>
 
-      <fetcher.Form method="post" action="/med-logger">
+      <fetcher.Form method="post" action="/poop-logger">
         <div className="mt-2 mb-2 flex items-center justify-center gap-2 text-xs">
-          <label htmlFor="med">Medication:</label>
-          <input
-            className="w-full rounded-sm border border-gray-400 px-1 py-0.5"
-            type="text"
-            name="med"
-            id="med"
-            value={inputMed}
-            onChange={(e) => setInputMed(e.target.value)}
-          />
-
-          <label htmlFor="g">g:</label>
+          <label htmlFor="ml">Poop (g):</label>
           <input
             className="w-14 rounded-sm border border-gray-400 px-1 py-0.5"
             type="number"
@@ -53,9 +38,9 @@ export default function MedLogger({ session, logger }) {
         </div>
         <button
           type="submit"
-          className="mt-2 w-full cursor-pointer rounded-sm bg-neutral-100 p-2 transition-all hover:opacity-70"
+          className="mt-2 w-full cursor-pointer rounded-sm bg-[#f6f0e8] p-2 transition-all hover:opacity-70"
         >
-          💊 Med
+          💩 Poop
         </button>
       </fetcher.Form>
     </div>

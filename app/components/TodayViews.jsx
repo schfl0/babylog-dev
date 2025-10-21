@@ -4,9 +4,9 @@ import NapsTodayView from "../components/NapsTodayView";
 import TempsTodayView from "../components/TempsTodayView";
 import MedsTodayView from "../components/MedsTodayView";
 
-export default function TodayViews({
+export default function TodayView({
   session,
-  todayViews,
+  todayView,
   bottleLogs,
   foodLogs,
   napLogs,

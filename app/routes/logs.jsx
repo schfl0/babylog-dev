@@ -1,9 +1,11 @@
 import { redirect } from "react-router";
-import { getTodayViews, getLogs, getNapLogs } from "../../loaders.server";
-import AddTodayView from "../components/AddTodayView";
-import TodayViews from "../components/TodayViews";
+import { useState } from "react";
+import { getTodayView, getLogs, getNapLogs } from "../../loaders.server";
+import SelectTodayView from "../components/SelectTodayView";
+import TodayView from "../components/TodayView";
 
 import { buildUrl } from "../../appconfig";
+import { getTodayLogsDesc } from "../utils";
 
 export function meta({}) {
   return [{ title: "Logs" }, { name: "description", content: "Logs page" }];
@@ -19,19 +21,21 @@ export async function loader({ request }) {
   const session = await res.json();
 
   if (!session?.user) throw redirect("/");
-  const todayViews = await getTodayViews(session?.user.email);
+  const todayView = await getTodayView(session?.user.email);
 
   const bottleLogs = await getLogs("bottles", session.user.email);
   const foodLogs = await getLogs("foods", session.user.email);
   const napLogs = await getNapLogs(session.user.email);
+  const poopLogs = await getLogs("poops", session.user.email);
   const tempLogs = await getLogs("temps", session.user.email);
   const medLogs = await getLogs("meds", session.user.email);
   return {
     session,
-    todayViews,
+    todayView,
     bottleLogs,
     foodLogs,
     napLogs,
+    poopLogs,
     tempLogs,
     medLogs,
   };
@@ -40,25 +44,30 @@ export async function loader({ request }) {
 export default function Logs({ loaderData }) {
   const {
     session,
-    todayViews,
+    todayView,
     bottleLogs,
     foodLogs,
     napLogs,
+    poopLogs,
     tempLogs,
     medLogs,
   } = loaderData;
+
+  const [view, setView] = useState();
+
   return (
     <div className="p-4 text-sm">
       <div className="mt-2">
         <h1 className="mb-2 text-base font-bold">Today</h1>
-        <AddTodayView bottleLogs={bottleLogs} foodLogs={foodLogs} />
+        <SelectTodayView />
       </div>
       <div className="mt-6">
-        <TodayViews
-          todayViews={todayViews}
+        <TodayView
+          todayView={todayView}
           bottleLogs={bottleLogs}
           foodLogs={foodLogs}
           napLogs={napLogs}
+          poopLogs={poopLogs}
           tempLogs={tempLogs}
           medLogs={medLogs}
         />

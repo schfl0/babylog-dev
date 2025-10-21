@@ -2,9 +2,17 @@ import { useState, useEffect } from "react";
 import { capitalizeStr } from "../utils";
 import { useFetcher } from "react-router";
 
-export default function AddTodayView() {
+export default function SelectTodayView() {
   const fetcher = useFetcher();
-  const options = ["bottles", "foods", "naps", "temps", "meds"];
+  const options = [
+    "overview",
+    "bottles",
+    "foods",
+    "naps",
+    "poops",
+    "temps",
+    "meds",
+  ];
   const [selectedTodayView, setSelectedTodayView] = useState(options[0]);
 
   useEffect(() => {
@@ -15,14 +23,14 @@ export default function AddTodayView() {
   return (
     <fetcher.Form
       method="post"
-      action="/add-todayview"
+      action="/select-todayview"
       className="flex items-center justify-start gap-4"
     >
-      <label htmlFor="addTodayView">Add view:</label>
+      <label htmlFor="selectTodayView">Select view:</label>
       <select
         className="rounded-sm border px-2 py-1"
-        name="addTodayView"
-        id="addTodayView"
+        name="selectTodayView"
+        id="selectTodayView"
         value={selectedTodayView}
         onChange={(e) => setSelectedTodayView(e.target.value)}
       >
@@ -34,7 +42,7 @@ export default function AddTodayView() {
         type="submit"
         className="cursor-pointer rounded-sm bg-pink-600 px-2 py-1 text-sm text-white transition-all hover:opacity-60"
       >
-        🔎 Add
+        🔎 Select
       </button>
     </fetcher.Form>
   );

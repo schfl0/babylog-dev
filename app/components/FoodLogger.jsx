@@ -53,7 +53,7 @@ export default function FoodLogger({ session, logger }) {
         </div>
         <button
           type="submit"
-          className="mt-2 w-full cursor-pointer rounded-sm bg-orange-200 p-2 transition-all hover:opacity-70"
+          className="mt-2 w-full cursor-pointer rounded-sm bg-orange-100 p-2 transition-all hover:opacity-70"
         >
           🥕 Food
         </button>

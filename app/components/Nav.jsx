@@ -18,7 +18,9 @@ export default function Nav() {
       <NavLink
         to="/"
         className={({ isActive }) =>
-          isActive ? "font-bold text-pink-600" : "font-bold text-black"
+          isActive
+            ? "font-bold text-pink-600"
+            : "font-bold text-black transition-all hover:opacity-60"
         }
       >
         👶 BabyLog
@@ -26,7 +28,9 @@ export default function Nav() {
       <NavLink
         to="/logs"
         className={({ isActive }) =>
-          isActive ? "text-pink-600" : "text-black"
+          isActive
+            ? "text-pink-600"
+            : "text-black transition-all hover:opacity-60"
         }
       >
         📝 Logs

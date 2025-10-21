@@ -1,18 +1,19 @@
-import { useState, useEffect } from "react";
 import { filterToday } from "../utils";
+import { useState } from "react";
+
+import FoodTodayItem from "./FoodTodayItem";
 
 export default function TodayFoodLogs({ foodLogs }) {
-  const [todayFoods, setTodayFoods] = useState(filterToday(foodLogs));
+  const [filteredFoods, setFilteredFoods] = useState(filterToday(foodLogs));
 
-  useEffect(() => {
-    setTodayFoods(filterToday(foodLogs));
-  }, [foodLogs]);
-
-  console.log(todayFoods);
   return (
-    <div>
-      <p>Today Foods</p>
-      {todayFoods.length > 0 && todayFoods.map((food) => <p>{food.food}</p>)}
+    <div className="rounded-md bg-orange-50 px-2 py-4 text-sm shadow-md">
+      <h2 className="font-bold">🥕 Foods</h2>
+      <div className="mt-4 flex flex-col justify-center">
+        {filteredFoods.map((log, index) => {
+          return <FoodTodayItem log={log} key={index} />;
+        })}
+      </div>
     </div>
   );
 }
