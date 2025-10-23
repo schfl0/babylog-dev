@@ -1,5 +1,6 @@
 import { formatTime } from "../utils";
 export default function BottleTodayItem({ log: bottle }) {
+  console.log("ID:", bottle.id)
   return (
     <div className="flex items-center justify-start">
       <div className="flex flex-1 items-center justify-between">
