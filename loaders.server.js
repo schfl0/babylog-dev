@@ -41,9 +41,11 @@ export async function getTodayView(email) {
 export async function getNapLogs(email) {
   const client = await mongoClientPromise;
   const db = client.db();
-  const res = await db
+  const docs = await db
     .collection("naps")
     .find({ email, stop: { $exists: true } })
     .toArray();
-  return res;
+  return docs.map(({_id, ...rest})=>({
+    id: _id.toString(), ...rest
+  }));
 }
