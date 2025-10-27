@@ -1,9 +1,15 @@
 import { redirect } from "react-router";
 import { useState } from "react";
-import { getTodayView, getLogs, getNapLogs } from "../../loaders.server";
+import {
+  getTodayView,
+  getLogs,
+  getNapLogs,
+  getAllView,
+} from "../../loaders.server";
 import SelectTodayView from "../components/SelectTodayView";
 import TodayView from "../components/TodayView";
-
+import AllView from "../components/AllView";
+import SelectAllView from "../components/SelectAllView";
 import { buildUrl } from "../../appconfig";
 import { getTodayLogsDesc } from "../utils";
 
@@ -29,6 +35,7 @@ export async function loader({ request }) {
   const poopLogs = await getLogs("poops", session.user.email);
   const tempLogs = await getLogs("temps", session.user.email);
   const medLogs = await getLogs("meds", session.user.email);
+  const allView = await getAllView(session?.user.email);
   return {
     session,
     todayView,
@@ -38,6 +45,7 @@ export async function loader({ request }) {
     poopLogs,
     tempLogs,
     medLogs,
+    allView,
   };
 }
 
@@ -51,6 +59,7 @@ export default function Logs({ loaderData }) {
     poopLogs,
     tempLogs,
     medLogs,
+    allView,
   } = loaderData;
 
   const [view, setView] = useState();
@@ -64,6 +73,21 @@ export default function Logs({ loaderData }) {
       <div className="mt-6">
         <TodayView
           todayView={todayView}
+          bottleLogs={bottleLogs}
+          foodLogs={foodLogs}
+          napLogs={napLogs}
+          poopLogs={poopLogs}
+          tempLogs={tempLogs}
+          medLogs={medLogs}
+        />
+      </div>
+      <div className="mt-8">
+        <h1 className="mb-2 text-base font-bold">All logs</h1>
+        <SelectAllView />
+      </div>
+      <div className="mt-6">
+        <AllView
+          allView={allView}
           bottleLogs={bottleLogs}
           foodLogs={foodLogs}
           napLogs={napLogs}

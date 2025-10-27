@@ -1,8 +1,7 @@
-import { formatTime } from "../utils";
+import { formatTime, formatDate } from "../utils";
+import { useFetcher } from "react-router";
 
-export default function BottleTodayItem({ log: bottle }) {
-  function handleClick() {}
-
+export default function BottleAllItem({ log: bottle }) {
   return (
     <div className="flex items-center justify-start">
       <div className="flex flex-1 items-center justify-between">
@@ -14,12 +13,9 @@ export default function BottleTodayItem({ log: bottle }) {
       <div className="flex min-w-25 items-center justify-end">
         <p className="ml-12">{formatTime(bottle.date)}</p>
       </div>
-      <button
-        className="ml-2 cursor-pointer hover:opacity-60"
-        onClick={handleClick}
-      >
-        📝
-      </button>
+      <div className="ml-6 flex items-center justify-end">
+        <p>{formatDate(bottle.date)}</p>
+      </div>
     </div>
   );
 }

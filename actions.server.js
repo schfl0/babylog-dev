@@ -135,3 +135,16 @@ export async function deleteTodayView(email, todayView) {
       { returnDocument: "after" },
     );
 }
+
+export async function selectAllView(email, allView) {
+  const client = await mongoClientPromise;
+  const db = client.db();
+
+  const res = await db
+    .collection("allView")
+    .findOneAndUpdate(
+      { email },
+      { $set: { allView: allView } },
+      { upsert: true, returnDocument: "after" },
+    );
+}

@@ -22,12 +22,12 @@ export async function getLogs(collection, email) {
   const client = await mongoClientPromise;
   const db = client.db();
 
-  const res = await db
+  const docs = await db
     .collection(collection)
     .find({ email })
     .sort({ date: -1 })
     .toArray();
-  return res;
+  return docs.map(({ _id, ...rest }) => ({ id: _id.toString(), ...rest }));
 }
 
 export async function getTodayView(email) {
@@ -40,9 +40,16 @@ export async function getTodayView(email) {
 export async function getNapLogs(email) {
   const client = await mongoClientPromise;
   const db = client.db();
-  const res = await db
+  const docs = await db
     .collection("naps")
     .find({ email, stop: { $exists: true } })
     .toArray();
-  return res;
+  return docs.map(({ _id, ...rest }) => ({ id: _id.toString(), ...rest }));
+}
+
+export async function getAllView(email) {
+  const client = await mongoClientPromise;
+  const db = client.db();
+  const res = await db.collection("allView").findOne({ email });
+  return res?.allView || "overview";
 }

@@ -6,9 +6,6 @@ export function formatDate(date) {
     year: "numeric",
     month: "2-digit",
     day: "2-digit",
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: false,
   });
 }
 
@@ -159,5 +156,13 @@ export function getTodayLogsDesc(...logsGroup) {
     (a, b) => new Date(b.date || b.start) - new Date(a.date || a.start),
   );
 
+  return sortedDesc;
+}
+
+export function getAllLogsDesc(...logsGroup) {
+  const allLogs = logsGroup.flat();
+  const sortedDesc = allLogs.sort(
+    (a, b) => new Date(b.date || b.start) - new Date(a.date || a.start),
+  );
   return sortedDesc;
 }

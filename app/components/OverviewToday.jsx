@@ -37,14 +37,18 @@ export default function OverviewToday({
   };
 
   return (
-    <div className="rounded-md px-2 py-4 text-sm shadow-md">
-      <h2 className="font-bold">🔭 Overview</h2>
+    <div className="rounded-md px-2 py-4 text-xs shadow-md">
+      <h2 className="text-sm font-bold">🔭 Overview</h2>
       <div className="mt-4 flex flex-col justify-center">
-        {filteredOverview.map((log, index) => {
-          const ItemComponent = overviewItems[log.log];
-          if (!ItemComponent) return null;
-          return <ItemComponent log={log} key={index} />;
-        })}
+        {filteredOverview.length > 0 ? (
+          filteredOverview.map((log, index) => {
+            const ItemComponent = overviewItems[log.log];
+            if (!ItemComponent) return null;
+            return <ItemComponent log={log} key={index} />;
+          })
+        ) : (
+          <p>No logs yet.</p>
+        )}
       </div>
     </div>
   );

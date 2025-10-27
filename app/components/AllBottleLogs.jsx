@@ -1,11 +1,11 @@
-import { filterToday } from "../utils";
+import { getAllLogsDesc } from "../utils";
 import { useState } from "react";
 
-import BottleTodayItem from "./BottleTodayItem";
+import BottleAllItem from "./BottleAllItem";
 
-export default function TodayBottleLogs({ bottleLogs }) {
+export default function AllBottleLogs({ bottleLogs }) {
   const [filteredBottles, setFilteredBottles] = useState(
-    filterToday(bottleLogs),
+    getAllLogsDesc(bottleLogs),
   );
 
   return (
@@ -13,7 +13,7 @@ export default function TodayBottleLogs({ bottleLogs }) {
       <h2 className="text-sm font-bold">🍼 Bottles</h2>
       <div className="mt-4 flex flex-col justify-center">
         {filteredBottles.map((log, index) => {
-          return <BottleTodayItem log={log} key={index} />;
+          return <BottleAllItem log={log} key={index} />;
         })}
       </div>
     </div>

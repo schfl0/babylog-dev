@@ -13,4 +13,6 @@ export default [
   route("med-logger", "./routes/medLoggerAction.jsx"),
   route("select-todayview", "./routes/selectTodayViewAction.jsx"),
   route("delete-todayview", "./routes/deleteTodayViewAction.jsx"),
+  route("select-allview", "./routes/selectAllViewAction.jsx"),
+  route("say-id", "./routes/sayIdAction.jsx"),
 ] satisfies RouteConfig;
