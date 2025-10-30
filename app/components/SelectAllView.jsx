@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { capitalizeStr } from "../utils";
 import { useFetcher } from "react-router";
 
-export default function SelectAllView() {
+export default function SelectAllView({allView}) {
   const fetcher = useFetcher();
   const options = [
     "overview",
@@ -13,7 +13,6 @@ export default function SelectAllView() {
     "temps",
     "meds",
   ];
-  const [selectedAllView, setSelectedAllView] = useState(options[0]);
 
   useEffect(() => {
     if (fetcher.state === "idle" && fetcher.data !== undefined) {
@@ -31,11 +30,10 @@ export default function SelectAllView() {
         className="rounded-sm border px-2 py-1"
         name="selectAllView"
         id="selectAllView"
-        value={selectedAllView}
-        onChange={(e) => setSelectedAllView(e.target.value)}
+        defaultValue={allView}
       >
         {options.map((option) => (
-          <option key={option}>{capitalizeStr(option)}</option>
+          <option key={option} value={option}>{capitalizeStr(option)}</option>
         ))}
       </select>
       <button

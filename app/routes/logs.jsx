@@ -82,7 +82,7 @@ export default function Logs({ loaderData }) {
       </div>
       <div className="mt-8">
         <h1 className="mb-2 text-base font-bold">All logs</h1>
-        <SelectAllView />
+        <SelectAllView allView={allView}/>
       </div>
       <div className="mt-6">
         <AllView
