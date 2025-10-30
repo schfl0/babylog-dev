@@ -40,7 +40,7 @@ export default function BottleLogger({ session, logger }) {
           type="submit"
           className="mt-2 w-full cursor-pointer rounded-sm bg-yellow-100 p-2 transition-all hover:opacity-70"
         >
-          🍼 Bottle
+          {fetcher.state !== "idle" ? "Logging..." : "🍼 Bottle"}
         </button>
       </fetcher.Form>
     </div>

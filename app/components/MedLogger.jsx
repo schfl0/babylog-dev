@@ -55,7 +55,7 @@ export default function MedLogger({ session, logger }) {
           type="submit"
           className="mt-2 w-full cursor-pointer rounded-sm bg-neutral-100 p-2 transition-all hover:opacity-70"
         >
-          💊 Med
+          {fetcher.state !== "idle" ? "Logging..." : "💊 Med"}
         </button>
       </fetcher.Form>
     </div>

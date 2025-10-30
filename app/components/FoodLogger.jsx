@@ -55,7 +55,7 @@ export default function FoodLogger({ session, logger }) {
           type="submit"
           className="mt-2 w-full cursor-pointer rounded-sm bg-orange-100 p-2 transition-all hover:opacity-70"
         >
-          🥕 Food
+          {fetcher.state !== "idle" ? "Logging..." : "🥕 Food"}
         </button>
       </fetcher.Form>
     </div>
