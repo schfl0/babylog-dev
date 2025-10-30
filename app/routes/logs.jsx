@@ -28,7 +28,6 @@ export async function loader({ request }) {
 
   if (!session?.user) throw redirect("/");
   const todayView = await getTodayView(session?.user.email);
-
   const bottleLogs = await getLogs("bottles", session.user.email);
   const foodLogs = await getLogs("foods", session.user.email);
   const napLogs = await getNapLogs(session.user.email);
@@ -68,7 +67,7 @@ export default function Logs({ loaderData }) {
     <div className="p-4 text-sm">
       <div className="mt-2">
         <h1 className="mb-2 text-base font-bold">Today</h1>
-        <SelectTodayView />
+        <SelectTodayView todayView={todayView} />
       </div>
       <div className="mt-6">
         <TodayView

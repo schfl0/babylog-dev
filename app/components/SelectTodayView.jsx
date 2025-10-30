@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { capitalizeStr } from "../utils";
 import { useFetcher } from "react-router";
 
-export default function SelectTodayView() {
+export default function SelectTodayView({todayView}) {
   const fetcher = useFetcher();
   const options = [
     "overview",
@@ -13,7 +13,7 @@ export default function SelectTodayView() {
     "temps",
     "meds",
   ];
-  const [selectedTodayView, setSelectedTodayView] = useState(options[0]);
+  const [selectedTodayView, setSelectedTodayView] = useState(todaView);
 
   useEffect(() => {
     if (fetcher.state === "idle" && fetcher.data !== undefined) {
