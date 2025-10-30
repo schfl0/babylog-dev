@@ -13,14 +13,12 @@ export default function SelectTodayView({todayView}) {
     "temps",
     "meds",
   ];
-  const [selectedTodayView, setSelectedTodayView] = useState(todayView);
-
+ 
   useEffect(() => {
     if (fetcher.state === "idle" && fetcher.data !== undefined) {
     }
   }, [fetcher.state, fetcher.data]);
 
-  useEffect(()=>{setSelectedTodayView(todayView)}, [todayView])
 
   return (
     <fetcher.Form
@@ -33,8 +31,7 @@ export default function SelectTodayView({todayView}) {
         className="rounded-sm border px-2 py-1"
         name="selectTodayView"
         id="selectTodayView"
-        value={selectedTodayView}
-        onChange={(e) => setSelectedTodayView(e.target.value)}
+        defaultValue={todayView}
       >
         {options.map((option) => (
           <option key={option} value={option}>{capitalizeStr(option)}</option>
