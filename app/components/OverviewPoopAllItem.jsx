@@ -8,7 +8,7 @@ export default function OverviewPoopAllItem({ log: poop }) {
           <p>💩</p>
           <p>Poop</p>
         </div>
-        <p>{poop.g} g</p>
+        <p>{poop.poop}</p>
       </div>
       <div className="flex min-w-25 items-center justify-end">
         <p className="ml-4">{formatTime(poop.date)}</p>
