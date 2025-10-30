@@ -83,13 +83,13 @@ export async function logNap(email, triggerNap) {
   return { error: "Unknown trigger" };
 }
 
-export async function logPoop(email, g, date) {
+export async function logPoop(email, poop, date) {
   const client = await mongoClientPromise;
   const db = client.db();
 
   const res = await db
     .collection("poops")
-    .insertOne({ email, log: "poop", g, date });
+    .insertOne({ email, log: "poop", poop, date });
 }
 
 export async function logTemp(email, temp, date) {

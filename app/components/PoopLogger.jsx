@@ -3,10 +3,18 @@ import { useState, useEffect } from "react";
 
 export default function PoopLogger({ session, logger }) {
   const fetcher = useFetcher();
-  const [inputG, setInputG] = useState("");
+  const [inputPoop, setInputPoop] = useState("");
   useEffect(() => {
     if (fetcher.state === "idle") setInputG("");
   }, [fetcher.state]);
+
+  const options = [
+    "sm",
+    "md",
+    "lg",
+    "xl",
+
+  ];
 
   return (
     <div className="rounded-md px-2 py-4 shadow-md">
@@ -26,15 +34,20 @@ export default function PoopLogger({ session, logger }) {
 
       <fetcher.Form method="post" action="/poop-logger">
         <div className="mt-2 mb-2 flex items-center justify-center gap-2 text-xs">
-          <label htmlFor="ml">Poop (g):</label>
-          <input
-            className="w-14 rounded-sm border border-gray-400 px-1 py-0.5"
-            type="number"
-            name="g"
-            id="g"
-            value={inputG}
-            onChange={(e) => setInputG(e.target.value)}
-          />
+          <label htmlFor="poop">Poop:</label>
+
+          <select
+            className="rounded-sm border px-2 py-1"
+            name="poop"
+            id="poop"
+            value={inputPoop}
+            onChange={(e) => setInputPoop(e.target.value)}
+          >
+            {options.map((option) => (
+              <option key={option}>{option.toUpperCase()}</option>
+            ))}
+          </select>
+
         </div>
         <button
           type="submit"
