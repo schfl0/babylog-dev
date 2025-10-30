@@ -9,7 +9,7 @@ export default function BottleLogger({ session, logger }) {
   }, [fetcher.state]);
 
   return (
-    <div className="rounded-md px-2 py-4 shadow-md">
+    <div className="rounded-md px-2 py-4 shadow-[var(--tw-shadow),_-8px_0_15px_-5px_theme('colors.yellow.100')] shadow-md">
       <fetcher.Form
         method="delete"
         action="/delete-logger"
