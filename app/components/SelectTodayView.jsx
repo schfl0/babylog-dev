@@ -20,6 +20,8 @@ export default function SelectTodayView({todayView}) {
     }
   }, [fetcher.state, fetcher.data]);
 
+  useEffect(()=>{setSelectedTodayView(todayView)}, [todayView])
+
   return (
     <fetcher.Form
       method="post"
