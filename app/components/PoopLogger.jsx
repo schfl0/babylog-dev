@@ -5,7 +5,7 @@ export default function PoopLogger({ session, logger }) {
   const fetcher = useFetcher();
   const [inputPoop, setInputPoop] = useState("");
   useEffect(() => {
-    if (fetcher.state === "idle") setInputG("");
+    if (fetcher.state === "idle") setInputPoop("");
   }, [fetcher.state]);
 
   const options = [
