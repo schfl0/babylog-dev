@@ -14,7 +14,7 @@ export async function action({ request }) {
   const session = await resSession.json();
 
   const formData = await request.formData();
-  const g = formData.get("poop");
+  const poop = formData.get("poop");
   const date = new Date();
   await logPoop(session?.user.email, poop, date);
 }
