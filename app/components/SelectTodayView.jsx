@@ -37,7 +37,7 @@ export default function SelectTodayView({todayView}) {
         onChange={(e) => setSelectedTodayView(e.target.value)}
       >
         {options.map((option) => (
-          <option key={option}>{capitalizeStr(option)}</option>
+          <option key={option} value={option}>{capitalizeStr(option)}</option>
         ))}
       </select>
       <button
