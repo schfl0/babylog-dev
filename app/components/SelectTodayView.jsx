@@ -13,7 +13,7 @@ export default function SelectTodayView({todayView}) {
     "temps",
     "meds",
   ];
-  const [selectedTodayView, setSelectedTodayView] = useState(todaView);
+  const [selectedTodayView, setSelectedTodayView] = useState(todayView);
 
   useEffect(() => {
     if (fetcher.state === "idle" && fetcher.data !== undefined) {
