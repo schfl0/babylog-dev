@@ -53,7 +53,7 @@ export default function PoopLogger({ session, logger }) {
           type="submit"
           className="mt-2 w-full cursor-pointer rounded-sm bg-[#f6f0e8] p-2 transition-all hover:opacity-70"
         >
-          💩 Poop
+          {fetcher.state !== "idle" ? "Logging..." : "💩 Poop"}
         </button>
       </fetcher.Form>
     </div>
