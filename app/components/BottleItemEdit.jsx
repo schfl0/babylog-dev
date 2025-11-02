@@ -21,14 +21,14 @@ export default function BottleItemEdit({ bottle, setIsEdit }) {
     <fetcher.Form
       method="post"
       action="/edit-bottle"
-      className="my-1 flex items-start justify-between gap-3 rounded-sm bg-yellow-100 px-1 py-1.5 text-[10px] shadow-md"
+      className="my-1 flex items-start justify-between gap-3 rounded-sm bg-yellow-100 px-1 py-1.5 text-[9px] shadow-md"
     >
       <input type="hidden" name="id" id="id" value={bottle.id} />
       <div className="flex flex-col items-start">
-        <div className="flex items-center gap-1">
+        <div className="flex flex-col items-start">
           <label htmlFor="ml">Ml:</label>
           <input
-            className="w-14 rounded-sm border border-gray-400 bg-yellow-50 px-1 py-0.5"
+            className="w-10 rounded-sm border border-gray-400 bg-yellow-50 px-1 py-0.5"
             type="number"
             name="ml"
             id="ml"
@@ -44,10 +44,10 @@ export default function BottleItemEdit({ bottle, setIsEdit }) {
       </div>
 
       <div className="flex flex-col items-start">
-        <div className="flex items-center gap-1">
+        <div className="flex flex-col items-start">
           <label htmlFor="date">Date:</label>
           <input
-            className="w-22 rounded-sm border border-gray-400 bg-yellow-50 px-1 py-0.5"
+            className="w-20 rounded-sm border border-gray-400 bg-yellow-50 px-1 py-0.5"
             type="date"
             name="date"
             id="date"
@@ -63,10 +63,10 @@ export default function BottleItemEdit({ bottle, setIsEdit }) {
       </div>
 
       <div className="flex flex-col items-start">
-        <div className="flex items-center gap-1">
+        <div className="flex flex-col items-start">
           <label htmlFor="time">Time:</label>
           <input
-            className="w-16 rounded-sm border border-gray-400 bg-yellow-50 px-1 py-0.5"
+            className="w-16 rounded-sm border border-gray-400 bg-yellow-50 px-1"
             type="time"
             name="time"
             id="time"
