@@ -9,6 +9,10 @@ export default function TodayBottleLogs({ bottleLogs }) {
   );
   const [isEdit, setIsEdit] = useState(null);
 
+  useEffect(() => {
+    setFilteredBottles(filterToday(bottleLogs));
+  }, [bottleLogs]);
+
   return (
     <div className="rounded-md bg-yellow-50 px-2 py-4 text-xs shadow-md">
       <h2 className="text-sm font-bold">🍼 Bottles</h2>

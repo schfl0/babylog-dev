@@ -1,4 +1,5 @@
 import mongoClientPromise from "./mongodb.server.js";
+import { ObjectId } from "mongodb";
 
 export async function addLogger(email, logger) {
   const client = await mongoClientPromise;
@@ -146,5 +147,41 @@ export async function selectAllView(email, allView) {
       { email },
       { $set: { allView: allView } },
       { upsert: true, returnDocument: "after" },
+    );
+}
+
+export async function editBottle(id, ml, dateISO) {
+  const client = await mongoClientPromise;
+  const db = client.db();
+
+  const res = await db
+    .collection("bottles")
+    .findOneAndUpdate(
+      { _id: new ObjectId(id) },
+      { $set: { ml, date: new Date(dateISO) } },
+      { returnDocument: "after" },
+    );
+}
+
+export async function deleteLog(id, log) {
+  const client = await mongoClientPromise;
+  const db = client.db();
+
+  const res = await db
+    .collection(`${log}s`)
+    .deleteOne({ _id: new ObjectId(id) });
+  return res;
+}
+
+export async function editFood(id, food, g, dateISO) {
+  const client = await mongoClientPromise;
+  const db = client.db();
+
+  const res = await db
+    .collection("foods")
+    .findOneAndUpdate(
+      { _id: new ObjectId(id) },
+      { $set: { food, g, date: new Date(dateISO) } },
+      { returnDocument: "after" },
     );
 }

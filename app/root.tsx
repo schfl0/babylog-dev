@@ -57,7 +57,6 @@ export async function loader({ request }) {
     credentials: "include",
   });
   const session = await res.json();
-  console.log("SESSION:", session);
   return { session: session };
 }
 

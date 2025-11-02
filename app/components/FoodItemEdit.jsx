@@ -2,11 +2,12 @@ import { formatTime, formatISODate } from "../utils";
 import { useFetcher } from "react-router";
 import { useState, useEffect, useRef } from "react";
 
-export default function BottleItemEdit({ bottle, setIsEdit }) {
+export default function FoodItemEdit({ food, setIsEdit }) {
   const fetcher = useFetcher();
-  const [inputMl, setInputMl] = useState(bottle.ml);
-  const [inputDate, setInputDate] = useState(formatISODate(bottle.date));
-  const [inputTime, setInputTime] = useState(formatTime(bottle.date));
+  const [inputFood, setInputFood] = useState(food.food);
+  const [inputG, setInputG] = useState(food.g);
+  const [inputDate, setInputDate] = useState(formatISODate(food.date));
+  const [inputTime, setInputTime] = useState(formatTime(food.date));
 
   const prevState = useRef(fetcher.state);
 
@@ -20,25 +21,44 @@ export default function BottleItemEdit({ bottle, setIsEdit }) {
   return (
     <fetcher.Form
       method="post"
-      action="/edit-bottle"
-      className="my-1 flex items-start justify-between gap-3 rounded-sm bg-yellow-100 px-1 py-1.5 text-[10px] shadow-md"
+      action="/edit-food"
+      className="my-1 flex items-start justify-between gap-3 rounded-sm bg-orange-100 px-1 py-1.5 text-[10px] shadow-md"
     >
-      <input type="hidden" name="id" id="id" value={bottle.id} />
+      <input type="hidden" name="id" id="id" value={food.id} />
       <div className="flex flex-col items-start">
         <div className="flex items-center gap-1">
-          <label htmlFor="ml">Ml:</label>
+          <label htmlFor="food">Food:</label>
           <input
-            className="w-14 rounded-sm border border-gray-400 bg-yellow-50 px-1 py-0.5"
-            type="number"
-            name="ml"
-            id="ml"
-            value={inputMl}
-            onChange={(e) => setInputMl(e.target.value)}
+            className="w-14 rounded-sm border border-gray-400 bg-orange-50 px-1 py-0.5"
+            type="text"
+            name="food"
+            id="food"
+            value={inputFood}
+            onChange={(e) => setInputFood(e.target.value)}
           />
         </div>
-        {fetcher?.data?.ml?.[0] && (
+        {fetcher?.data?.food?.[0] && (
           <p className="mt-0.5 text-[9px] leading-none text-red-500">
-            {fetcher.data.ml[0]}
+            {fetcher.data.food[0]}
+          </p>
+        )}
+      </div>
+
+      <div className="flex flex-col items-start">
+        <div className="flex items-center gap-1">
+          <label htmlFor="g">G:</label>
+          <input
+            className="w-14 rounded-sm border border-gray-400 bg-orange-50 px-1 py-0.5"
+            type="number"
+            name="g"
+            id="g"
+            value={inputG}
+            onChange={(e) => setInputG(e.target.value)}
+          />
+        </div>
+        {fetcher?.data?.g?.[0] && (
+          <p className="mt-0.5 text-[8px] leading-none text-red-500">
+            {fetcher.data.g[0]}
           </p>
         )}
       </div>
@@ -47,7 +67,7 @@ export default function BottleItemEdit({ bottle, setIsEdit }) {
         <div className="flex items-center gap-1">
           <label htmlFor="date">Date:</label>
           <input
-            className="w-22 rounded-sm border border-gray-400 bg-yellow-50 px-1 py-0.5"
+            className="w-22 rounded-sm border border-gray-400 bg-orange-50 px-1 py-0.5"
             type="date"
             name="date"
             id="date"
@@ -66,7 +86,7 @@ export default function BottleItemEdit({ bottle, setIsEdit }) {
         <div className="flex items-center gap-1">
           <label htmlFor="time">Time:</label>
           <input
-            className="w-16 rounded-sm border border-gray-400 bg-yellow-50 px-1 py-0.5"
+            className="w-16 rounded-sm border border-gray-400 bg-orange-50 px-1 py-0.5"
             type="time"
             name="time"
             id="time"

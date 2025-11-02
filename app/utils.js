@@ -9,6 +9,10 @@ export function formatDate(date) {
   });
 }
 
+export function formatISODate(date) {
+  return date.toISOString().split("T")[0];
+}
+
 export function formatTime(dateStr) {
   return new Date(dateStr).toLocaleTimeString("de-CH", {
     hour: "2-digit",

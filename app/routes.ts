@@ -15,4 +15,8 @@ export default [
   route("delete-todayview", "./routes/deleteTodayViewAction.jsx"),
   route("select-allview", "./routes/selectAllViewAction.jsx"),
   route("say-id", "./routes/sayIdAction.jsx"),
+  route("edit-bottle", "./routes/editBottleAction.jsx"),
+  route("delete-bottle", "./routes/deleteBottleAction.jsx"),
+  route("delete-food", "./routes/deleteFoodAction.jsx"),
+  route("edit-food", "./routes/editFoodAction.jsx"),
 ] satisfies RouteConfig;
