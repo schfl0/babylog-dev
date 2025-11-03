@@ -1,4 +1,4 @@
-import { useFetcher, useLoaderData } from "react-router";
+import { useFetcher } from "react-router";
 import { useEffect } from "react";
 import { formatTime } from "../utils";
 import BottleItemEdit from "../components/BottleItemEdit";
@@ -32,7 +32,7 @@ export default function BottleTodayItem({ log: bottle, isEdit, setIsEdit }) {
           >
             📝
           </button>
-          <fetcher.Form method="post" action="/delete-bottle" className="ml-1">
+          <fetcher.Form method="post" action="/delete-log" className="ml-1">
             <input type="hidden" name="id" id="id" value={bottle.id} />
             <input type="hidden" name="log" id="log" value={bottle.log} />
             <button className="cursor-pointer transition-all hover:opacity-60">

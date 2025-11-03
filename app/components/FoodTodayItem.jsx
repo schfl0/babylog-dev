@@ -1,6 +1,5 @@
 import { useFetcher } from "react-router";
 import { formatTime } from "../utils";
-
 import FoodItemEdit from "./FoodItemEdit";
 
 export default function FoodTodayItem({ log: food, isEdit, setIsEdit }) {
@@ -33,7 +32,7 @@ export default function FoodTodayItem({ log: food, isEdit, setIsEdit }) {
             📝
           </button>
 
-          <fetcher.Form method="post" action="/delete-food" className="ml-1">
+          <fetcher.Form method="post" action="/delete-log" className="ml-1">
             <input type="hidden" name="id" id="id" value={food.id} />
             <input type="hidden" name="log" id="log" value={food.log} />
             <button className="cursor-pointer transition-all hover:opacity-60">
