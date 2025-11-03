@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 
 export default function MedLogger({ session, logger }) {
   const fetcher = useFetcher();
+  const deleteFetcher = useFetcher();
   const [inputMed, setInputMed] = useState("");
   const [inputG, setInputG] = useState("");
 
@@ -15,7 +16,7 @@ export default function MedLogger({ session, logger }) {
 
   return (
     <div className="rounded-md px-2 py-4 shadow-md">
-      <fetcher.Form
+      <deleteFetcher.Form
         method="delete"
         action="/delete-logger"
         className="flex justify-end"
@@ -27,7 +28,7 @@ export default function MedLogger({ session, logger }) {
         >
           ❌
         </button>
-      </fetcher.Form>
+      </deleteFetcher.Form>
 
       <fetcher.Form method="post" action="/med-logger">
         <div className="mt-2 mb-2 flex items-center justify-center gap-2 text-xs">

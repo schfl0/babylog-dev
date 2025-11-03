@@ -3,22 +3,17 @@ import { useState, useEffect } from "react";
 
 export default function PoopLogger({ session, logger }) {
   const fetcher = useFetcher();
+  const deleteFetcher = useFetcher();
   const [inputPoop, setInputPoop] = useState("");
   useEffect(() => {
     if (fetcher.state === "idle") setInputPoop("");
   }, [fetcher.state]);
 
-  const options = [
-    "sm",
-    "md",
-    "lg",
-    "xl",
-
-  ];
+  const options = ["sm", "md", "lg", "xl"];
 
   return (
     <div className="rounded-md px-2 py-4 shadow-md">
-      <fetcher.Form
+      <deleteFetcher.Form
         method="delete"
         action="/delete-logger"
         className="flex justify-end"
@@ -30,7 +25,7 @@ export default function PoopLogger({ session, logger }) {
         >
           ❌
         </button>
-      </fetcher.Form>
+      </deleteFetcher.Form>
 
       <fetcher.Form method="post" action="/poop-logger">
         <div className="mt-2 mb-2 flex items-center justify-center gap-2 text-xs">
@@ -47,7 +42,6 @@ export default function PoopLogger({ session, logger }) {
               <option key={option}>{option.toUpperCase()}</option>
             ))}
           </select>
-
         </div>
         <button
           type="submit"

@@ -4,6 +4,7 @@ import { formatTime, calculateDuration } from "../utils";
 
 export default function NapLogger({ session, logger, openNap }) {
   const fetcher = useFetcher();
+  const deleteFetcher = useFetcher();
   const [isSleeping, setIsSleeping] = useState(!!openNap);
 
   const [napStart, setNapStart] = useState(openNap?.start || null);
@@ -33,7 +34,7 @@ export default function NapLogger({ session, logger, openNap }) {
 
   return (
     <div className="rounded-md px-2 py-4 shadow-md">
-      <fetcher.Form
+      <deleteFetcher.Form
         method="delete"
         action="/delete-logger"
         className="flex justify-end"
@@ -45,7 +46,7 @@ export default function NapLogger({ session, logger, openNap }) {
         >
           ❌
         </button>
-      </fetcher.Form>
+      </deleteFetcher.Form>
 
       <fetcher.Form method="post" action="/nap-logger">
         <div className="mt-2 mb-2 text-xs">

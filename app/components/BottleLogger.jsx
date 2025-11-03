@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 
 export default function BottleLogger({ session, logger }) {
   const fetcher = useFetcher();
+  const deleteFetcher = useFetcher();
   const [inputMl, setInputMl] = useState("");
   useEffect(() => {
     if (fetcher.state === "idle") setInputMl("");
@@ -10,7 +11,7 @@ export default function BottleLogger({ session, logger }) {
 
   return (
     <div className="rounded-md px-2 py-4 shadow-md">
-      <fetcher.Form
+      <deleteFetcher.Form
         method="delete"
         action="/delete-logger"
         className="flex justify-end"
@@ -22,7 +23,7 @@ export default function BottleLogger({ session, logger }) {
         >
           ❌
         </button>
-      </fetcher.Form>
+      </deleteFetcher.Form>
 
       <fetcher.Form method="post" action="/bottle-logger">
         <div className="mt-2 mb-2 flex items-center justify-center gap-2 text-xs">
