@@ -16,5 +16,6 @@ export default [
   route("select-allview", "./routes/selectAllViewAction.jsx"),
   route("edit-bottle", "./routes/editBottleAction.jsx"),
   route("delete-log", "./routes/deleteLogAction.jsx"),
-  route("edit-food", "editFoodAction.jsx")
+  route("edit-food", "./routes/editFoodAction.jsx"),
+  route("edit-nap", "./routes/editNapAction.jsx"),
 ] satisfies RouteConfig;
