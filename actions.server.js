@@ -185,3 +185,16 @@ export async function editFood(id, food, g, dateISO) {
       { returnDocument: "after" },
     );
 }
+
+export async function editNap(id, startDateISO, stopDateISO) {
+  const client = await mongoClientPromise;
+  const db = client.db();
+
+  const res = await db
+    .collection("naps")
+    .findOneAndUpdate(
+      { _id: new ObjectId(id) },
+      { $set: { start: new Date(startDateISO), stop: new Date(stopDateISO) } },
+      { returnDocument: "after" },
+    );
+}

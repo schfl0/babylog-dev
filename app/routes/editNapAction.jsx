@@ -4,7 +4,7 @@ import { z } from "zod";
 import { buildUrl } from "../../appconfig";
 
 const NapSchema = z.object({
-     id: z.string(),
+  id: z.string(),
   startDate: z.iso.date({ message: "Date must be YYYY-MM-DD" }),
   startTime: z.iso.time({ message: "Time must be HH:MM[:SS]" }),
   stopDate: z.iso.date({ message: "Date must be YYYY-MM-DD" }),
@@ -29,9 +29,13 @@ export async function action({ request }) {
 
   const { id, startDate, startTime, stopDate, stopTime } = data.data;
 
-  const startDateObj = new Date(`${data.data.startDate}T${data.data.startTime}:00`);
+  const startDateObj = new Date(
+    `${data.data.startDate}T${data.data.startTime}:00`,
+  );
   const startDateISO = startDateObj.toISOString();
-  const stopDateObj = new Date(`${data.data.stopDate}T${data.data.stopTime}:00`);
+  const stopDateObj = new Date(
+    `${data.data.stopDate}T${data.data.stopTime}:00`,
+  );
   const stopDateISO = stopDateObj.toISOString();
 
   await editNap(id, startDateISO, stopDateISO);

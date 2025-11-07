@@ -66,7 +66,7 @@ export default function BottleItemEdit({ bottle, setIsEdit }) {
         <div className="flex flex-col items-start">
           <label htmlFor="time">Time:</label>
           <input
-            className="w-16 rounded-sm border border-gray-400 bg-yellow-50 px-1"
+            className="w-15 rounded-sm border border-gray-400 bg-yellow-50 px-1"
             type="time"
             name="time"
             id="time"

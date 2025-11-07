@@ -24,10 +24,7 @@ export default function FoodItemEdit({ food, setIsEdit }) {
       action="/edit-food"
       className="my-1 flex max-w-full flex-wrap items-start justify-between gap-3 overflow-hidden rounded-sm bg-orange-100 px-2 py-2 text-[9px] shadow-md sm:flex-nowrap"
     >
-      {/* Hidden ID */}
       <input type="hidden" name="id" id="id" value={food.id} />
-
-      {/* Food Input */}
       <div className="flex min-w-[6rem] flex-shrink-0 flex-col items-start">
         <label htmlFor="food" className="font-medium">
           Food:
@@ -47,7 +44,6 @@ export default function FoodItemEdit({ food, setIsEdit }) {
         )}
       </div>
 
-      {/* Grams Input */}
       <div className="flex flex-shrink-0 flex-col items-start">
         <label htmlFor="g" className="font-medium">
           G:
@@ -67,13 +63,12 @@ export default function FoodItemEdit({ food, setIsEdit }) {
         )}
       </div>
 
-      {/* Date Input */}
       <div className="flex flex-shrink-0 flex-col items-start">
         <label htmlFor="date" className="font-medium">
           Date:
         </label>
         <input
-          className="w-24 max-w-full rounded-sm border border-gray-400 bg-orange-50 px-1 py-0.5 text-[9px]"
+          className="w-20 max-w-full rounded-sm border border-gray-400 bg-orange-50 px-1 py-0.5 text-[9px]"
           type="date"
           name="date"
           id="date"
@@ -87,13 +82,12 @@ export default function FoodItemEdit({ food, setIsEdit }) {
         )}
       </div>
 
-      {/* Time Input */}
       <div className="flex flex-shrink-0 flex-col items-start">
         <label htmlFor="time" className="font-medium">
           Time:
         </label>
         <input
-          className="w-20 max-w-full rounded-sm border border-gray-400 bg-orange-50 px-1 py-0.5 text-[9px]"
+          className="w-15 max-w-full rounded-sm border border-gray-400 bg-orange-50 px-1 text-[9px]"
           type="time"
           name="time"
           id="time"
@@ -107,7 +101,6 @@ export default function FoodItemEdit({ food, setIsEdit }) {
         )}
       </div>
 
-      {/* Buttons */}
       <div className="ml-auto flex flex-shrink-0 items-center gap-1 self-center">
         <button
           type="submit"

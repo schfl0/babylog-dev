@@ -4,11 +4,12 @@ import { useState, useEffect, useRef } from "react";
 
 export default function NapItemEdit({ nap, setIsEdit }) {
   const fetcher = useFetcher();
-  const [inputStartDate, setInputStartDate] = useState(formatISODate(nap.start));
-    const [inputStartTime, setInputStartTime] = useState(formatTime(nap.start));
+  const [inputStartDate, setInputStartDate] = useState(
+    formatISODate(nap.start),
+  );
+  const [inputStartTime, setInputStartTime] = useState(formatTime(nap.start));
   const [inputStopDate, setInputStopDate] = useState(formatISODate(nap.stop));
-    const [inputStopTime, setInputStopTime] = useState(formatTime(nap.stop));
-
+  const [inputStopTime, setInputStopTime] = useState(formatTime(nap.stop));
 
   const prevState = useRef(fetcher.state);
 
@@ -23,16 +24,16 @@ export default function NapItemEdit({ nap, setIsEdit }) {
     <fetcher.Form
       method="post"
       action="/edit-nap"
-      className="my-1 flex max-w-full flex-wrap items-start justify-between gap-3 overflow-hidden rounded-sm bg-orange-100 px-2 py-2 text-[9px] shadow-md sm:flex-nowrap"
+      className="my-1 flex max-w-full flex-wrap items-start justify-between gap-3 overflow-hidden rounded-sm bg-blue-100 px-2 py-2 text-[9px] shadow-md sm:flex-nowrap"
     >
-      <input type="hidden" name="id" id="id" value={food.id} />
+      <input type="hidden" name="id" id="id" value={nap.id} />
 
       <div className="flex flex-shrink-0 flex-col items-start">
         <label htmlFor="startDate" className="font-medium">
           Start date:
         </label>
         <input
-          className="w-24 max-w-full rounded-sm border border-gray-400 bg-orange-50 px-1 py-0.5 text-[9px]"
+          className="w-20 max-w-full rounded-sm border border-gray-400 bg-blue-50 px-1 py-0.5 text-[9px]"
           type="date"
           name="startDate"
           id="startDate"
@@ -51,7 +52,7 @@ export default function NapItemEdit({ nap, setIsEdit }) {
           Start time:
         </label>
         <input
-          className="w-20 max-w-full rounded-sm border border-gray-400 bg-orange-50 px-1 py-0.5 text-[9px]"
+          className="w-15 max-w-full rounded-sm border border-gray-400 bg-blue-50 px-1 text-[9px]"
           type="time"
           name="startTime"
           id="startTime"
@@ -70,7 +71,7 @@ export default function NapItemEdit({ nap, setIsEdit }) {
           Stop date:
         </label>
         <input
-          className="w-24 max-w-full rounded-sm border border-gray-400 bg-orange-50 px-1 py-0.5 text-[9px]"
+          className="w-20 max-w-full rounded-sm border border-gray-400 bg-blue-50 px-1 py-0.5 text-[9px]"
           type="date"
           name="stopDate"
           id="stopDate"
@@ -89,7 +90,7 @@ export default function NapItemEdit({ nap, setIsEdit }) {
           Stop time:
         </label>
         <input
-          className="w-20 max-w-full rounded-sm border border-gray-400 bg-orange-50 px-1 py-0.5 text-[9px]"
+          className="w-15 max-w-full rounded-sm border border-gray-400 bg-blue-50 px-1 text-[9px]"
           type="time"
           name="stopTime"
           id="stopTime"

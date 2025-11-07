@@ -5,29 +5,29 @@ import NapItemEdit from "../components/NapItemEdit";
 
 export default function NapTodayItem({ log: nap, isEdit, setIsEdit }) {
   const fetcher = useFetcher();
-  
-    function handleClick() {
-      if (!isEdit) setIsEdit(nap.id);
-      return;
-    }
+
+  function handleClick() {
+    if (!isEdit) setIsEdit(nap.id);
+    return;
+  }
 
   return (
-     <>
-          {isEdit === nap.id ? (
-            <NapItemEdit nap={nap} setIsEdit={setIsEdit} />
-          ) : (
-    <div className="flex items-center justify-start hover:shadow-sm">
-      <div className="flex flex-1 items-center justify-between">
-        <div className="flex items-center gap-2">
-          <p>Nap</p>
-        </div>
-        <p>{getNapDuration(nap)}</p>
-      </div>
-      <div className="flex min-w-25 items-center justify-end">
-        <p className="ml-4">{formatTime(nap.start)}</p>-
-        <p>{formatTime(nap.stop)}</p>
-      </div>
-        <button
+    <>
+      {isEdit === nap.id ? (
+        <NapItemEdit nap={nap} setIsEdit={setIsEdit} />
+      ) : (
+        <div className="flex items-center justify-start hover:shadow-sm">
+          <div className="flex flex-1 items-center justify-between">
+            <div className="flex items-center gap-2">
+              <p>Nap</p>
+            </div>
+            <p>{getNapDuration(nap)}</p>
+          </div>
+          <div className="flex min-w-25 items-center justify-end">
+            <p className="ml-4">{formatTime(nap.start)}</p>-
+            <p>{formatTime(nap.stop)}</p>
+          </div>
+          <button
             className="ml-2 cursor-pointer hover:opacity-60"
             onClick={handleClick}
           >
@@ -40,6 +40,8 @@ export default function NapTodayItem({ log: nap, isEdit, setIsEdit }) {
               ❌
             </button>
           </fetcher.Form>
-    </div>)}</>
+        </div>
+      )}
+    </>
   );
 }
