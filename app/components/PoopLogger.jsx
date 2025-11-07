@@ -39,7 +39,9 @@ export default function PoopLogger({ session, logger }) {
             onChange={(e) => setInputPoop(e.target.value)}
           >
             {options.map((option) => (
-              <option key={option}>{option.toUpperCase()}</option>
+              <option key={option} value={option}>
+                {option.toUpperCase()}
+              </option>
             ))}
           </select>
         </div>

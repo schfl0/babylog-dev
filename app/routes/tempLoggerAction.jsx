@@ -13,7 +13,7 @@ export async function action({ request }) {
   });
   const session = await resSession.json();
   const formData = await request.formData();
-  const temp = formData.get("temp");
+  const temp = Number(formData.get("temp"));
 
   const date = new Date();
   await logTemp(session?.user.email, temp, date);

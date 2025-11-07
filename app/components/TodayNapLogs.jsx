@@ -1,6 +1,5 @@
 import { filterTodayNaps } from "../utils";
 import { useState, useEffect } from "react";
-
 import NapTodayItem from "./NapTodayItem";
 
 export default function TodayNapLogs({ napLogs }) {

@@ -13,10 +13,7 @@ export async function action({ request }) {
   const session = await resSession.json();
   const formData = await request.formData();
   const todayView = formData.get("selectTodayView");
-  const res = await selectTodayView(
-    session?.user.email,
-    todayView.toLowerCase(),
-  );
+  const res = await selectTodayView(session?.user.email, todayView);
   return redirect("/logs");
 }
 

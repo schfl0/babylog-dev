@@ -27,7 +27,9 @@ export default function AddLogger() {
         onChange={(e) => setSelectedLogger(e.target.value)}
       >
         {options.map((option) => (
-          <option key={option}>{capitalizeStr(option)}</option>
+          <option key={option} value={option}>
+            {capitalizeStr(option)}
+          </option>
         ))}
       </select>
       <button

@@ -97,6 +97,7 @@ export async function logTemp(email, temp, date) {
   const client = await mongoClientPromise;
   const db = client.db();
 
+  console.log(typeof temp);
   const res = await db
     .collection("temps")
     .insertOne({ email, log: "temp", temp, date });
@@ -121,19 +122,6 @@ export async function selectTodayView(email, todayView) {
       { email },
       { $set: { todayView: todayView } },
       { upsert: true, returnDocument: "after" },
-    );
-}
-
-export async function deleteTodayView(email, todayView) {
-  const client = await mongoClientPromise;
-  const db = client.db();
-
-  const res = await db
-    .collection("todayViews")
-    .findOneAndUpdate(
-      { email },
-      { $pull: { todayViews: todayView } },
-      { returnDocument: "after" },
     );
 }
 
@@ -195,6 +183,45 @@ export async function editNap(id, startDateISO, stopDateISO) {
     .findOneAndUpdate(
       { _id: new ObjectId(id) },
       { $set: { start: new Date(startDateISO), stop: new Date(stopDateISO) } },
+      { returnDocument: "after" },
+    );
+}
+
+export async function editPoop(id, poop, dateISO) {
+  const client = await mongoClientPromise;
+  const db = client.db();
+
+  const res = await db
+    .collection("poops")
+    .findOneAndUpdate(
+      { _id: new ObjectId(id) },
+      { $set: { poop: poop, date: new Date(dateISO) } },
+      { returnDocument: "after" },
+    );
+}
+
+export async function editTemp(id, temp, dateISO) {
+  const client = await mongoClientPromise;
+  const db = client.db();
+
+  const res = await db
+    .collection("temps")
+    .findOneAndUpdate(
+      { _id: new ObjectId(id) },
+      { $set: { temp, date: new Date(dateISO) } },
+      { returnDocument: "after" },
+    );
+}
+
+export async function editMed(id, med, g, dateISO) {
+  const client = await mongoClientPromise;
+  const db = client.db();
+
+  const res = await db
+    .collection("meds")
+    .findOneAndUpdate(
+      { _id: new ObjectId(id) },
+      { $set: { med, g, date: new Date(dateISO) } },
       { returnDocument: "after" },
     );
 }

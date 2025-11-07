@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { capitalizeStr } from "../utils";
 import { useFetcher } from "react-router";
 
-export default function SelectAllView({allView}) {
+export default function SelectAllView({ allView }) {
   const fetcher = useFetcher();
   const options = [
     "overview",
@@ -33,7 +33,9 @@ export default function SelectAllView({allView}) {
         defaultValue={allView}
       >
         {options.map((option) => (
-          <option key={option} value={option}>{capitalizeStr(option)}</option>
+          <option key={option} value={option}>
+            {capitalizeStr(option)}
+          </option>
         ))}
       </select>
       <button

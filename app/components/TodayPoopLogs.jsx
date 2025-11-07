@@ -1,17 +1,29 @@
 import { filterToday } from "../utils";
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
 import PoopTodayItem from "./PoopTodayItem";
 
 export default function TodayPoopLogs({ poopLogs }) {
   const [filteredPoops, setFilteredPoops] = useState(filterToday(poopLogs));
+
+  const [isEdit, setIsEdit] = useState(null);
+
+  useEffect(() => {
+    setFilteredPoops(filterToday(poopLogs));
+  }, [poopLogs]);
 
   return (
     <div className="rounded-md bg-[#f6f0e8] px-2 py-4 text-xs shadow-md">
       <h2 className="text-sm font-bold">💩 Poops</h2>
       <div className="mt-4 flex flex-col justify-center">
         {filteredPoops.map((log, index) => {
-          return <PoopTodayItem log={log} key={index} />;
+          return (
+            <PoopTodayItem
+              log={log}
+              key={index}
+              isEdit={isEdit}
+              setIsEdit={setIsEdit}
+            />
+          );
         })}
       </div>
     </div>

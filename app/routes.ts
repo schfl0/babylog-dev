@@ -12,10 +12,12 @@ export default [
   route("temp-logger", "./routes/tempLoggerAction.jsx"),
   route("med-logger", "./routes/medLoggerAction.jsx"),
   route("select-todayview", "./routes/selectTodayViewAction.jsx"),
-  route("delete-todayview", "./routes/deleteTodayViewAction.jsx"),
   route("select-allview", "./routes/selectAllViewAction.jsx"),
   route("edit-bottle", "./routes/editBottleAction.jsx"),
   route("delete-log", "./routes/deleteLogAction.jsx"),
   route("edit-food", "./routes/editFoodAction.jsx"),
   route("edit-nap", "./routes/editNapAction.jsx"),
+  route("edit-poop", "./routes/editPoopAction.jsx"),
+  route("edit-temp", "./routes/editTempAction.jsx"),
+  route("edit-med", "./routes/editMedAction.jsx"),
 ] satisfies RouteConfig;

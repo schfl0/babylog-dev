@@ -7,7 +7,7 @@ export default function PoopTodayItem({ log: poop }) {
           <p>💩</p>
           <p>Poop</p>
         </div>
-        <p>{poop.poop}</p>
+        <p>{poop.poop.toUpperCase()}</p>
       </div>
       <div className="flex min-w-25 items-center justify-end">
         <p className="ml-12">{formatTime(poop.date)}</p>
