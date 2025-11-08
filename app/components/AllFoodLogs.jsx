@@ -10,9 +10,13 @@ export default function AllFoodLogs({ foodLogs }) {
     <div className="rounded-md bg-orange-50 px-2 py-4 text-xs shadow-md">
       <h2 className="text-sm font-bold">🥕 Foods</h2>
       <div className="mt-4 flex flex-col justify-center">
-        {filteredFoods.map((log, index) => {
-          return <FoodAllItem log={log} key={index} />;
-        })}
+        {filteredFoods.length > 0 ? (
+          filteredFoods.map((log, index) => {
+            return <FoodAllItem log={log} key={index} />;
+          })
+        ) : (
+          <p>No logs yet.</p>
+        )}
       </div>
     </div>
   );

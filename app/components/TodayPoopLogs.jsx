@@ -15,16 +15,20 @@ export default function TodayPoopLogs({ poopLogs }) {
     <div className="rounded-md bg-[#f6f0e8] px-2 py-4 text-xs shadow-md">
       <h2 className="text-sm font-bold">💩 Poops</h2>
       <div className="mt-4 flex flex-col justify-center">
-        {filteredPoops.map((log, index) => {
-          return (
-            <PoopTodayItem
-              log={log}
-              key={index}
-              isEdit={isEdit}
-              setIsEdit={setIsEdit}
-            />
-          );
-        })}
+        {filteredPoops.length > 0 ? (
+          filteredPoops.map((log, index) => {
+            return (
+              <PoopTodayItem
+                log={log}
+                key={index}
+                isEdit={isEdit}
+                setIsEdit={setIsEdit}
+              />
+            );
+          })
+        ) : (
+          <p>No logs yet.</p>
+        )}
       </div>
     </div>
   );

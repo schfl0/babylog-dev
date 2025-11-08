@@ -34,7 +34,7 @@ export default function Home({ loaderData }) {
       {session?.user ? (
         <>
           <div className="mt-2">
-            <AddLogger />
+            <AddLogger loggers={loggers} />
           </div>
           <div className="mt-6">
             <Loggers session={session} loggers={loggers} openNap={openNap} />

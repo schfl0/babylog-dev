@@ -10,9 +10,13 @@ export default function AllNapLogs({ napLogs }) {
     <div className="rounded-md bg-blue-50 px-2 py-4 text-xs shadow-md">
       <h2 className="text-sm font-bold">💤 Naps</h2>
       <div className="mt-4 flex flex-col justify-center">
-        {filteredNaps.map((log, index) => {
-          return <NapAllItem log={log} key={index} />;
-        })}
+        {filteredNaps.length > 0 ? (
+          filteredNaps.map((log, index) => {
+            return <NapAllItem log={log} key={index} />;
+          })
+        ) : (
+          <p>No logs yet.</p>
+        )}
       </div>
     </div>
   );

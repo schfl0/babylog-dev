@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { capitalizeStr } from "../utils";
 import { useFetcher } from "react-router";
 
-export default function SelectTodayView({todayView}) {
+export default function SelectTodayView({ todayView }) {
   const fetcher = useFetcher();
   const options = [
     "overview",
@@ -13,12 +13,11 @@ export default function SelectTodayView({todayView}) {
     "temps",
     "meds",
   ];
- 
+
   useEffect(() => {
     if (fetcher.state === "idle" && fetcher.data !== undefined) {
     }
   }, [fetcher.state, fetcher.data]);
-
 
   return (
     <fetcher.Form
@@ -34,7 +33,9 @@ export default function SelectTodayView({todayView}) {
         defaultValue={todayView}
       >
         {options.map((option) => (
-          <option key={option} value={option}>{capitalizeStr(option)}</option>
+          <option key={option} value={option}>
+            {capitalizeStr(option)}
+          </option>
         ))}
       </select>
       <button

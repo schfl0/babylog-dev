@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { capitalizeStr } from "../utils";
 import { useFetcher } from "react-router";
 
-export default function AddLogger() {
+export default function AddLogger({ loggers }) {
   const fetcher = useFetcher();
   const options = ["bottle", "food", "nap", "poop", "temp", "med"];
   const [selectedLogger, setSelectedLogger] = useState(options[0]);
@@ -26,11 +26,15 @@ export default function AddLogger() {
         value={selectedLogger}
         onChange={(e) => setSelectedLogger(e.target.value)}
       >
-        {options.map((option) => (
-          <option key={option} value={option}>
-            {capitalizeStr(option)}
-          </option>
-        ))}
+        {options.map((option) => {
+          if (!loggers.includes(option)) {
+            return (
+              <option key={option} value={option}>
+                {capitalizeStr(option)}
+              </option>
+            );
+          }
+        })}
       </select>
       <button
         type="submit"
