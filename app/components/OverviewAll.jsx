@@ -47,7 +47,7 @@ export default function OverviewAll({
   }, [bottleLogs, foodLogs, napLogs, poopLogs, tempLogs, medLogs]);
 
   return (
-    <div className="rounded-md px-2 py-4 text-xs shadow-md">
+    <div className="rounded-md border border-gray-200 px-2 py-4 text-xs shadow-md">
       <h2 className="text-sm font-bold">🔭 Overview</h2>
       <div className="mt-4 flex flex-col justify-center">
         {filteredOverview.length > 0 ? (

@@ -9,7 +9,7 @@ export default function AllBottleLogs({ bottleLogs }) {
   );
 
   return (
-    <div className="rounded-md bg-yellow-50 px-2 py-4 text-xs shadow-md">
+    <div className="rounded-md border border-gray-200 bg-yellow-50 px-2 py-4 text-xs shadow-md">
       <h2 className="text-sm font-bold">🍼 Bottles</h2>
       <div className="mt-4 flex flex-col justify-center">
         {filteredBottles.length > 0 ? (

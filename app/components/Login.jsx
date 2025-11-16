@@ -19,7 +19,7 @@ export default function Login() {
       <form className="w-full" action="/api/auth/signin/google" method="POST">
         <input type="hidden" name="csrfToken" value={csrfToken} />
         <button
-          className="flex w-full cursor-pointer items-center justify-between rounded-sm px-4 py-2.5 text-sm shadow-md transition-all hover:opacity-60"
+          className="flex w-full cursor-pointer items-center justify-between rounded-sm border border-gray-200 px-4 py-2.5 text-sm shadow-md transition-all hover:opacity-60"
           type="submit"
         >
           <p>Sign in with Google</p>

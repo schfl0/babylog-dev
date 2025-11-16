@@ -17,7 +17,7 @@ export default function TodayFoodLogs({
   }, [medLogs]);
 
   return (
-    <div className="rounded-md bg-neutral-50 px-2 py-4 text-xs shadow-md">
+    <div className="rounded-md border border-gray-200 bg-neutral-50 px-2 py-4 text-xs shadow-md">
       <h2 className="text-sm font-bold">💊 Meds</h2>
       <div className="mt-4 flex flex-col justify-center">
         {filteredMeds.length > 0 ? (

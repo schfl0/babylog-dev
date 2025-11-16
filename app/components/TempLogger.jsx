@@ -10,7 +10,7 @@ export default function TempLogger({ session, logger }) {
   }, [fetcher.state]);
 
   return (
-    <div className="rounded-md px-2 py-4 shadow-md">
+    <div className="rounded-md border border-gray-200 px-2 py-4 shadow-md">
       <deleteFetcher.Form
         method="delete"
         action="/delete-logger"
