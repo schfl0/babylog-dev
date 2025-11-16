@@ -3,7 +3,11 @@ import { useState, useEffect } from "react";
 
 import FoodTodayItem from "./FoodTodayItem";
 
-export default function TodayFoodLogs({ foodLogs }) {
+export default function TodayFoodLogs({
+  foodLogs,
+  isTodayEdit,
+  setIsTodayEdit,
+}) {
   const [filteredFoods, setFilteredFoods] = useState(filterToday(foodLogs));
   const [isEdit, setIsEdit] = useState(null);
 
@@ -23,6 +27,8 @@ export default function TodayFoodLogs({ foodLogs }) {
                 key={index}
                 isEdit={isEdit}
                 setIsEdit={setIsEdit}
+                isTodayEdit={isTodayEdit}
+                setIsTodayEdit={setIsTodayEdit}
               />
             );
           })

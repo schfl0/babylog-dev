@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import NapAllItem from "./NapAllItem";
 
-export default function AllNapLogs({ napLogs }) {
+export default function AllNapLogs({ napLogs, isTodayEdit, setIsTodayEdit }) {
   const [filteredNaps, setFilteredNaps] = useState(getAllLogsDesc(napLogs));
 
   return (
@@ -12,7 +12,14 @@ export default function AllNapLogs({ napLogs }) {
       <div className="mt-4 flex flex-col justify-center">
         {filteredNaps.length > 0 ? (
           filteredNaps.map((log, index) => {
-            return <NapAllItem log={log} key={index} />;
+            return (
+              <NapAllItem
+                log={log}
+                key={index}
+                isTodayEdit={isTodayEdit}
+                setIsTodayEdit={setIsTodayEdit}
+              />
+            );
           })
         ) : (
           <p>No logs yet.</p>

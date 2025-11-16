@@ -3,17 +3,23 @@ import { useEffect } from "react";
 import { formatTime } from "../utils";
 import BottleItemEdit from "../components/BottleItemEdit";
 
-export default function BottleTodayItem({ log: bottle, isEdit, setIsEdit }) {
+export default function BottleTodayItem({
+  log: bottle,
+  isEdit,
+  setIsEdit,
+  isTodayEdit,
+  setIsTodayEdit,
+}) {
   const fetcher = useFetcher();
 
   function handleClick() {
-    if (!isEdit) setIsEdit(bottle.id);
-    return;
+    setIsEdit(bottle.id);
+    setIsTodayEdit(true);
   }
 
   return (
     <>
-      {isEdit === bottle.id ? (
+      {isEdit === bottle.id && isTodayEdit ? (
         <BottleItemEdit bottle={bottle} setIsEdit={setIsEdit} />
       ) : (
         <div className="flex items-center justify-start hover:shadow-sm">

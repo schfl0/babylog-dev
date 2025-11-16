@@ -2,17 +2,23 @@ import { useFetcher } from "react-router";
 import { formatTime } from "../utils";
 import FoodItemEdit from "./FoodItemEdit";
 
-export default function FoodTodayItem({ log: food, isEdit, setIsEdit }) {
+export default function FoodTodayItem({
+  log: food,
+  isEdit,
+  setIsEdit,
+  isTodayEdit,
+  setIsTodayEdit,
+}) {
   const fetcher = useFetcher();
 
   function handleClick() {
-    if (!isEdit) setIsEdit(food.id);
-    return;
+    setIsEdit(food.id);
+    setIsTodayEdit(true);
   }
 
   return (
     <>
-      {isEdit === food.id ? (
+      {isEdit === food.id && isTodayEdit ? (
         <FoodItemEdit food={food} setIsEdit={setIsEdit} />
       ) : (
         <div className="flex items-center justify-start hover:shadow-sm">

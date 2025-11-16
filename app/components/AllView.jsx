@@ -15,6 +15,8 @@ export default function AllView({
   poopLogs,
   tempLogs,
   medLogs,
+  isTodayEdit,
+  setIsTodayEdit,
 }) {
   const allViewComponents = {
     overview: OverviewAll,
@@ -36,6 +38,8 @@ export default function AllView({
           poopLogs={poopLogs}
           tempLogs={tempLogs}
           medLogs={medLogs}
+          isTodayEdit={isTodayEdit}
+          setIsTodayEdit={setIsTodayEdit}
         />
       )}
       {allView === "bottles" && <AllBottleLogs bottleLogs={bottleLogs} />}

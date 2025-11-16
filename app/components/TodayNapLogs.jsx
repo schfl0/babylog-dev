@@ -2,7 +2,7 @@ import { filterTodayNaps } from "../utils";
 import { useState, useEffect } from "react";
 import NapTodayItem from "./NapTodayItem";
 
-export default function TodayNapLogs({ napLogs }) {
+export default function TodayNapLogs({ napLogs, isTodayEdit, setIsTodayEdit }) {
   const [filteredNaps, setFilteredNaps] = useState(filterTodayNaps(napLogs));
   const [isEdit, setIsEdit] = useState(null);
 
@@ -22,6 +22,8 @@ export default function TodayNapLogs({ napLogs }) {
                 key={index}
                 isEdit={isEdit}
                 setIsEdit={setIsEdit}
+                isTodayEdit={isTodayEdit}
+                setIsTodayEdit={setIsTodayEdit}
               />
             );
           })

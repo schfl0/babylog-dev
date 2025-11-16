@@ -84,13 +84,13 @@ export default function BottleItemEdit({ bottle, setIsEdit }) {
       <div className="ml-auto flex items-center gap-1 self-center">
         <button
           type="submit"
-          className="cursor-pointer transition-all hover:opacity-60"
+          className="cursor-pointer text-xs transition-all hover:opacity-60"
         >
           ✅
         </button>
         <button
           type="button"
-          className="cursor-pointer transition-all hover:opacity-60"
+          className="cursor-pointer text-xs transition-all hover:opacity-60"
           onClick={() => setIsEdit(null)}
         >
           🚫

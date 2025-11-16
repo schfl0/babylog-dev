@@ -15,10 +15,14 @@ export default function OverviewAll({
   poopLogs,
   tempLogs,
   medLogs,
+  isTodayEdit,
+  setIsTodayEdit,
 }) {
   const [filteredOverview, setFilteredOverview] = useState(
     getAllLogsDesc(bottleLogs, foodLogs, napLogs, poopLogs, tempLogs, medLogs),
   );
+
+  const [isEdit, setIsEdit] = useState(null);
 
   const overviewItems = {
     bottle: OverviewBottleAllItem,
@@ -42,8 +46,6 @@ export default function OverviewAll({
     );
   }, [bottleLogs, foodLogs, napLogs, poopLogs, tempLogs, medLogs]);
 
-  const [isEdit, setIsEdit] = useState(null);
-
   return (
     <div className="rounded-md px-2 py-4 text-xs shadow-md">
       <h2 className="text-sm font-bold">🔭 Overview</h2>
@@ -58,6 +60,8 @@ export default function OverviewAll({
                 key={index}
                 isEdit={isEdit}
                 setIsEdit={setIsEdit}
+                isTodayEdit={isTodayEdit}
+                setIsTodayEdit={setIsTodayEdit}
               />
             );
           })

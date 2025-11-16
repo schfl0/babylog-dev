@@ -61,8 +61,8 @@ export default function Logs({ loaderData }) {
     allView,
   } = loaderData;
 
-  const [view, setView] = useState();
-
+  const [isTodayEdit, setIsTodayEdit] = useState(false);
+  console.log("ISTODAYEDIT", isTodayEdit);
   return (
     <div className="p-4 text-sm">
       <div className="mt-2">
@@ -78,6 +78,8 @@ export default function Logs({ loaderData }) {
           poopLogs={poopLogs}
           tempLogs={tempLogs}
           medLogs={medLogs}
+          isTodayEdit={isTodayEdit}
+          setIsTodayEdit={setIsTodayEdit}
         />
       </div>
       <div className="mt-8">
@@ -93,6 +95,8 @@ export default function Logs({ loaderData }) {
           poopLogs={poopLogs}
           tempLogs={tempLogs}
           medLogs={medLogs}
+          isTodayEdit={isTodayEdit}
+          setIsTodayEdit={setIsTodayEdit}
         />
       </div>
     </div>

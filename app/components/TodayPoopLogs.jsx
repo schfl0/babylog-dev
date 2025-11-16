@@ -2,7 +2,11 @@ import { filterToday } from "../utils";
 import { useState, useEffect } from "react";
 import PoopTodayItem from "./PoopTodayItem";
 
-export default function TodayPoopLogs({ poopLogs }) {
+export default function TodayPoopLogs({
+  poopLogs,
+  isTodayEdit,
+  setIsTodayEdit,
+}) {
   const [filteredPoops, setFilteredPoops] = useState(filterToday(poopLogs));
 
   const [isEdit, setIsEdit] = useState(null);
@@ -23,6 +27,8 @@ export default function TodayPoopLogs({ poopLogs }) {
                 key={index}
                 isEdit={isEdit}
                 setIsEdit={setIsEdit}
+                isTodayEdit={isTodayEdit}
+                setIsTodayEdit={setIsTodayEdit}
               />
             );
           })

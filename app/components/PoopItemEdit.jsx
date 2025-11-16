@@ -23,7 +23,7 @@ export default function PoopItemEdit({ poop, setIsEdit }) {
     <fetcher.Form
       method="post"
       action="/edit-poop"
-      className="my-1 flex max-w-full flex-wrap items-start justify-between gap-3 overflow-hidden rounded-sm bg-[#f2e7d8] px-2 py-2 text-[9px] shadow-md sm:flex-nowrap"
+      className="my-1 flex items-start justify-between gap-3 rounded-sm bg-[#f2e7d8] px-1 py-1.5 text-[9px] shadow-md"
     >
       <input type="hidden" name="id" id="id" value={poop.id} />
       <div className="flex flex-shrink-0 flex-col items-start">
@@ -91,13 +91,13 @@ export default function PoopItemEdit({ poop, setIsEdit }) {
       <div className="ml-auto flex flex-shrink-0 items-center gap-1 self-center">
         <button
           type="submit"
-          className="cursor-pointer transition-all hover:opacity-60"
+          className="cursor-pointer text-xs transition-all hover:opacity-60"
         >
           ✅
         </button>
         <button
           type="button"
-          className="cursor-pointer transition-all hover:opacity-60"
+          className="cursor-pointer text-xs transition-all hover:opacity-60"
           onClick={() => setIsEdit(null)}
         >
           🚫

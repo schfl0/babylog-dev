@@ -2,17 +2,23 @@ import { useFetcher } from "react-router";
 import { formatTime } from "../utils";
 import TempItemEdit from "../components/TempItemEdit";
 
-export default function TempTodayItem({ log: temp, isEdit, setIsEdit }) {
+export default function TempTodayItem({
+  log: temp,
+  isEdit,
+  setIsEdit,
+  isTodayEdit,
+  setIsTodayEdit,
+}) {
   const fetcher = useFetcher();
 
   function handleClick() {
-    if (!isEdit) setIsEdit(temp.id);
-    return;
+    setIsTodayEdit(true);
+    setIsEdit(temp.id);
   }
 
   return (
     <>
-      {isEdit === temp.id ? (
+      {isEdit === temp.id && isTodayEdit ? (
         <TempItemEdit temp={temp} setIsEdit={setIsEdit} />
       ) : (
         <div className="flex items-center justify-start hover:shadow-md">

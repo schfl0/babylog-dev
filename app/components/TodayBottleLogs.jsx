@@ -3,7 +3,11 @@ import { useState, useEffect } from "react";
 
 import BottleTodayItem from "./BottleTodayItem";
 
-export default function TodayBottleLogs({ bottleLogs }) {
+export default function TodayBottleLogs({
+  bottleLogs,
+  isTodayEdit,
+  setIsTodayEdit,
+}) {
   const [filteredBottles, setFilteredBottles] = useState(
     filterToday(bottleLogs),
   );
@@ -25,6 +29,8 @@ export default function TodayBottleLogs({ bottleLogs }) {
                 key={log.id}
                 isEdit={isEdit}
                 setIsEdit={setIsEdit}
+                isTodayEdit={isTodayEdit}
+                setIsTodayEdit={setIsTodayEdit}
               />
             );
           })

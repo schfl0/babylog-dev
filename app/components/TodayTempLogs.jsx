@@ -3,7 +3,11 @@ import { useState, useEffect } from "react";
 
 import TempTodayItem from "./TempTodayItem";
 
-export default function TodayTempLogs({ tempLogs }) {
+export default function TodayTempLogs({
+  tempLogs,
+  isTodayEdit,
+  setIsTodayEdit,
+}) {
   const [filteredTemps, setFilteredTemps] = useState(filterToday(tempLogs));
 
   const [isEdit, setIsEdit] = useState(null);
@@ -24,6 +28,8 @@ export default function TodayTempLogs({ tempLogs }) {
                 key={index}
                 isEdit={isEdit}
                 setIsEdit={setIsEdit}
+                isTodayEdit={isTodayEdit}
+                setIsTodayEdit={setIsTodayEdit}
               />
             );
           })

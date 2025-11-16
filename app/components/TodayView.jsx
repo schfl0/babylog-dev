@@ -15,6 +15,8 @@ export default function TodayView({
   poopLogs,
   tempLogs,
   medLogs,
+  isTodayEdit,
+  setIsTodayEdit,
 }) {
   const todayViewComponents = {
     overview: OverviewToday,
@@ -38,12 +40,48 @@ export default function TodayView({
           medLogs={medLogs}
         />
       )}
-      {todayView === "bottles" && <TodayBottleLogs bottleLogs={bottleLogs} />}
-      {todayView === "foods" && <TodayFoodLogs foodLogs={foodLogs} />}
-      {todayView === "naps" && <TodayNapLogs napLogs={napLogs} />}
-      {todayView === "poops" && <TodayPoopLogs poopLogs={poopLogs} />}
-      {todayView === "temps" && <TodayTempLogs tempLogs={tempLogs} />}
-      {todayView === "meds" && <TodayMedLogs medLogs={medLogs} />}
+      {todayView === "bottles" && (
+        <TodayBottleLogs
+          bottleLogs={bottleLogs}
+          isTodayEdit={isTodayEdit}
+          setIsTodayEdit={setIsTodayEdit}
+        />
+      )}
+      {todayView === "foods" && (
+        <TodayFoodLogs
+          foodLogs={foodLogs}
+          isTodayEdit={isTodayEdit}
+          setIsTodayEdit={setIsTodayEdit}
+        />
+      )}
+      {todayView === "naps" && (
+        <TodayNapLogs
+          napLogs={napLogs}
+          isTodayEdit={isTodayEdit}
+          setIsTodayEdit={setIsTodayEdit}
+        />
+      )}
+      {todayView === "poops" && (
+        <TodayPoopLogs
+          poopLogs={poopLogs}
+          isTodayEdit={isTodayEdit}
+          setIsTodayEdit={setIsTodayEdit}
+        />
+      )}
+      {todayView === "temps" && (
+        <TodayTempLogs
+          tempLogs={tempLogs}
+          isTodayEdit={isTodayEdit}
+          setIsTodayEdit={setIsTodayEdit}
+        />
+      )}
+      {todayView === "meds" && (
+        <TodayMedLogs
+          medLogs={medLogs}
+          isTodayEdit={isTodayEdit}
+          setIsTodayEdit={setIsTodayEdit}
+        />
+      )}
     </div>
   );
 }

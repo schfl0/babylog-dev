@@ -104,13 +104,13 @@ export default function MedItemEdit({ med, setIsEdit }) {
       <div className="ml-auto flex flex-shrink-0 items-center gap-1 self-center">
         <button
           type="submit"
-          className="cursor-pointer transition-all hover:opacity-60"
+          className="cursor-pointer text-sm transition-all hover:opacity-60"
         >
           ✅
         </button>
         <button
           type="button"
-          className="cursor-pointer transition-all hover:opacity-60"
+          className="cursor-pointer text-sm transition-all hover:opacity-60"
           onClick={() => setIsEdit(null)}
         >
           🚫
