@@ -21,7 +21,7 @@ export default function BottleItemEdit({ bottle, setIsEdit }) {
     <fetcher.Form
       method="post"
       action="/edit-bottle"
-      className="my-1 flex items-start justify-between gap-3 rounded-sm bg-yellow-100 px-1 py-1.5 text-[9px] shadow-md"
+      className="my-1 flex items-start justify-between gap-3 rounded-sm border border-gray-100 bg-yellow-100 px-1 py-1.5 text-[9px] shadow-sm"
     >
       <input type="hidden" name="id" id="id" value={bottle.id} />
       <div className="flex flex-col items-start">

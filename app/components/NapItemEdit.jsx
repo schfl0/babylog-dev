@@ -24,7 +24,7 @@ export default function NapItemEdit({ nap, setIsEdit }) {
     <fetcher.Form
       method="post"
       action="/edit-nap"
-      className="my-1 flex max-w-full flex-wrap items-start justify-between gap-3 overflow-hidden rounded-sm bg-blue-100 px-2 py-2 text-[9px] shadow-md sm:flex-nowrap"
+      className="my-1 flex max-w-full flex-wrap items-start justify-between gap-3 overflow-hidden rounded-sm border border-gray-100 bg-blue-100 px-2 py-2 text-[9px] shadow-sm sm:flex-nowrap"
     >
       <input type="hidden" name="id" id="id" value={nap.id} />
 

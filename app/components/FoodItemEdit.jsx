@@ -22,7 +22,7 @@ export default function FoodItemEdit({ food, setIsEdit }) {
     <fetcher.Form
       method="post"
       action="/edit-food"
-      className="my-1 flex items-start justify-between gap-3 rounded-sm bg-orange-100 px-1 py-1.5 text-[9px] shadow-md"
+      className="my-1 flex items-start justify-between gap-3 rounded-sm border border-gray-100 bg-orange-100 px-1 py-1.5 text-[9px] shadow-sm"
     >
       <input type="hidden" name="id" id="id" value={food.id} />
       <div className="flex flex-shrink-0 flex-col items-start">
