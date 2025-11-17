@@ -7,12 +7,12 @@ import MedLogger from "../components/MedLogger";
 
 export default function Loggers({ session, loggers, openNap }) {
   const loggerComponents = {
-    bottle: BottleLogger,
-    nap: NapLogger,
-    food: FoodLogger,
-    poop: PoopLogger,
-    temp: TempLogger,
-    med: MedLogger,
+    bottles: BottleLogger,
+    naps: NapLogger,
+    foods: FoodLogger,
+    poops: PoopLogger,
+    temperature: TempLogger,
+    medication: MedLogger,
   };
 
   return (

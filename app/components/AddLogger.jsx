@@ -5,7 +5,14 @@ import { nonoptional } from "zod";
 
 export default function AddLogger({ loggers }) {
   const fetcher = useFetcher();
-  const options = ["bottle", "food", "nap", "poop", "temp", "med"];
+  const options = [
+    "bottles",
+    "foods",
+    "naps",
+    "poops",
+    "temperature",
+    "medication",
+  ];
   const [selectedLogger, setSelectedLogger] = useState(options[0]);
   const availableOptions = options.filter(
     (option) => !loggers.includes(option),

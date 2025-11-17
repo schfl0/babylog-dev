@@ -8,7 +8,7 @@ export default function AllTempLogs({ tempLogs }) {
 
   return (
     <div className="rounded-md border border-gray-200 bg-red-50 px-2 py-4 text-xs shadow-md">
-      <h2 className="text-sm font-bold">🌡️ Temps</h2>
+      <h2 className="text-sm font-bold">🌡️ Temperature</h2>
       <div className="mt-4 flex flex-col justify-center">
         {filteredTemps.length > 0 ? (
           filteredTemps.map((log, index) => {

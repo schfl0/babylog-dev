@@ -24,8 +24,8 @@ export default function AllView({
     foods: AllFoodLogs,
     naps: AllNapLogs,
     poops: AllPoopLogs,
-    temps: AllTempLogs,
-    meds: AllMedLogs,
+    temperature: AllTempLogs,
+    medication: AllMedLogs,
   };
 
   return (
@@ -46,8 +46,8 @@ export default function AllView({
       {allView === "foods" && <AllFoodLogs foodLogs={foodLogs} />}
       {allView === "naps" && <AllNapLogs napLogs={napLogs} />}
       {allView === "poops" && <AllPoopLogs poopLogs={poopLogs} />}
-      {allView === "temps" && <AllTempLogs tempLogs={tempLogs} />}
-      {allView === "meds" && <AllMedLogs medLogs={medLogs} />}
+      {allView === "temperature" && <AllTempLogs tempLogs={tempLogs} />}
+      {allView === "medication" && <AllMedLogs medLogs={medLogs} />}
     </div>
   );
 }

@@ -10,8 +10,8 @@ export default function SelectTodayView({ todayView }) {
     "foods",
     "naps",
     "poops",
-    "temps",
-    "meds",
+    "temperature",
+    "medication",
   ];
 
   useEffect(() => {
@@ -27,7 +27,7 @@ export default function SelectTodayView({ todayView }) {
     >
       <label htmlFor="selectTodayView">Select view:</label>
       <select
-        className="rounded-sm border px-2 py-1"
+        className="rounded-sm border px-2 py-1 text-xs"
         name="selectTodayView"
         id="selectTodayView"
         defaultValue={todayView}

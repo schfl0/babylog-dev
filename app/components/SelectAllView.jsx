@@ -10,8 +10,8 @@ export default function SelectAllView({ allView }) {
     "foods",
     "naps",
     "poops",
-    "temps",
-    "meds",
+    "temperature",
+    "medication",
   ];
 
   useEffect(() => {
@@ -27,7 +27,7 @@ export default function SelectAllView({ allView }) {
     >
       <label htmlFor="selectAllView">Select view:</label>
       <select
-        className="rounded-sm border px-2 py-1"
+        className="rounded-sm border px-2 py-1 text-xs"
         name="selectAllView"
         id="selectAllView"
         defaultValue={allView}

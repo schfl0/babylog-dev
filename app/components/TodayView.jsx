@@ -24,8 +24,8 @@ export default function TodayView({
     foods: TodayFoodLogs,
     naps: TodayNapLogs,
     poops: TodayPoopLogs,
-    temps: TodayTempLogs,
-    meds: TodayMedLogs,
+    temperature: TodayTempLogs,
+    medication: TodayMedLogs,
   };
 
   return (
@@ -68,14 +68,14 @@ export default function TodayView({
           setIsTodayEdit={setIsTodayEdit}
         />
       )}
-      {todayView === "temps" && (
+      {todayView === "temperature" && (
         <TodayTempLogs
           tempLogs={tempLogs}
           isTodayEdit={isTodayEdit}
           setIsTodayEdit={setIsTodayEdit}
         />
       )}
-      {todayView === "meds" && (
+      {todayView === "medication" && (
         <TodayMedLogs
           medLogs={medLogs}
           isTodayEdit={isTodayEdit}
