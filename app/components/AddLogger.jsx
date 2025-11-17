@@ -1,11 +1,16 @@
 import { useState, useEffect } from "react";
 import { capitalizeStr } from "../utils";
 import { useFetcher } from "react-router";
+import { nonoptional } from "zod";
 
 export default function AddLogger({ loggers }) {
   const fetcher = useFetcher();
   const options = ["bottle", "food", "nap", "poop", "temp", "med"];
   const [selectedLogger, setSelectedLogger] = useState(options[0]);
+  const availableOptions = options.filter(
+    (option) => !loggers.includes(option),
+  );
+  const noOptionsLeft = availableOptions.length === 0;
 
   useEffect(() => {
     if (fetcher.state === "idle" && fetcher.data !== undefined) {
@@ -20,21 +25,22 @@ export default function AddLogger({ loggers }) {
     >
       <label htmlFor="addLogger">Add logger:</label>
       <select
-        className="rounded-sm border px-2 py-1"
+        className="rounded-sm border px-2 py-1 text-xs"
         name="addLogger"
         id="addLogger"
-        value={selectedLogger}
+        value={noOptionsLeft ? "" : selectedLogger}
         onChange={(e) => setSelectedLogger(e.target.value)}
+        disabled={noOptionsLeft}
       >
-        {options.map((option) => {
-          if (!loggers.includes(option)) {
-            return (
-              <option key={option} value={option}>
-                {capitalizeStr(option)}
-              </option>
-            );
-          }
-        })}
+        {noOptionsLeft ? (
+          <option value="">---</option>
+        ) : (
+          availableOptions.map((option) => (
+            <option key={option} value={option}>
+              {capitalizeStr(option)}
+            </option>
+          ))
+        )}
       </select>
       <button
         type="submit"
