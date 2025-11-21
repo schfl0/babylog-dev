@@ -1,5 +1,5 @@
 import { getTodayLogsDesc } from "../utils";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import OverviewBottleTodayItem from "./OverviewBottleTodayItem";
 import OverviewFoodTodayItem from "./OverviewFoodTodayItem";
@@ -26,6 +26,17 @@ export default function OverviewToday({
       medLogs,
     ),
   );
+
+  useEffect(() => {
+    getTodayLogsDesc(
+      bottleLogs,
+      foodLogs,
+      napLogs,
+      poopLogs,
+      tempLogs,
+      medLogs,
+    );
+  }, [bottleLogs, foodLogs, napLogs, poopLogs, tempLogs, medLogs]);
 
   const overviewItems = {
     bottle: OverviewBottleTodayItem,
