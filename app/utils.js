@@ -10,6 +10,7 @@ export function formatDate(date) {
 }
 
 export function formatISODateLocal(utcString) {
+  console.log("UTCSTRING:", utcString);
   const d = new Date(utcString);
   return d.toLocaleDateString("sv-SE");
 }
@@ -30,6 +31,7 @@ export function formatTime(dateStr) {
 }
 
 export function formatTimeLocal(utcString) {
+  console.log("UTCSTRING2:", utcString);
   const d = new Date(utcString);
   return d.toLocaleTimeString("sv-SE", { hour: "2-digit", minute: "2-digit" });
 }
