@@ -9,8 +9,9 @@ export function formatDate(date) {
   });
 }
 
-export function formatISODateLocal(date) {
-  return date.toLocaleDateString("sv-SE");
+export function formatISODateLocal(utcString) {
+  const d = new Date(utcString);
+  return d.toLocaleDateString("sv-SE");
 }
 
 export function formatISODate(date) {
@@ -28,11 +29,9 @@ export function formatTime(dateStr) {
   });
 }
 
-export function formatTimeLocal(date) {
-  return date.toLocaleTimeString("sv-SE", {
-    hour: "2-digit",
-    minute: "2-digit",
-  });
+export function formatTimeLocal(utcString) {
+  const d = new Date(utcString);
+  return d.toLocaleTimeString("sv-SE", { hour: "2-digit", minute: "2-digit" });
 }
 
 export function calculateDuration(startDate) {
