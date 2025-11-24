@@ -9,8 +9,15 @@ export function formatDate(date) {
   });
 }
 
+export function formatISODateLocal(date) {
+  return date.toLocaleDateString("sv-SE");
+}
+
 export function formatISODate(date) {
-  return date.toISOString().split("T")[0];
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
 }
 
 export function formatTime(dateStr) {
@@ -18,6 +25,13 @@ export function formatTime(dateStr) {
     hour: "2-digit",
     minute: "2-digit",
     hour12: false,
+  });
+}
+
+export function formatTimeLocal(date) {
+  return date.toLocaleTimeString("sv-SE", {
+    hour: "2-digit",
+    minute: "2-digit",
   });
 }
 

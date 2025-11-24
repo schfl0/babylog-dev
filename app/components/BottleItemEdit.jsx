@@ -1,12 +1,12 @@
-import { formatTime, formatISODate } from "../utils";
+import { formatISODateLocal, formatTimeLocal } from "../utils";
 import { useFetcher } from "react-router";
 import { useState, useEffect, useRef } from "react";
 
 export default function BottleItemEdit({ bottle, setIsEdit }) {
   const fetcher = useFetcher();
   const [inputMl, setInputMl] = useState(bottle.ml);
-  const [inputDate, setInputDate] = useState(formatISODate(bottle.date));
-  const [inputTime, setInputTime] = useState(formatTime(bottle.date));
+  const [inputDate, setInputDate] = useState(formatISODateLocal(bottle.date));
+  const [inputTime, setInputTime] = useState(formatTimeLocal(bottle.date));
 
   const prevState = useRef(fetcher.state);
 

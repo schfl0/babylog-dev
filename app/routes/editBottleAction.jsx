@@ -28,7 +28,10 @@ export async function action({ request }) {
 
   const { id, ml, date, time } = data.data;
 
-  const dateObj = new Date(`${data.data.date}T${data.data.time}:00`);
+  const [year, month, day] = date.split("-");
+  const [hour, minute] = time.split(":");
+
+  const dateObj = new Date(year, month - 1, day, hour, minute, 0);
   const dateISO = dateObj.toISOString();
 
   await editBottle(id, ml, dateISO);
