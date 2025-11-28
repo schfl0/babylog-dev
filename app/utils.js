@@ -24,12 +24,29 @@ export function getUtcDate(date, time, timezoneOffset) {
   return utcDate;
 }
 
+export function formatISODateLocal(utcString) {
+  const d = new Date(utcString);
+  return d.toLocaleDateString("sv-SE");
+}
+
+export function formatISODate(date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
 export function formatTime(dateStr) {
   return new Date(dateStr).toLocaleTimeString("de-CH", {
     hour: "2-digit",
     minute: "2-digit",
     hour12: false,
   });
+}
+
+export function formatTimeLocal(utcString) {
+  const d = new Date(utcString);
+  return d.toLocaleTimeString("sv-SE", { hour: "2-digit", minute: "2-digit" });
 }
 
 export function calculateDuration(startDate) {
