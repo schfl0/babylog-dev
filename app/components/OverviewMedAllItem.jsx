@@ -21,7 +21,7 @@ export default function OverviewMedAllItem({
       {isEdit === med.id && !isTodayEdit ? (
         <MedItemEdit med={med} setIsEdit={setIsEdit} />
       ) : (
-        <div className="flex items-center justify-start bg-neutral-50 p-1">
+        <div className="flex items-center justify-start bg-neutral-50 p-1 hover:shadow-sm">
           <div className="flex flex-1 items-center justify-between">
             <div className="flex items-center gap-2">
               <p>💊</p>

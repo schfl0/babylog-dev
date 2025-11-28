@@ -2,12 +2,14 @@ import { redirect } from "react-router";
 import { editBottle } from "../../actions.server";
 import { z } from "zod";
 import { buildUrl } from "../../appconfig";
+import { getUtcDate } from "../utils";
 
 const BottleSchema = z.object({
   id: z.string(),
   ml: z.coerce.number().nonnegative({ message: "Ml must be >= 0" }),
   date: z.iso.date({ message: "Date must be YYYY-MM-DD" }),
   time: z.iso.time({ message: "Time must be HH:MM[:SS]" }),
+  timezoneOffset: z.coerce.number(),
 });
 
 export async function action({ request }) {
@@ -26,21 +28,11 @@ export async function action({ request }) {
     return data.error.flatten().fieldErrors;
   }
 
-  const { id, ml, date, time } = data.data;
+  const { id, ml, date, time, timezoneOffset } = data.data;
 
-  console.log("DATE:", date);
-  console.log("TIME:", time);
+  const utcDate = getUtcDate(date, time, timezoneOffset);
 
-  const [year, month, day] = date.split("-");
-  const [hour, minute] = time.split(":");
-
-  const dateObj = new Date(year, month - 1, day, hour, minute, 0);
-
-  console.log("DATEOBJ:", dateObj);
-  const dateISO = dateObj.toISOString();
-  console.log("DATEISO:", dateISO);
-
-  await editBottle(id, ml, dateISO);
+  await editBottle(id, ml, utcDate);
 
   return redirect("/logs");
 }

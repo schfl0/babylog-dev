@@ -80,6 +80,12 @@ export default function BottleItemEdit({ bottle, setIsEdit }) {
           </p>
         )}
       </div>
+      <input
+        type="hidden"
+        name="timezoneOffset"
+        id="timezoneOffset"
+        value={new Date().getTimezoneOffset()}
+      />
 
       <div className="ml-auto flex items-center gap-1 self-center">
         <button

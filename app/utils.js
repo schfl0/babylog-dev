@@ -9,17 +9,19 @@ export function formatDate(date) {
   });
 }
 
-export function formatISODateLocal(utcString) {
-  console.log("UTCSTRING:", utcString);
-  const d = new Date(utcString);
-  return d.toLocaleDateString("sv-SE");
-}
+export function getUtcDate(date, time, timezoneOffset) {
+  const offsetHours = Math.floor(Math.abs(timezoneOffset / 60));
+  const offsetMinutes = Math.abs(timezoneOffset) % 60;
+  const sign = timezoneOffset > 0 ? "-" : "+";
 
-export function formatISODate(date) {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(d.getDate()).padStart(2, "0");
-  return `${year}-${month}-${day}`;
+  const isoWithOffset =
+    `${date}T${time}:00${sign}` +
+    String(offsetHours).padStart(2, "0") +
+    ":" +
+    String(offsetMinutes).padStart(2, "0");
+
+  const utcDate = new Date(isoWithOffset);
+  return utcDate;
 }
 
 export function formatTime(dateStr) {
@@ -28,12 +30,6 @@ export function formatTime(dateStr) {
     minute: "2-digit",
     hour12: false,
   });
-}
-
-export function formatTimeLocal(utcString) {
-  console.log("UTCSTRING2:", utcString);
-  const d = new Date(utcString);
-  return d.toLocaleTimeString("sv-SE", { hour: "2-digit", minute: "2-digit" });
 }
 
 export function calculateDuration(startDate) {

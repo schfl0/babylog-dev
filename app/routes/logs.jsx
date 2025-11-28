@@ -62,7 +62,6 @@ export default function Logs({ loaderData }) {
   } = loaderData;
 
   const [isTodayEdit, setIsTodayEdit] = useState(false);
-  console.log("ISTODAYEDIT", isTodayEdit);
   return (
     <div className="p-4 text-sm">
       <div className="mt-2">

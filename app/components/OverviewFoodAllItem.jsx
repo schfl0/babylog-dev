@@ -21,7 +21,7 @@ export default function OverviewFoodAllItem({
       {isEdit === food.id && !isTodayEdit ? (
         <FoodItemEdit food={food} setIsEdit={setIsEdit} />
       ) : (
-        <div className="flex items-center justify-start bg-orange-50 p-1">
+        <div className="flex items-center justify-start bg-orange-50 p-1 hover:shadow-sm">
           <div className="flex flex-1 items-center justify-between">
             <div className="flex items-center gap-2">
               <p>🥕</p>

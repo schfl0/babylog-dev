@@ -20,7 +20,7 @@ export default function OverviewNapAllItem({
       {isEdit === nap.id && !isTodayEdit ? (
         <NapItemEdit nap={nap} setIsEdit={setIsEdit} />
       ) : (
-        <div className="flex items-center justify-start bg-blue-50 p-1">
+        <div className="flex items-center justify-start bg-blue-50 p-1 hover:shadow-sm">
           <div className="flex flex-1 items-center justify-between">
             <div className="flex items-center gap-2">
               <p>💤</p>
