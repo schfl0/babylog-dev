@@ -1,12 +1,12 @@
-import { formatTime, formatISODate } from "../utils";
+import { formatTimeLocal, formatISODateLocal } from "../utils";
 import { useFetcher } from "react-router";
 import { useState, useEffect, useRef } from "react";
 
 export default function PoopItemEdit({ poop, setIsEdit }) {
   const fetcher = useFetcher();
   const [inputPoop, setInputPoop] = useState(poop.poop);
-  const [inputDate, setInputDate] = useState(formatISODate(poop.date));
-  const [inputTime, setInputTime] = useState(formatTime(poop.date));
+  const [inputDate, setInputDate] = useState(formatISODateLocal(poop.date));
+  const [inputTime, setInputTime] = useState(formatTimeLocal(poop.date));
 
   const prevState = useRef(fetcher.state);
 
@@ -87,6 +87,12 @@ export default function PoopItemEdit({ poop, setIsEdit }) {
           </p>
         )}
       </div>
+      <input
+        type="hidden"
+        name="timezoneOffset"
+        id="timezoneOffset"
+        value={new Date().getTimezoneOffset()}
+      />
 
       <div className="ml-auto flex flex-shrink-0 items-center gap-1 self-center">
         <button

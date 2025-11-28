@@ -2,6 +2,7 @@ import { redirect } from "react-router";
 import { editMed } from "../../actions.server";
 import { z } from "zod";
 import { buildUrl } from "../../appconfig";
+import { getUtcDate } from "../utils";
 
 const MedSchema = z.object({
   id: z.string(),
@@ -9,6 +10,7 @@ const MedSchema = z.object({
   g: z.coerce.number().nonnegative({ message: "G must be >= 0" }),
   date: z.iso.date({ message: "Date must be YYYY-MM-DD" }),
   time: z.iso.time({ message: "Time must be HH:MM[:SS]" }),
+  timezoneOffset: z.coerce.number(),
 });
 
 export async function action({ request }) {
@@ -27,12 +29,11 @@ export async function action({ request }) {
     return data.error.flatten().fieldErrors;
   }
 
-  const { id, med, g, date, time } = data.data;
+  const { id, med, g, date, time, timezoneOffset } = data.data;
 
-  const dateObj = new Date(`${data.data.date}T${data.data.time}:00`);
-  const dateISO = dateObj.toISOString();
+  const utcDate = getUtcDate(date, time, timezoneOffset);
 
-  await editMed(id, med, g, dateISO);
+  await editMed(id, med, g, utcDate);
 
   return redirect("/logs");
 }

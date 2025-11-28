@@ -2,12 +2,14 @@ import { redirect } from "react-router";
 import { editPoop } from "../../actions.server";
 import { z } from "zod";
 import { buildUrl } from "../../appconfig";
+import { getUtcDate } from "../utils";
 
 const PoopSchema = z.object({
   id: z.string(),
   poop: z.enum(["sm", "md", "lg", "xl"]),
   date: z.iso.date({ message: "Date must be YYYY-MM-DD" }),
   time: z.iso.time({ message: "Time must be HH:MM[:SS]" }),
+  timezoneOffset: z.coerce.number(),
 });
 
 export async function action({ request }) {
@@ -27,12 +29,11 @@ export async function action({ request }) {
     return data.error.flatten().fieldErrors;
   }
 
-  const { id, poop, date, time } = data.data;
+  const { id, poop, date, time, timezoneOffset } = data.data;
 
-  const dateObj = new Date(`${data.data.date}T${data.data.time}:00`);
-  const dateISO = dateObj.toISOString();
+  const utcDate = getUtcDate(date, time, timezoneOffset);
 
-  await editPoop(id, poop, dateISO);
+  await editPoop(id, poop, utcDate);
 
   return redirect("/logs");
 }

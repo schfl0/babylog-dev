@@ -2,6 +2,7 @@ import { redirect } from "react-router";
 import { editNap } from "../../actions.server";
 import { z } from "zod";
 import { buildUrl } from "../../appconfig";
+import { getUtcDate } from "../utils";
 
 const NapSchema = z.object({
   id: z.string(),
@@ -9,6 +10,7 @@ const NapSchema = z.object({
   startTime: z.iso.time({ message: "Time must be HH:MM[:SS]" }),
   stopDate: z.iso.date({ message: "Date must be YYYY-MM-DD" }),
   stopTime: z.iso.time({ message: "Time must be HH:MM[:SS]" }),
+  timezoneOffset: z.coerce.number(),
 });
 
 export async function action({ request }) {
@@ -27,18 +29,12 @@ export async function action({ request }) {
     return data.error.flatten().fieldErrors;
   }
 
-  const { id, startDate, startTime, stopDate, stopTime } = data.data;
+  const { id, startDate, startTime, stopDate, stopTime, timezoneOffset } =
+    data.data;
 
-  const startDateObj = new Date(
-    `${data.data.startDate}T${data.data.startTime}:00`,
-  );
-  const startDateISO = startDateObj.toISOString();
-  const stopDateObj = new Date(
-    `${data.data.stopDate}T${data.data.stopTime}:00`,
-  );
-  const stopDateISO = stopDateObj.toISOString();
-
-  await editNap(id, startDateISO, stopDateISO);
+  const utcStart = getUtcDate(startDate, startTime, timezoneOffset);
+  const utcStop = getUtcDate(stopDate, stopTime, timezoneOffset);
+  await editNap(id, utcStart, utcStop);
 
   return redirect("/logs");
 }

@@ -1,4 +1,4 @@
-import { formatTime, formatISODate } from "../utils";
+import { formatTimeLocal, formatISODateLocal } from "../utils";
 import { useFetcher } from "react-router";
 import { useState, useEffect, useRef } from "react";
 
@@ -6,8 +6,8 @@ export default function FoodItemEdit({ food, setIsEdit }) {
   const fetcher = useFetcher();
   const [inputFood, setInputFood] = useState(food.food);
   const [inputG, setInputG] = useState(food.g);
-  const [inputDate, setInputDate] = useState(formatISODate(food.date));
-  const [inputTime, setInputTime] = useState(formatTime(food.date));
+  const [inputDate, setInputDate] = useState(formatISODateLocal(food.date));
+  const [inputTime, setInputTime] = useState(formatTimeLocal(food.date));
 
   const prevState = useRef(fetcher.state);
 
@@ -100,6 +100,12 @@ export default function FoodItemEdit({ food, setIsEdit }) {
           </p>
         )}
       </div>
+      <input
+        type="hidden"
+        name="timezoneOffset"
+        id="timezoneOffset"
+        value={new Date().getTimezoneOffset()}
+      />
 
       <div className="ml-auto flex flex-shrink-0 items-center justify-end gap-1 self-center">
         <button

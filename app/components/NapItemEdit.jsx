@@ -1,15 +1,19 @@
-import { formatTime, formatISODate } from "../utils";
+import { formatTimeLocal, formatISODateLocal } from "../utils";
 import { useFetcher } from "react-router";
 import { useState, useEffect, useRef } from "react";
 
 export default function NapItemEdit({ nap, setIsEdit }) {
   const fetcher = useFetcher();
   const [inputStartDate, setInputStartDate] = useState(
-    formatISODate(nap.start),
+    formatISODateLocal(nap.start),
   );
-  const [inputStartTime, setInputStartTime] = useState(formatTime(nap.start));
-  const [inputStopDate, setInputStopDate] = useState(formatISODate(nap.stop));
-  const [inputStopTime, setInputStopTime] = useState(formatTime(nap.stop));
+  const [inputStartTime, setInputStartTime] = useState(
+    formatTimeLocal(nap.start),
+  );
+  const [inputStopDate, setInputStopDate] = useState(
+    formatISODateLocal(nap.stop),
+  );
+  const [inputStopTime, setInputStopTime] = useState(formatTimeLocal(nap.stop));
 
   const prevState = useRef(fetcher.state);
 
@@ -103,6 +107,12 @@ export default function NapItemEdit({ nap, setIsEdit }) {
           </p>
         )}
       </div>
+      <input
+        type="hidden"
+        name="timezoneOffset"
+        id="timezoneOffset"
+        value={new Date().getTimezoneOffset()}
+      />
 
       <div className="ml-auto flex flex-shrink-0 items-center gap-1 self-center">
         <button
