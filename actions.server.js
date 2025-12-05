@@ -103,13 +103,13 @@ export async function logTemp(email, temp, date) {
     .insertOne({ email, log: "temp", temp, date });
 }
 
-export async function logMed(email, med, g, date) {
+export async function logMed(email, med, unit, quantity, date) {
   const client = await mongoClientPromise;
   const db = client.db();
 
   const res = await db
     .collection("meds")
-    .insertOne({ email, log: "med", med, g, date });
+    .insertOne({ email, log: "med", med, unit, quantity, date });
 }
 
 export async function selectTodayView(email, todayView) {

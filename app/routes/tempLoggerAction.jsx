@@ -1,7 +1,11 @@
 import { redirect } from "react-router";
 import { logTemp } from "../../actions.server";
-
+import { z } from "zod";
 import { buildUrl } from "../../appconfig";
+
+const TempSchema = z.object({
+  temp: z.coerce.number().nonnegative({ message: "Temp must be >= 0" }),
+});
 
 export async function action({ request }) {
   // if (!context?.session?.user) throw redirect("/");
@@ -13,8 +17,15 @@ export async function action({ request }) {
   });
   const session = await resSession.json();
   const formData = await request.formData();
-  const temp = Number(formData.get("temp"));
+  const rawData = Object.fromEntries(formData);
 
+  const data = TempSchema.safeParse(rawData);
+
+  if (!data.success) {
+    return data.error.flatten().fieldErrors;
+  }
+
+  const { temp } = data.data;
   const date = new Date();
   await logTemp(session?.user.email, temp, date);
 }

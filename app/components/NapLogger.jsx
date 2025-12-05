@@ -51,13 +51,12 @@ export default function NapLogger({ session, logger, openNap }) {
       <fetcher.Form method="post" action="/nap-logger">
         <div className="mt-2 mb-2 text-xs">
           <input
-            className="w- border border-gray-400 px-1 py-0.5"
             type="hidden"
             name="triggerNap"
             id="triggerNap"
             value={isSleeping ? "stop" : "start"}
           />
-          <div className="itens-center flex justify-center gap-2">
+          <div className="flex items-center justify-center gap-2">
             <p>🏁 Start: {napStart ? `${formatTime(napStart)}` : "--"}</p>
             <p>/</p>
             <p>⏱️ Nap: {napDuration || "--"}</p>

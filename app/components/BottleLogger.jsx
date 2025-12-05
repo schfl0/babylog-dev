@@ -17,12 +17,12 @@ export default function BottleLogger({ session, logger }) {
   useEffect(() => {
     if (fetcher.data?.ml?.[0]) {
       setErrorMsg(fetcher.data.ml[0]);
-      const timer = setTimeout(() => setErrorMsg(""), 2000);
+      const timer = setTimeout(() => setErrorMsg(""), 1000);
       return () => clearTimeout(timer);
     }
     if (fetcher.data?.success) {
       setSuccessMsg("Success!");
-      const timer = setTimeout(() => setSuccessMsg(""), 2000);
+      const timer = setTimeout(() => setSuccessMsg(""), 1000);
       return () => clearTimeout(timer);
     }
   }, [fetcher.data]);

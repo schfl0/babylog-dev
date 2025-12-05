@@ -27,7 +27,10 @@ export default function OverviewMedAllItem({
               <p>💊</p>
               <p>{med.med}</p>
             </div>
-            <p>{med.g} g</p>
+            <div className="flex items-center gap-1">
+              <p>{med.quantity}</p>
+              <p>{med.unit}</p>
+            </div>
           </div>
           <div className="flex min-w-25 items-center justify-end">
             <p className="ml-4">{formatTime(med.date)}</p>
