@@ -7,7 +7,10 @@ export default function MedTodayItem({ log: med }) {
           <p>💊</p>
           <p>{med.med}</p>
         </div>
-        <p>{med.g} g</p>
+        <div className="flex items-center gap-1">
+          <p>{med.quantity}</p>
+          <p>{med.unit}</p>
+        </div>
       </div>
       <div className="flex min-w-25 items-center justify-end">
         <p>{formatTime(med.date)}</p>

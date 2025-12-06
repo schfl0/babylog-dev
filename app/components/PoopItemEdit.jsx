@@ -27,8 +27,8 @@ export default function PoopItemEdit({ poop, setIsEdit }) {
     >
       <input type="hidden" name="id" id="id" value={poop.id} />
       <div className="flex flex-shrink-0 flex-col items-start">
-        <label htmlFor="food" className="font-medium">
-          Food:
+        <label htmlFor="poop" className="font-medium">
+          Poop:
         </label>
         <select
           className="rounded-sm border border-gray-400 bg-[#f6f0e8] px-1 py-0.5"

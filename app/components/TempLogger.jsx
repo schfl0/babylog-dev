@@ -67,7 +67,7 @@ export default function TempLogger({ session, logger }) {
           type="submit"
           className="mt-2 w-full cursor-pointer rounded-sm bg-red-100 p-2 transition-all hover:opacity-70"
         >
-          {fetcher.state === "submitting" ? "Logging..." : "🌡️ Temp"}
+          {fetcher.state === "submitting" ? "Logging..." : "🌡️ Temperature"}
         </button>
       </fetcher.Form>
     </div>

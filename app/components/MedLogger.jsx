@@ -56,40 +56,45 @@ export default function MedLogger({ session, logger }) {
       </deleteFetcher.Form>
 
       <fetcher.Form method="post" action="/med-logger">
-        <div className="mt-2 mb-2 flex items-center justify-center gap-2 text-xs">
-          <label htmlFor="med">Medication:</label>
-          <input
-            className="w-full rounded-sm border border-gray-400 px-1 py-0.5"
-            type="text"
-            name="med"
-            id="med"
-            value={inputMed}
-            onChange={(e) => setInputMed(e.target.value)}
-          />
-          <label htmlFor="unit">Unit:</label>
-          <select
-            className="rounded-sm border px-2 py-0.5"
-            name="unit"
-            id="unit"
-            value={inputUnit}
-            onChange={(e) => setInputUnit(e.target.value)}
-          >
-            {options.map((option) => (
-              <option key={option} value={option}>
-                {option.toUpperCase()}
-              </option>
-            ))}
-          </select>
-
-          <label htmlFor="quantity">Quantity:</label>
-          <input
-            className="w-14 rounded-sm border border-gray-400 px-1 py-0.5"
-            type="number"
-            name="quantity"
-            id="quantity"
-            value={inputQuantity}
-            onChange={(e) => setInputQuantity(e.target.value)}
-          />
+        <div className="mt-2 mb-2 flex items-center justify-start gap-2 text-xs">
+          <div className="flex flex-1 flex-col">
+            <label htmlFor="med">Medication:</label>
+            <input
+              className="w-full rounded-sm border border-gray-400 px-1 py-0.5"
+              type="text"
+              name="med"
+              id="med"
+              value={inputMed}
+              onChange={(e) => setInputMed(e.target.value)}
+            />
+          </div>
+          <div className="flex flex-col">
+            <label htmlFor="unit">Unit:</label>
+            <select
+              className="rounded-sm border px-2 py-0.5"
+              name="unit"
+              id="unit"
+              value={inputUnit}
+              onChange={(e) => setInputUnit(e.target.value)}
+            >
+              {options.map((option) => (
+                <option key={option} value={option}>
+                  {option.toUpperCase()}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="flex flex-col">
+            <label htmlFor="quantity">Quantity:</label>
+            <input
+              className="w-14 rounded-sm border border-gray-400 px-1 py-0.5"
+              type="number"
+              name="quantity"
+              id="quantity"
+              value={inputQuantity}
+              onChange={(e) => setInputQuantity(e.target.value)}
+            />
+          </div>
         </div>
         {errorMsg && (
           <p className="mt-0.5 text-center text-[9px] opacity-50">
@@ -106,7 +111,7 @@ export default function MedLogger({ session, logger }) {
           type="submit"
           className="mt-2 w-full cursor-pointer rounded-sm bg-neutral-100 p-2 transition-all hover:opacity-70"
         >
-          {fetcher.state === "submitting" ? "Logging..." : "💊 Med"}
+          {fetcher.state === "submitting" ? "Logging..." : "💊 Medication"}
         </button>
       </fetcher.Form>
     </div>
