@@ -213,7 +213,7 @@ export async function editTemp(id, temp, dateISO) {
     );
 }
 
-export async function editMed(id, med, g, dateISO) {
+export async function editMed(id, med, unit, quantity, dateISO) {
   const client = await mongoClientPromise;
   const db = client.db();
 
@@ -221,7 +221,7 @@ export async function editMed(id, med, g, dateISO) {
     .collection("meds")
     .findOneAndUpdate(
       { _id: new ObjectId(id) },
-      { $set: { med, g, date: new Date(dateISO) } },
+      { $set: { med, unit, quantity, date: new Date(dateISO) } },
       { returnDocument: "after" },
     );
 }

@@ -7,7 +7,8 @@ import { getUtcDate } from "../utils";
 const MedSchema = z.object({
   id: z.string(),
   med: z.string(),
-  g: z.coerce.number().nonnegative({ message: "G must be >= 0" }),
+  unit: z.enum(["g", "mg", "mcg", "ng", "l", "ml", "drops", "u"]),
+  quantity: z.coerce.number().nonnegative({ message: "Quantity must be >= 0" }),
   date: z.iso.date({ message: "Date must be YYYY-MM-DD" }),
   time: z.iso.time({ message: "Time must be HH:MM[:SS]" }),
   timezoneOffset: z.coerce.number(),
@@ -29,11 +30,11 @@ export async function action({ request }) {
     return data.error.flatten().fieldErrors;
   }
 
-  const { id, med, g, date, time, timezoneOffset } = data.data;
+  const { id, med, unit, quantity, date, time, timezoneOffset } = data.data;
 
   const utcDate = getUtcDate(date, time, timezoneOffset);
 
-  await editMed(id, med, g, utcDate);
+  await editMed(id, med, unit, quantity, utcDate);
 
   return redirect("/logs");
 }
