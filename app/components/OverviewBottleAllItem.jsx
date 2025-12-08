@@ -1,5 +1,5 @@
 import { useFetcher } from "react-router";
-import { formatTime, formatDate } from "../utils";
+import { capitalizeStr, formatTime, formatDate } from "../utils";
 import BottleItemEdit from "./BottleItemEdit";
 
 export default function OverviewBottleAllItem({
@@ -25,7 +25,7 @@ export default function OverviewBottleAllItem({
           <div className="flex flex-1 items-center justify-between">
             <div className="flex items-center gap-2">
               <p>🍼</p>
-              <p>Bottle</p>
+              <p>{capitalizeStr(bottle.type)}</p>
             </div>
             <p>{bottle.ml} ml</p>
           </div>
@@ -45,7 +45,7 @@ export default function OverviewBottleAllItem({
             <input type="hidden" name="id" id="id" value={bottle.id} />
             <input type="hidden" name="log" id="log" value={bottle.log} />
             <button className="cursor-pointer transition-all hover:opacity-60">
-              ❌
+              🗑️
             </button>
           </fetcher.Form>
         </div>

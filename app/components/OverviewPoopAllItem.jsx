@@ -45,7 +45,7 @@ export default function OverviewPoopAllItem({
             <input type="hidden" name="id" id="id" value={poop.id} />
             <input type="hidden" name="log" id="log" value={poop.log} />
             <button className="cursor-pointer transition-all hover:opacity-60">
-              ❌
+              🗑️
             </button>
           </fetcher.Form>
         </div>

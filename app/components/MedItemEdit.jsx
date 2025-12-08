@@ -65,6 +65,11 @@ export default function MedItemEdit({ med, setIsEdit }) {
               </option>
             ))}
           </select>
+          {fetcher?.data?.unit?.[0] && (
+            <p className="mt-0.5 text-[8px] leading-none text-red-500">
+              {fetcher.data.unit[0]}
+            </p>
+          )}
         </div>
 
         <div className="flex flex-col items-start">
@@ -79,9 +84,9 @@ export default function MedItemEdit({ med, setIsEdit }) {
             value={inputQuantity}
             onChange={(e) => setInputQuantity(e.target.value)}
           />
-          {fetcher?.data?.unit?.[0] && (
+          {fetcher?.data?.quantity?.[0] && (
             <p className="mt-0.5 text-[8px] leading-none text-red-500">
-              {fetcher.data.unit[0]}
+              {fetcher.data.quantity[0]}
             </p>
           )}
         </div>

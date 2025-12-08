@@ -61,7 +61,7 @@ export default function FoodLogger({ session, logger }) {
 
           <label htmlFor="g">g:</label>
           <input
-            className="w-14 rounded-sm border border-gray-400 px-1 py-0.5"
+            className="w-20 rounded-sm border border-gray-400 px-1 py-0.5"
             type="number"
             min="0"
             name="g"

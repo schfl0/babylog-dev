@@ -45,7 +45,7 @@ export default function PoopItemEdit({ poop, setIsEdit }) {
         </select>
         {fetcher?.data?.poop?.[0] && (
           <p className="mt-0.5 text-[8px] leading-none text-red-500">
-            {fetcher.data.food[0]}
+            {fetcher.data.poop[0]}
           </p>
         )}
       </div>

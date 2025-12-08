@@ -43,7 +43,7 @@ export default function NapTodayItem({
             <input type="hidden" name="id" id="id" value={nap.id} />
             <input type="hidden" name="log" id="log" value={nap.log} />
             <button className="cursor-pointer transition-all hover:opacity-60">
-              ❌
+              🗑️
             </button>
           </fetcher.Form>
         </div>

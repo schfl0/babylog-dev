@@ -5,6 +5,7 @@ import { buildUrl } from "../../appconfig";
 
 const BottleSchema = z.object({
   ml: z.coerce.number().nonnegative({ message: "Ml must be >= 0" }),
+  type: z.enum(["formula", "breast milk"]),
 });
 
 export async function action({ request }) {
@@ -25,9 +26,9 @@ export async function action({ request }) {
     return data.error.flatten().fieldErrors;
   }
 
-  const { ml } = data.data;
+  const { ml, type } = data.data;
   const date = new Date();
-  await logBottle(session?.user.email, ml, date);
+  await logBottle(session?.user.email, ml, type, date);
   return { success: true };
 }
 

@@ -45,7 +45,7 @@ export default function OverviewFoodAllItem({
             <input type="hidden" name="id" id="id" value={food.id} />
             <input type="hidden" name="log" id="log" value={food.log} />
             <button className="cursor-pointer transition-all hover:opacity-60">
-              ❌
+              🗑️
             </button>
           </fetcher.Form>
         </div>

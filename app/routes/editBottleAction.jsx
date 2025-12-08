@@ -6,6 +6,7 @@ import { getUtcDate } from "../utils";
 
 const BottleSchema = z.object({
   id: z.string(),
+  type: z.enum(["formula", "breast milk"]),
   ml: z.coerce.number().nonnegative({ message: "Ml must be >= 0" }),
   date: z.iso.date({ message: "Date must be YYYY-MM-DD" }),
   time: z.iso.time({ message: "Time must be HH:MM[:SS]" }),
@@ -23,16 +24,16 @@ export async function action({ request }) {
   const formData = await request.formData();
   const rawData = Object.fromEntries(formData);
   const data = BottleSchema.safeParse(rawData);
-
   if (!data.success) {
     return data.error.flatten().fieldErrors;
   }
 
-  const { id, ml, date, time, timezoneOffset } = data.data;
+  const { id, type, ml, date, time, timezoneOffset } = data.data;
 
+  console.log(id);
   const utcDate = getUtcDate(date, time, timezoneOffset);
 
-  await editBottle(id, ml, utcDate);
+  await editBottle(id, type, ml, utcDate);
 
   return redirect("/logs");
 }

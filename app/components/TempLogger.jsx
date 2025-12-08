@@ -45,10 +45,11 @@ export default function TempLogger({ session, logger }) {
         <div className="mt-2 mb-2 flex items-center justify-center gap-2 text-xs">
           <label htmlFor="temp">Temp (°C):</label>
           <input
-            className="w-14 rounded-sm border border-gray-400 px-1 py-0.5"
+            className="w-20 rounded-sm border border-gray-400 px-1 py-0.5"
             type="number"
             name="temp"
             id="temp"
+            min="0"
             value={inputTemp}
             onChange={(e) => setInputTemp(e.target.value)}
           />

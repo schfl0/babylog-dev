@@ -1,6 +1,6 @@
 import { useFetcher } from "react-router";
 import { useEffect } from "react";
-import { formatTime } from "../utils";
+import { capitalizeStr, formatTime } from "../utils";
 import BottleItemEdit from "../components/BottleItemEdit";
 
 export default function BottleTodayItem({
@@ -25,7 +25,7 @@ export default function BottleTodayItem({
         <div className="flex items-center justify-start hover:shadow-sm">
           <div className="flex flex-1 items-center justify-between">
             <div className="flex items-center gap-2">
-              <p>Bottle</p>
+              <p>{capitalizeStr(bottle.type)}</p>
             </div>
             <p>{bottle.ml} ml</p>
           </div>
@@ -42,7 +42,7 @@ export default function BottleTodayItem({
             <input type="hidden" name="id" id="id" value={bottle.id} />
             <input type="hidden" name="log" id="log" value={bottle.log} />
             <button className="cursor-pointer transition-all hover:opacity-60">
-              ❌
+              🗑️
             </button>
           </fetcher.Form>
         </div>

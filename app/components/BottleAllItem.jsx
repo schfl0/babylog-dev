@@ -1,4 +1,4 @@
-import { formatTime, formatDate } from "../utils";
+import { capitalizeStr, formatTime, formatDate } from "../utils";
 import { useFetcher } from "react-router";
 
 export default function BottleAllItem({ log: bottle }) {
@@ -6,7 +6,7 @@ export default function BottleAllItem({ log: bottle }) {
     <div className="flex items-center justify-start">
       <div className="flex flex-1 items-center justify-between">
         <div className="flex items-center gap-2">
-          <p>Bottle</p>
+          <p>{capitalizeStr(bottle.type)}</p>
         </div>
         <p>{bottle.ml} ml</p>
       </div>

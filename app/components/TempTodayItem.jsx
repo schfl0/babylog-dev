@@ -41,7 +41,7 @@ export default function TempTodayItem({
             <input type="hidden" name="id" id="id" value={temp.id} />
             <input type="hidden" name="log" id="log" value={temp.log} />
             <button className="cursor-pointer transition-all hover:opacity-60">
-              ❌
+              🗑️
             </button>
           </fetcher.Form>
         </div>

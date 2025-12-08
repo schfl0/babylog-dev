@@ -1,4 +1,4 @@
-import { formatTime } from "../utils";
+import { capitalizeStr, formatTime } from "../utils";
 
 export default function OverviewBottleTodayItem({ log: bottle }) {
   return (
@@ -6,7 +6,7 @@ export default function OverviewBottleTodayItem({ log: bottle }) {
       <div className="flex flex-1 items-center justify-between">
         <div className="flex items-center gap-2">
           <p>🍼</p>
-          <p>Bottle</p>
+          <p>{capitalizeStr(bottle.type)}</p>
         </div>
         <p>{bottle.ml} ml</p>
       </div>

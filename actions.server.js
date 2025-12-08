@@ -27,13 +27,13 @@ export async function deleteLogger(email, logger) {
     );
 }
 
-export async function logBottle(email, ml, date) {
+export async function logBottle(email, ml, type, date) {
   const client = await mongoClientPromise;
   const db = client.db();
 
   const res = await db
     .collection("bottles")
-    .insertOne({ email, log: "bottle", ml, date });
+    .insertOne({ email, log: "bottle", ml, type, date });
 }
 
 export async function logFood(email, food, g, date) {
@@ -138,7 +138,7 @@ export async function selectAllView(email, allView) {
     );
 }
 
-export async function editBottle(id, ml, dateISO) {
+export async function editBottle(id, type, ml, dateISO) {
   const client = await mongoClientPromise;
   const db = client.db();
 
@@ -146,7 +146,7 @@ export async function editBottle(id, ml, dateISO) {
     .collection("bottles")
     .findOneAndUpdate(
       { _id: new ObjectId(id) },
-      { $set: { ml, date: new Date(dateISO) } },
+      { $set: { type, ml, date: new Date(dateISO) } },
       { returnDocument: "after" },
     );
 }
