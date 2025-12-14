@@ -28,11 +28,11 @@ export default function AddLogger({ loggers }) {
     <fetcher.Form
       method="post"
       action="/add-logger"
-      className="flex items-center justify-start gap-4"
+      className="flex items-center justify-start gap-4 text-xs"
     >
       <label htmlFor="addLogger">Add logger:</label>
       <select
-        className="rounded-sm border px-2 py-1 text-xs"
+        className="rounded-sm border px-2 py-0.5"
         name="addLogger"
         id="addLogger"
         value={noOptionsLeft ? "" : selectedLogger}
@@ -51,7 +51,7 @@ export default function AddLogger({ loggers }) {
       </select>
       <button
         type="submit"
-        className="cursor-pointer rounded-sm bg-pink-600 px-2 py-1 text-sm text-white transition-all hover:opacity-60"
+        className="cursor-pointer rounded-sm bg-pink-600 px-2 py-1 text-white transition-all hover:opacity-60"
       >
         📝 Add
       </button>

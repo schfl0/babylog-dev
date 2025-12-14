@@ -21,7 +21,7 @@ export default function TempItemEdit({ temp, setIsEdit }) {
     <fetcher.Form
       method="post"
       action="/edit-temp"
-      className="my-1 flex items-start justify-between gap-3 rounded-sm border border-gray-100 bg-red-100 px-1 py-1.5 text-[9px] shadow-sm"
+      className="text-4xs my-1 flex items-start justify-between gap-3 rounded-sm border border-gray-100 bg-red-100 px-1 py-1.5 shadow-sm"
     >
       <input type="hidden" name="id" id="id" value={temp.id} />
       <div className="flex flex-col items-start">

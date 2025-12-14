@@ -25,7 +25,7 @@ export default function MedItemEdit({ med, setIsEdit }) {
     <fetcher.Form
       method="post"
       action="/edit-med"
-      className="my-1 flex w-full flex-col items-start justify-start gap-1 rounded-sm border border-gray-100 bg-gray-100 px-2 py-2 text-[9px]"
+      className="text-4xs my-1 flex w-full flex-col items-start justify-start gap-1 rounded-sm border border-gray-100 bg-gray-100 px-2 py-2"
     >
       <input type="hidden" name="id" id="id" value={med.id} />
       <div className="flex w-full items-center justify-start gap-2">

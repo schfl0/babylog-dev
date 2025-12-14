@@ -35,7 +35,7 @@ export default function BottleLogger({ session, logger }) {
   const options = ["formula", "breast milk"];
 
   return (
-    <div className="rounded-md border border-gray-200 px-2 py-4 shadow-md">
+    <div className="text-2xs rounded-md border border-gray-200 p-4 shadow-md">
       <deleteFetcher.Form
         method="delete"
         action="/delete-logger"
@@ -52,7 +52,7 @@ export default function BottleLogger({ session, logger }) {
 
       <fetcher.Form method="post" action="/bottle-logger">
         <div className="flex items-center justify-center gap-2">
-          <div className="mt-2 mb-2 flex flex-col items-start justify-center text-xs">
+          <div className="mt-2 mb-2 flex flex-col items-start justify-center">
             <label htmlFor="type">Type:</label>
             <select
               className="rounded-sm border border-gray-400 px-2 py-0.5"
@@ -68,7 +68,7 @@ export default function BottleLogger({ session, logger }) {
               ))}
             </select>
           </div>
-          <div className="mt-2 mb-2 flex flex-col items-start justify-center text-xs">
+          <div className="mt-2 mb-2 flex flex-col items-start justify-center">
             <label htmlFor="ml">Bottle (ml):</label>
             <input
               className="w-20 rounded-sm border border-gray-400 px-1 py-0.5"

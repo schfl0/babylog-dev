@@ -40,7 +40,7 @@ export default function MedLogger({ session, logger }) {
   const options = ["g", "mg", "mcg", "ng", "l", "ml", "drops", "u"];
 
   return (
-    <div className="rounded-md border border-gray-200 px-2 py-4 shadow-md">
+    <div className="text-2xs rounded-md border border-gray-200 p-4 leading-tight shadow-md">
       <deleteFetcher.Form
         method="delete"
         action="/delete-logger"
@@ -56,7 +56,7 @@ export default function MedLogger({ session, logger }) {
       </deleteFetcher.Form>
 
       <fetcher.Form method="post" action="/med-logger">
-        <div className="mt-2 mb-2 flex flex-col items-start justify-center gap-1 text-xs">
+        <div className="mt-2 mb-2 flex flex-col items-start justify-center gap-1">
           <div className="flex w-full flex-1 flex-col">
             <label htmlFor="med">Medication:</label>
             <input
@@ -72,7 +72,7 @@ export default function MedLogger({ session, logger }) {
             <div className="flex flex-col">
               <label htmlFor="unit">Unit:</label>
               <select
-                className="rounded-sm border px-2 py-0.5"
+                className="rounded-sm border border-gray-400 px-2 py-0.5"
                 name="unit"
                 id="unit"
                 value={inputUnit}

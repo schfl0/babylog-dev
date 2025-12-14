@@ -23,11 +23,11 @@ export default function SelectTodayView({ todayView }) {
     <fetcher.Form
       method="post"
       action="/select-todayview"
-      className="flex items-center justify-start gap-4"
+      className="flex items-center justify-start gap-4 text-xs"
     >
       <label htmlFor="selectTodayView">Select view:</label>
       <select
-        className="rounded-sm border px-2 py-1 text-xs"
+        className="rounded-sm border px-2 py-0.5"
         name="selectTodayView"
         id="selectTodayView"
         defaultValue={todayView}
@@ -40,7 +40,7 @@ export default function SelectTodayView({ todayView }) {
       </select>
       <button
         type="submit"
-        className="cursor-pointer rounded-sm bg-pink-600 px-2 py-1 text-sm text-white transition-all hover:opacity-60"
+        className="cursor-pointer rounded-sm bg-pink-600 px-2 py-1 text-white transition-all hover:opacity-60"
       >
         🔎 Select
       </button>

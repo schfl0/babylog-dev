@@ -32,7 +32,7 @@ export default function FoodLogger({ session, logger }) {
   }, [fetcher.data]);
 
   return (
-    <div className="rounded-md border border-gray-200 px-2 py-4 shadow-md">
+    <div className="text-2xs rounded-md border border-gray-200 p-4 shadow-md">
       <deleteFetcher.Form
         method="delete"
         action="/delete-logger"
@@ -48,7 +48,7 @@ export default function FoodLogger({ session, logger }) {
       </deleteFetcher.Form>
 
       <fetcher.Form method="post" action="/food-logger">
-        <div className="mt-2 mb-2 flex items-center justify-center gap-2 text-xs">
+        <div className="mt-2 mb-2 flex items-center justify-center gap-2">
           <label htmlFor="food">Food:</label>
           <input
             className="w-full rounded-sm border border-gray-400 px-1 py-0.5"
