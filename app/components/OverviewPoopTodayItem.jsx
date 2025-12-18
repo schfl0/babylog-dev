@@ -1,7 +1,7 @@
 import { formatTime } from "../utils";
 export default function PoopTodayItem({ log: poop }) {
   return (
-    <div className="flex items-center justify-start bg-[#f6f0e8] p-1">
+    <div className="flex items-center justify-start">
       <div className="flex flex-1 items-center justify-between">
         <div className="flex items-center gap-2">
           <p>💩</p>

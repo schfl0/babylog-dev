@@ -20,7 +20,7 @@ export default function OverviewTempAllItem({
       {isEdit === temp.id && !isTodayEdit ? (
         <TempItemEdit temp={temp} setIsEdit={setIsEdit} />
       ) : (
-        <div className="flex items-center justify-start bg-red-50 p-1 hover:shadow-sm">
+        <div className="flex items-center justify-start hover:shadow-sm">
           <div className="flex flex-1 items-center justify-between">
             <div className="flex items-center gap-2">
               <p>🌡️</p>

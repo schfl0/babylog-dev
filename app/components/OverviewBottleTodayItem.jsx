@@ -2,7 +2,7 @@ import { capitalizeStr, formatTime } from "../utils";
 
 export default function OverviewBottleTodayItem({ log: bottle }) {
   return (
-    <div className="flex items-center justify-start bg-yellow-50 p-1">
+    <div className="flex items-center justify-start">
       <div className="flex flex-1 items-center justify-between">
         <div className="flex items-center gap-2">
           <p>🍼</p>

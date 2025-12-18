@@ -21,7 +21,7 @@ export default function OverviewPoopAllItem({
       {isEdit === poop.id && !isTodayEdit ? (
         <PoopItemEdit poop={poop} setIsEdit={setIsEdit} />
       ) : (
-        <div className="flex items-center justify-start bg-[#f6f0e8] p-1 hover:shadow-lg">
+        <div className="flex items-center justify-start hover:shadow-lg">
           <div className="flex flex-1 items-center justify-between">
             <div className="flex items-center gap-2">
               <p>💩</p>
