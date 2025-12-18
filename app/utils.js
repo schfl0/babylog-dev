@@ -198,3 +198,32 @@ export function getAllLogsDesc(...logsGroup) {
   );
   return sortedDesc;
 }
+
+export function getDateLogsDesc(dateStr, ...logsGroup) {
+  const start = new Date(dateStr);
+  start.setHours(0, 0, 0, 0);
+
+  const end = new Date(dateStr);
+  end.setHours(23, 59, 59, 999);
+
+  const allLogs = logsGroup.flat();
+
+  function getLogTime(log) {
+    return new Date(log.date || log.start).getTime();
+  }
+
+  const startTime = start.getTime();
+  const endTime = end.getTime();
+
+  const dateLogs = allLogs.filter((log) => {
+    if (!log || (!log.date && !log.start)) {
+      return false;
+    }
+    const time = getLogTime(log);
+    return time >= startTime && time <= endTime;
+  });
+
+  const sortedDesc = dateLogs.sort((a, b) => getLogTime(b) - getLogTime(a));
+
+  return sortedDesc;
+}

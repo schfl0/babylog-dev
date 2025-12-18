@@ -11,7 +11,7 @@ import TodayView from "../components/TodayView";
 import AllView from "../components/AllView";
 import SelectAllView from "../components/SelectAllView";
 import { buildUrl } from "../../appconfig";
-import { getTodayLogsDesc } from "../utils";
+import { getTodayLogsDesc, getDateLogsDesc } from "../utils";
 
 export function meta({}) {
   return [{ title: "Logs" }, { name: "description", content: "Logs page" }];
@@ -62,6 +62,7 @@ export default function Logs({ loaderData }) {
   } = loaderData;
 
   const [isTodayEdit, setIsTodayEdit] = useState(false);
+
   return (
     <div className="p-4 text-sm">
       <div className="mt-2">
@@ -85,7 +86,7 @@ export default function Logs({ loaderData }) {
         <h1 className="mb-2 text-sm font-bold">All logs</h1>
         <SelectAllView allView={allView} />
       </div>
-      <div className="mt-6">
+      <div className="mt-4">
         <AllView
           allView={allView}
           bottleLogs={bottleLogs}

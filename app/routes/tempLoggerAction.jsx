@@ -28,6 +28,7 @@ export async function action({ request }) {
   const { temp } = data.data;
   const date = new Date();
   await logTemp(session?.user.email, temp, date);
+  return { success: true };
 }
 
 export async function loader() {
