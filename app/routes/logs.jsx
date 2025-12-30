@@ -26,25 +26,39 @@ export async function loader({ request }) {
     credentials: "include",
   });
   const session = await res.json();
+
   if (!session?.user) throw redirect("/");
 
   const { email, timezone } = session?.user;
 
   const todayView = await getTodayView(session?.user.email);
-  const todayBottles = await getTodayLogs("bottles", email, timezone);
-  const todayFoods = await getTodayLogs("foods", email, timezone);
-  const todayNaps = await getTodayLogs("naps", email, timezone);
-  const todayPoops = await getTodayLogs("poops", email, timezone);
-  const todayTemps = await getTodayLogs("temps", email, timezone);
-  const todayMeds = await getTodayLogs("meds", email, timezone);
+  const [
+    todayBottles,
+    todayFoods,
+    todayNaps,
+    todayPoops,
+    todayTemps,
+    todayMeds,
+  ] = await Promise.all([
+    getTodayLogs("bottles", email, timezone),
+    getTodayLogs("foods", email, timezone),
+    getTodayLogs("naps", email, timezone),
+    getTodayLogs("poops", email, timezone),
+    getTodayLogs("temps", email, timezone),
+    getTodayLogs("meds", email, timezone),
+  ]);
 
   const allView = await getAllView(session?.user.email);
-  const bottleLogs = await getLogs("bottles", session.user.email);
-  const foodLogs = await getLogs("foods", session.user.email);
-  const napLogs = await getNapLogs(session.user.email);
-  const poopLogs = await getLogs("poops", session.user.email);
-  const tempLogs = await getLogs("temps", session.user.email);
-  const medLogs = await getLogs("meds", session.user.email);
+  const [bottleLogs, foodLogs, napLogs, poopLogs, tempLogs, medLogs] =
+    await Promise.all([
+      getLogs("bottles", session.user.email),
+      getLogs("foods", session.user.email),
+      getNapLogs(session.user.email),
+      getLogs("poops", session.user.email),
+      getLogs("temps", session.user.email),
+      getLogs("meds", session.user.email),
+    ]);
+
   return {
     // session,
     todayView,
