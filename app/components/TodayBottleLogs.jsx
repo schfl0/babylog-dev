@@ -1,22 +1,13 @@
 import { filterToday } from "../utils";
 import { useState, useEffect } from "react";
-
 import BottleTodayItem from "./BottleTodayItem";
 
 export default function TodayBottleLogs({
-  bottleLogs,
+  todayBottles,
   isTodayEdit,
   setIsTodayEdit,
-  todayBottles,
 }) {
-  // const [filteredBottles, setFilteredBottles] = useState(
-  //   filterToday(todayBottles),
-  // );
   const [isEdit, setIsEdit] = useState(null);
-
-  // useEffect(() => {
-  //   setFilteredBottles(filterToday(todayBottles));
-  // }, [todayBottles]);
 
   return (
     <div className="text-3xs rounded-md border border-gray-200 px-2 py-4 shadow-md">

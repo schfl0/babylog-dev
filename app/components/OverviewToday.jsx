@@ -1,6 +1,5 @@
 import { getTodayLogsDesc } from "../utils";
 import { useState, useEffect } from "react";
-
 import OverviewBottleTodayItem from "./OverviewBottleTodayItem";
 import OverviewFoodTodayItem from "./OverviewFoodTodayItem";
 import OverviewNapTodayItem from "./OverviewNapTodayItem";
@@ -9,34 +8,34 @@ import OverviewTempTodayItem from "./OverviewTempTodayItem";
 import OverviewMedTodayItem from "./OverviewMedTodayItem";
 
 export default function OverviewToday({
-  bottleLogs,
-  foodLogs,
-  napLogs,
-  poopLogs,
-  tempLogs,
-  medLogs,
+  todayBottles,
+  todayFoods,
+  todayNaps,
+  todayPoops,
+  todayTemps,
+  todayMeds,
 }) {
   const [filteredOverview, setFilteredOverview] = useState(
     getTodayLogsDesc(
-      bottleLogs,
-      foodLogs,
-      napLogs,
-      poopLogs,
-      tempLogs,
-      medLogs,
+      todayBottles,
+      todayFoods,
+      todayNaps,
+      todayPoops,
+      todayTemps,
+      todayMeds,
     ),
   );
 
   useEffect(() => {
     getTodayLogsDesc(
-      bottleLogs,
-      foodLogs,
-      napLogs,
-      poopLogs,
-      tempLogs,
-      medLogs,
+      todayBottles,
+      todayFoods,
+      todayNaps,
+      todayPoops,
+      todayTemps,
+      todayMeds,
     );
-  }, [bottleLogs, foodLogs, napLogs, poopLogs, tempLogs, medLogs]);
+  }, [todayBottles, todayFoods, todayNaps, todayPoops, todayTemps, todayMeds]);
 
   const overviewItems = {
     bottle: OverviewBottleTodayItem,

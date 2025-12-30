@@ -45,10 +45,6 @@ export async function getTodayLogs(collection, email, timezone) {
   const client = await mongoClientPromise;
   const db = client.db();
 
-  // const utcDate = getUtcDate(date, "00:00", timezoneOffset);
-  // const end = new Date(utcDate);
-  // end.setUTCDate(end.getUTCDate() + 1);
-
   const localDate = new Date();
   const utcDate = getUtcDateDtf(
     `${localDate.getFullYear()}-${String(localDate.getMonth() + 1).padStart(2, "0")}-${String(localDate.getDate()).padStart(2, "0")}`,
@@ -59,10 +55,12 @@ export async function getTodayLogs(collection, email, timezone) {
   const end = new Date(utcDate);
   end.setUTCDate(end.getUTCDate() + 1);
 
+  const dateField = collection === "naps" ? "start" : "date";
+
   const docs = await db
     .collection(collection)
-    .find({ email, date: { $gte: utcDate, $lt: end } })
-    .sort({ date: -1 })
+    .find({ email, [dateField]: { $gte: utcDate, $lt: end } })
+    .sort({ [dateField]: -1 })
     .toArray();
   return docs.map(({ _id, ...rest }) => ({ id: _id.toString(), ...rest }));
 }

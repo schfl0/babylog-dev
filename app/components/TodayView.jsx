@@ -7,17 +7,16 @@ import TodayTempLogs from "../components/TodayTempLogs";
 import TodayMedLogs from "../components/TodayMedLogs";
 
 export default function TodayView({
-  session,
+  // session,
   todayView,
-  bottleLogs,
-  foodLogs,
-  napLogs,
-  poopLogs,
-  tempLogs,
-  medLogs,
   isTodayEdit,
   setIsTodayEdit,
   todayBottles,
+  todayFoods,
+  todayNaps,
+  todayPoops,
+  todayTemps,
+  todayMeds,
 }) {
   const todayViewComponents = {
     overview: OverviewToday,
@@ -35,54 +34,52 @@ export default function TodayView({
     <div className="flex flex-col gap-4">
       {todayView === "overview" && (
         <OverviewToday
-          bottleLogs={bottleLogs}
-          foodLogs={foodLogs}
-          napLogs={napLogs}
-          poopLogs={poopLogs}
-          tempLogs={tempLogs}
-          medLogs={medLogs}
+          todayBottles={todayBottles}
+          todayFoods={todayFoods}
+          todayNaps={todayNaps}
+          todayPoops={todayPoops}
+          todayTemps={todayTemps}
+          todayMeds={todayMeds}
         />
       )}
       {todayView === "bottles" && (
         <TodayBottleLogs
-          // bottleLogs={bottleLogs}
           todayBottles={todayBottles}
           isTodayEdit={isTodayEdit}
           setIsTodayEdit={setIsTodayEdit}
-          today={today}
         />
       )}
       {todayView === "foods" && (
         <TodayFoodLogs
-          foodLogs={foodLogs}
+          todayFoods={todayFoods}
           isTodayEdit={isTodayEdit}
           setIsTodayEdit={setIsTodayEdit}
         />
       )}
       {todayView === "naps" && (
         <TodayNapLogs
-          napLogs={napLogs}
+          todayNaps={todayNaps}
           isTodayEdit={isTodayEdit}
           setIsTodayEdit={setIsTodayEdit}
         />
       )}
       {todayView === "poops" && (
         <TodayPoopLogs
-          poopLogs={poopLogs}
+          todayPoops={todayPoops}
           isTodayEdit={isTodayEdit}
           setIsTodayEdit={setIsTodayEdit}
         />
       )}
       {todayView === "temperature" && (
         <TodayTempLogs
-          tempLogs={tempLogs}
+          todayTemps={todayTemps}
           isTodayEdit={isTodayEdit}
           setIsTodayEdit={setIsTodayEdit}
         />
       )}
       {todayView === "medication" && (
         <TodayMedLogs
-          medLogs={medLogs}
+          todayMeds={todayMeds}
           isTodayEdit={isTodayEdit}
           setIsTodayEdit={setIsTodayEdit}
         />
