@@ -24,6 +24,28 @@ export function getUtcDate(date, time, timezoneOffset) {
   return utcDate;
 }
 
+export function getUtcDateDtf(date, time, timezone) {
+  const localIso = `${date}T${time}:00`;
+
+  const dtf = new Intl.DateTimeFormat("en-US", {
+    timezone,
+    hour12: false,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  });
+
+  const parts = dtf.formatToParts(new Date(localIso));
+  const values = Object.fromEntries(parts.map((p) => [p.type, p.value]));
+
+  return new Date(
+    `${values.year}-${values.month}-${values.day}T${values.hour}:${values.minute}:${values.second}Z`,
+  );
+}
+
 export function formatISODateLocal(utcString) {
   const d = new Date(utcString);
   return d.toLocaleDateString("sv-SE");

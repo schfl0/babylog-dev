@@ -12,6 +12,10 @@
 
   --text-4xs: 0.5625rem;
   --text-4xs--line-height: 0.75rem;
+
+  --text-5xs: 0.5rem;
+  --text-5xs--line-height: 0.625rem;
+
 }
 
 html,

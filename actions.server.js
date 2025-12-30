@@ -225,3 +225,16 @@ export async function editMed(id, med, unit, quantity, dateISO) {
       { returnDocument: "after" },
     );
 }
+
+export async function setTimezone(email, tz) {
+  const client = await mongoClientPromise;
+  const db = client.db();
+
+  const res = await db
+    .collection("users")
+    .findOneAndUpdate(
+      { email },
+      { $set: { timezone: tz } },
+      { returnDocument: "after" },
+    );
+}

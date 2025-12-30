@@ -7,22 +7,23 @@ export default function TodayBottleLogs({
   bottleLogs,
   isTodayEdit,
   setIsTodayEdit,
+  todayBottles,
 }) {
-  const [filteredBottles, setFilteredBottles] = useState(
-    filterToday(bottleLogs),
-  );
+  // const [filteredBottles, setFilteredBottles] = useState(
+  //   filterToday(todayBottles),
+  // );
   const [isEdit, setIsEdit] = useState(null);
 
-  useEffect(() => {
-    setFilteredBottles(filterToday(bottleLogs));
-  }, [bottleLogs]);
+  // useEffect(() => {
+  //   setFilteredBottles(filterToday(todayBottles));
+  // }, [todayBottles]);
 
   return (
     <div className="text-3xs rounded-md border border-gray-200 px-2 py-4 shadow-md">
       <h2 className="text-xs font-bold">🍼 Bottles</h2>
       <div className="mt-4 flex flex-col justify-center">
-        {filteredBottles.length > 0 ? (
-          filteredBottles.map((log) => {
+        {todayBottles.length > 0 ? (
+          todayBottles.map((log) => {
             return (
               <BottleTodayItem
                 log={log}

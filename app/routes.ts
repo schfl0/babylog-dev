@@ -20,4 +20,6 @@ export default [
   route("edit-poop", "./routes/editPoopAction.jsx"),
   route("edit-temp", "./routes/editTempAction.jsx"),
   route("edit-med", "./routes/editMedAction.jsx"),
+  route("date-logs", "./routes/getDateLogs.jsx"),
+  route("set-timezone", "./routes/setTimezoneAction.jsx"),
 ] satisfies RouteConfig;

@@ -17,6 +17,7 @@ export default function TodayView({
   medLogs,
   isTodayEdit,
   setIsTodayEdit,
+  todayBottles,
 }) {
   const todayViewComponents = {
     overview: OverviewToday,
@@ -27,6 +28,8 @@ export default function TodayView({
     temperature: TodayTempLogs,
     medication: TodayMedLogs,
   };
+
+  const today = new Date();
 
   return (
     <div className="flex flex-col gap-4">
@@ -42,9 +45,11 @@ export default function TodayView({
       )}
       {todayView === "bottles" && (
         <TodayBottleLogs
-          bottleLogs={bottleLogs}
+          // bottleLogs={bottleLogs}
+          todayBottles={todayBottles}
           isTodayEdit={isTodayEdit}
           setIsTodayEdit={setIsTodayEdit}
+          today={today}
         />
       )}
       {todayView === "foods" && (

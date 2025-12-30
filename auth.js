@@ -85,6 +85,7 @@ export const authConfig = {
         session.user.id = userExists._id.toString();
         session.user.name = userExists.username;
         session.user.image = userExists.image;
+        session.user.timezone = userExists.timezone || "UTC";
       }
       return session;
     },

@@ -1,7 +1,8 @@
 import Login from "../components/Login";
 import AddLogger from "../components/AddLogger";
 import Loggers from "../components/Loggers";
-
+import { useEffect } from "react";
+import { useFetcher } from "react-router";
 import { buildUrl } from "../../appconfig";
 
 export function meta({}) {
@@ -28,6 +29,16 @@ export async function loader({ request }) {
 
 export default function Home({ loaderData }) {
   const { session, loggers, openNap } = loaderData;
+
+  const fetcher = useFetcher();
+
+  useEffect(() => {
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    fetcher.submit(
+      { timezone: tz },
+      { method: "post", action: "/set-timezone" },
+    );
+  }, []);
 
   return (
     <div className="flex flex-col p-4 text-sm">

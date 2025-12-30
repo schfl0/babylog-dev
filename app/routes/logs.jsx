@@ -5,6 +5,7 @@ import {
   getLogs,
   getNapLogs,
   getAllView,
+  getTodayLogs,
 } from "../../loaders.server";
 import SelectTodayView from "../components/SelectTodayView";
 import TodayView from "../components/TodayView";
@@ -25,8 +26,24 @@ export async function loader({ request }) {
     credentials: "include",
   });
   const session = await res.json();
-
   if (!session?.user) throw redirect("/");
+  console.log(session.user.timezone);
+
+  const todayBottles = await getTodayLogs(
+    "bottles",
+    session.user.email,
+    session.user.timezone,
+  );
+  console.log("TB:", todayBottles);
+
+  const todayFoods = await getTodayLogs(
+    "foods",
+    session.user.email,
+    session.user.timezone,
+  );
+
+  console.log("TF:", todayFoods);
+
   const todayView = await getTodayView(session?.user.email);
   const bottleLogs = await getLogs("bottles", session.user.email);
   const foodLogs = await getLogs("foods", session.user.email);
@@ -45,6 +62,7 @@ export async function loader({ request }) {
     tempLogs,
     medLogs,
     allView,
+    todayBottles,
   };
 }
 
@@ -59,6 +77,7 @@ export default function Logs({ loaderData }) {
     tempLogs,
     medLogs,
     allView,
+    todayBottles,
   } = loaderData;
 
   const [isTodayEdit, setIsTodayEdit] = useState(false);
@@ -80,6 +99,7 @@ export default function Logs({ loaderData }) {
           medLogs={medLogs}
           isTodayEdit={isTodayEdit}
           setIsTodayEdit={setIsTodayEdit}
+          todayBottles={todayBottles}
         />
       </div>
       <div className="mt-8">
