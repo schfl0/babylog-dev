@@ -1,12 +1,6 @@
-import { redirect } from "react-router";
+import { redirect, Outlet } from "react-router";
 import { useState } from "react";
-import {
-  getTodayView,
-  getLogs,
-  getNapLogs,
-  getAllView,
-  getTodayLogs,
-} from "../../loaders.server";
+import { getTodayView, getAllView, getTodayLogs } from "../../loaders.server";
 import SelectTodayView from "../components/SelectTodayView";
 import TodayView from "../components/TodayView";
 import AllView from "../components/AllView";
@@ -26,12 +20,18 @@ export async function loader({ request }) {
     credentials: "include",
   });
   const session = await res.json();
-
   if (!session?.user) throw redirect("/");
 
-  const { email, timezone } = session?.user;
+  const url = new URL(request.url);
+  const pathname = url.pathname.replace(/\/+$/, "");
+  const allView = await getAllView(session?.user.email);
 
+  if (pathname === "/logs") {
+    throw redirect(`/logs/${allView}`);
+  }
+  const { email, timezone } = session?.user;
   const todayView = await getTodayView(session?.user.email);
+
   const [
     todayBottles,
     todayFoods,
@@ -48,19 +48,9 @@ export async function loader({ request }) {
     getTodayLogs("meds", email, timezone),
   ]);
 
-  const allView = await getAllView(session?.user.email);
-  const [bottleLogs, foodLogs, napLogs, poopLogs, tempLogs, medLogs] =
-    await Promise.all([
-      getLogs("bottles", session.user.email),
-      getLogs("foods", session.user.email),
-      getNapLogs(session.user.email),
-      getLogs("poops", session.user.email),
-      getLogs("temps", session.user.email),
-      getLogs("meds", session.user.email),
-    ]);
-
   return {
     // session,
+    allView,
     todayView,
     todayBottles,
     todayFoods,
@@ -68,20 +58,13 @@ export async function loader({ request }) {
     todayPoops,
     todayTemps,
     todayMeds,
-
-    allView,
-    bottleLogs,
-    foodLogs,
-    napLogs,
-    poopLogs,
-    tempLogs,
-    medLogs,
   };
 }
 
 export default function Logs({ loaderData }) {
   const {
     // session,
+    allView,
     todayView,
     todayBottles,
     todayFoods,
@@ -89,14 +72,6 @@ export default function Logs({ loaderData }) {
     todayPoops,
     todayTemps,
     todayMeds,
-
-    allView,
-    bottleLogs,
-    foodLogs,
-    napLogs,
-    poopLogs,
-    tempLogs,
-    medLogs,
   } = loaderData;
 
   const [isTodayEdit, setIsTodayEdit] = useState(false);
@@ -125,7 +100,7 @@ export default function Logs({ loaderData }) {
         <SelectAllView allView={allView} />
       </div>
       <div className="mt-4">
-        <AllView
+        {/* <AllView
           allView={allView}
           isTodayEdit={isTodayEdit}
           setIsTodayEdit={setIsTodayEdit}
@@ -135,7 +110,8 @@ export default function Logs({ loaderData }) {
           poopLogs={poopLogs}
           tempLogs={tempLogs}
           medLogs={medLogs}
-        />
+        /> */}
+        <Outlet />
       </div>
     </div>
   );

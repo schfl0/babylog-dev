@@ -2,7 +2,15 @@ import { type RouteConfig, index, route } from "@react-router/dev/routes";
 
 export default [
   index("routes/home.tsx"),
-  route("logs", "./routes/logs.jsx"),
+  route("logs", "./routes/logs.jsx", [
+    route("overview", "./routes/overview.jsx"),
+    route("bottles", "./routes/allBottles.jsx"),
+    route("foods", "./routes/allFoods.jsx"),
+    route("naps", "./routes/allNaps.jsx"),
+    route("poops", "./routes/allPoops.jsx"),
+    route("temperature", "./routes/allTemps.jsx"),
+    route("medication", "./routes/allMeds.jsx"),
+  ]),
   route("add-logger", "./routes/addLoggerAction.jsx"),
   route("delete-logger", "./routes/deleteLoggerAction.jsx"),
   route("bottle-logger", "./routes/bottleLoggerAction.jsx"),
@@ -20,6 +28,5 @@ export default [
   route("edit-poop", "./routes/editPoopAction.jsx"),
   route("edit-temp", "./routes/editTempAction.jsx"),
   route("edit-med", "./routes/editMedAction.jsx"),
-  route("date-logs", "./routes/getDateLogs.jsx"),
   route("set-timezone", "./routes/setTimezoneAction.jsx"),
 ] satisfies RouteConfig;
