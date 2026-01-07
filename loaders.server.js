@@ -43,29 +43,9 @@ export async function getTodayLogs(collection, email, timezone) {
   const client = await mongoClientPromise;
   const db = client.db();
 
-  // const localDate = new Date();
-  // console.log("LOCDATE:", localDate);
-  // const utcDate = getUtcDateDtf(
-  //   `${localDate.getFullYear()}-${String(localDate.getMonth() + 1).padStart(2, "0")}-${String(localDate.getDate()).padStart(2, "0")}`,
-  //   "00",
-  //   timezone,
-  // );
-
-  // console.log("UTCD:", utcDate);
-
-  // const end = new Date(utcDate);
-  // end.setUTCDate(end.getUTCDate() + 1);
-
-  // const dateField = collection === "naps" ? "start" : "date";
-
-  // const docs = await db
-  //   .collection(collection)
-  //   .find({ email, [dateField]: { $gte: utcDate, $lt: end } })
-  //   .sort({ [dateField]: -1 })
-  //   .toArray();
-  // return docs.map(({ _id, ...rest }) => ({ id: _id.toString(), ...rest }));
-
-  const nowInTz = new Date(new Date().toLocaleString("en-US", { timezone }));
+  const nowInTz = new Date(
+    new Date().toLocaleString("en-US", { timeZone: timezone }),
+  );
   const start = new Date(
     nowInTz.getFullYear(),
     nowInTz.getMonth(),
@@ -147,22 +127,18 @@ export async function getDateLogs(collection, email, dateStr, timezone) {
   const db = client.db();
 
   const [year, month, day] = dateStr.split("-").map(Number);
-  const localDate = new Date(year, month - 1, day);
-
-  const utcDate = getUtcDateDtf(
-    `${localDate.getFullYear()}-${String(localDate.getMonth() + 1).padStart(2, "0")}-${String(localDate.getDate()).padStart(2, "0")}`,
-    "00",
-    timezone,
+  const startInTz = new Date(
+    new Date(Date.UTC(year, month - 1, day)).toLocaleString("en-US", {
+      timeZone: timezone,
+    }),
   );
-
-  const end = new Date(utcDate);
-  end.setUTCDate(end.getUTCDate() + 1);
+  const end = new Date(startInTz.getTime() + 24 * 60 * 60 * 1000);
 
   const dateField = collection === "naps" ? "start" : "date";
 
   const docs = await db
     .collection(collection)
-    .find({ email, [dateField]: { $gte: utcDate, $lt: end } })
+    .find({ email, [dateField]: { $gte: startInTz, $lt: end } })
     .sort({ [dateField]: -1 })
     .toArray();
   return docs.map(({ _id, ...rest }) => ({ id: _id.toString(), ...rest }));
