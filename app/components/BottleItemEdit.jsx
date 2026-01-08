@@ -9,10 +9,7 @@ export default function BottleItemEdit({ bottle, setIsEdit }) {
   const [inputDate, setInputDate] = useState(formatISODateLocal(bottle.date));
   const [inputTime, setInputTime] = useState(formatTimeLocal(bottle.date));
 
-  console.log(bottle.type);
-
   const prevState = useRef(fetcher.state);
-
   useEffect(() => {
     if (prevState.current === "loading" && fetcher.state === "idle") {
       setIsEdit(null);
@@ -47,9 +44,9 @@ export default function BottleItemEdit({ bottle, setIsEdit }) {
               </option>
             ))}
           </select>
-          {fetcher?.data?.poop?.[0] && (
+          {fetcher?.data?.bottle?.[0] && (
             <p className="mt-0.5 text-[8px] leading-none text-red-500">
-              {fetcher.data.poop[0]}
+              {fetcher.data.bottle[0]}
             </p>
           )}
         </div>
@@ -129,7 +126,9 @@ export default function BottleItemEdit({ bottle, setIsEdit }) {
           <button
             type="button"
             className="cursor-pointer text-xs transition-all hover:opacity-60"
-            onClick={() => setIsEdit(null)}
+            onClick={() => {
+              setIsEdit(null);
+            }}
           >
             🚫
           </button>

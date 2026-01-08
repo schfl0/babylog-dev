@@ -111,7 +111,7 @@ export default function Logs({ loaderData }) {
           tempLogs={tempLogs}
           medLogs={medLogs}
         /> */}
-        <Outlet />
+        <Outlet context={[isTodayEdit, setIsTodayEdit]} />
       </div>
     </div>
   );

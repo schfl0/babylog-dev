@@ -110,9 +110,13 @@ export async function getAllLogs(
     .toArray();
 
   const hasNextPage = docs.length > limit;
-  const items = hasNextPage ? docs.slice(0, limit) : docs;
+  const items = hasNextPage
+    ? docs
+        .slice(0, limit)
+        .map(({ _id, ...rest }) => ({ id: _id.toString(), ...rest }))
+    : docs.map(({ _id, ...rest }) => ({ id: _id.toString(), ...rest }));
   const last = items[items.length - 1];
-
+  console.log(items);
   return {
     items,
     nextCursor:

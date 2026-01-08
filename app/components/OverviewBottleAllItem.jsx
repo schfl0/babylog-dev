@@ -12,6 +12,7 @@ export default function OverviewBottleAllItem({
   const fetcher = useFetcher();
 
   function handleClick() {
+    console.log("Clicky");
     setIsTodayEdit(false);
     setIsEdit(bottle.id);
   }
