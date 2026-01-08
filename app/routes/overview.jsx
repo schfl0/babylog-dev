@@ -1,5 +1,5 @@
 import { useSearchParams, useOutletContext } from "react-router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { getAllLogs, getDateLogs } from "../../loaders.server";
 import { buildUrl } from "appconfig";
 import { getAllLogsDesc } from "../utils";
@@ -64,6 +64,19 @@ export default function AllBottles({ loaderData }) {
   const [allLogs, setAllLogs] = useState(
     getAllLogsDesc(bottleLogs, foodLogs, napLogs, poopLogs, tempLogs, medLogs),
   );
+
+  useEffect(() => {
+    setAllLogs(
+      getAllLogsDesc(
+        bottleLogs,
+        foodLogs,
+        napLogs,
+        poopLogs,
+        tempLogs,
+        medLogs,
+      ),
+    );
+  }, [bottleLogs, foodLogs, napLogs, poopLogs, tempLogs, medLogs]);
 
   const [isEdit, setIsEdit] = useState(null);
   const [isTodayEdit, setIsTodayEdit] = useOutletContext();
