@@ -12,13 +12,13 @@ export async function loader({ request }) {
   });
   const session = await res.json();
   if (!session?.user) throw redirect("/");
-  const { email } = session.user;
+  const { email, timezone } = session.user;
 
   const url = new URL(request.url);
   const date = url.searchParams.get("date");
 
   if (date && date !== "") {
-    const poopLogs = await getDateLogs("poops", email, date, "Europe/Zurich");
+    const poopLogs = await getDateLogs("poops", email, date, timezone);
     return { poopLogs };
   } else {
     const poopLogs = await getAllLogs("poops", email);

@@ -72,11 +72,7 @@ export async function getTodayLogs(collection, email, timezone) {
   }));
 }
 
-export async function getAllLogs(
-  collection,
-  email,
-  { cursor, limit = 25 } = {},
-) {
+export async function getAllLogs(collection, email, { cursor, limit } = {}) {
   const client = await mongoClientPromise;
   const db = client.db();
 
@@ -86,7 +82,6 @@ export async function getAllLogs(
   const query = {
     email,
   };
-
   if (cursor) {
     try {
       const [time, id] = cursor.split("|");
@@ -116,12 +111,11 @@ export async function getAllLogs(
         .map(({ _id, ...rest }) => ({ id: _id.toString(), ...rest }))
     : docs.map(({ _id, ...rest }) => ({ id: _id.toString(), ...rest }));
   const last = items[items.length - 1];
-  console.log(items);
   return {
     items,
     nextCursor:
       hasNextPage && last
-        ? `${last[timeField].toISOString()}|${last._id.toString()}}`
+        ? `${last[timeField].toISOString()}|${last.id}}`
         : null,
   };
 }

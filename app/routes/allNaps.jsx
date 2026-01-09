@@ -12,13 +12,13 @@ export async function loader({ request }) {
   });
   const session = await res.json();
   if (!session?.user) throw redirect("/");
-  const { email } = session.user;
+  const { email, timezone } = session.user;
 
   const url = new URL(request.url);
   const date = url.searchParams.get("date");
 
   if (date && date !== "") {
-    const napLogs = await getDateLogs("naps", email, date, "Europe/Zurich");
+    const napLogs = await getDateLogs("naps", email, date, timezone);
     return { napLogs };
   } else {
     const napLogs = await getAllLogs("naps", email);
