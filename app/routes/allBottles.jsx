@@ -1,4 +1,4 @@
-import { useSearchParams } from "react-router";
+import { useSearchParams, useSubmit } from "react-router";
 import { getAllLogs, getDateLogs } from "../../loaders.server";
 import BottleAllItem from "../components/BottleAllItem";
 import { buildUrl } from "appconfig";
@@ -29,6 +29,7 @@ export async function loader({ request }) {
 export default function AllBottles({ loaderData }) {
   const { bottleLogs } = loaderData;
   const [searchParams] = useSearchParams();
+  const submit = useSubmit();
   const date = searchParams.get("date") ?? "";
 
   return (
@@ -55,6 +56,15 @@ export default function AllBottles({ loaderData }) {
             className="text-2xs cursor-pointer rounded-sm bg-pink-600 px-2 py-1 text-white transition-all hover:opacity-60"
           >
             🔎 Select
+          </button>
+          <button
+            type="button"
+            onClick={() =>
+              submit(null, { method: "get", action: "/logs/bottles" })
+            }
+            className="text-2xs cursor-pointer rounded-sm bg-pink-600 px-2 py-1 text-white transition-all hover:opacity-60"
+          >
+            🗓️ All
           </button>
         </form>
       </div>

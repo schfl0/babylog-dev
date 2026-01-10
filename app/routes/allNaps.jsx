@@ -1,4 +1,4 @@
-import { useFetcher, useSearchParams } from "react-router";
+import { useSearchParams, useSubmit } from "react-router";
 import { getAllLogs, getDateLogs } from "../../loaders.server";
 import NapAllItem from "../components/NapAllItem";
 import { buildUrl } from "appconfig";
@@ -28,15 +28,15 @@ export async function loader({ request }) {
 
 export default function AllNaps({ loaderData }) {
   const { napLogs } = loaderData;
-  const fetcher = useFetcher();
   const [searchParams] = useSearchParams();
+  const submit = useSubmit();
   const date = searchParams.get("date") ?? "";
 
   return (
     <div className="text-3xs rounded-md border border-gray-200 px-2 py-4 shadow-md">
       <div className="flex items-center">
         <h2 className="text-xs font-bold">💤 Naps</h2>
-        <fetcher.Form
+        <form
           method="get"
           action="/logs/naps"
           className="flex flex-1 items-center justify-end gap-2"
@@ -48,22 +48,25 @@ export default function AllNaps({ loaderData }) {
               type="date"
               id="date"
               name="date"
-              value={date}
-              onChange={(e) => e.target.form.submit()}
+              defaultValue={date}
             />
           </label>
           <button
+            type="submit"
             className="text-2xs cursor-pointer rounded-sm bg-pink-600 px-2 py-1 text-white transition-all hover:opacity-60"
-            type="button"
-            onClick={(e) => {
-              const form = e.currentTarget.form;
-              form.date.value = "";
-              form.submit();
-            }}
           >
-            All dates
+            🔎 Select
           </button>
-        </fetcher.Form>
+          <button
+            type="button"
+            onClick={() =>
+              submit(null, { method: "get", action: "/logs/naps" })
+            }
+            className="text-2xs cursor-pointer rounded-sm bg-pink-600 px-2 py-1 text-white transition-all hover:opacity-60"
+          >
+            🗓️ All
+          </button>
+        </form>
       </div>
       <div className="mt-4 flex flex-col justify-center">
         {napLogs.length > 0 ? (

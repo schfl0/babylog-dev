@@ -1,4 +1,4 @@
-import { useSearchParams } from "react-router";
+import { useSearchParams, useSubmit } from "react-router";
 import { getAllLogs, getDateLogs } from "../../loaders.server";
 import PoopAllItem from "../components/PoopAllItem";
 import { buildUrl } from "appconfig";
@@ -29,6 +29,7 @@ export async function loader({ request }) {
 export default function AllPoops({ loaderData }) {
   const { poopLogs } = loaderData;
   const [searchParams] = useSearchParams();
+  const submit = useSubmit();
   const date = searchParams.get("date") ?? "";
 
   return (
@@ -55,6 +56,15 @@ export default function AllPoops({ loaderData }) {
             className="text-2xs cursor-pointer rounded-sm bg-pink-600 px-2 py-1 text-white transition-all hover:opacity-60"
           >
             🔎 Select
+          </button>
+          <button
+            type="button"
+            onClick={() =>
+              submit(null, { method: "get", action: "/logs/poops" })
+            }
+            className="text-2xs cursor-pointer rounded-sm bg-pink-600 px-2 py-1 text-white transition-all hover:opacity-60"
+          >
+            🗓️ All
           </button>
         </form>
       </div>
