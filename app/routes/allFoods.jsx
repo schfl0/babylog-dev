@@ -35,7 +35,7 @@ export default function AllFoods({ loaderData }) {
   return (
     <div className="text-3xs rounded-md border border-gray-200 px-2 py-4 shadow-md">
       <div className="flex items-center">
-        <h2 className="text-xs font-bold">🥕 Foods</h2>
+        <h2 className="text-xs font-bold">🥦 Foods</h2>
         <form
           method="get"
           action="/logs/foods"
