@@ -6,6 +6,7 @@ import { nonoptional } from "zod";
 export default function AddLogger({ loggers }) {
   const fetcher = useFetcher();
   const options = [
+    "breastfeedings",
     "bottles",
     "foods",
     "naps",

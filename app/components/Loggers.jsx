@@ -1,3 +1,4 @@
+import BreastLogger from "../components/BreastLogger";
 import BottleLogger from "../components/BottleLogger";
 import NapLogger from "../components/NapLogger";
 import FoodLogger from "../components/FoodLogger";
@@ -5,8 +6,15 @@ import TempLogger from "../components/TempLogger";
 import PoopLogger from "../components/PoopLogger";
 import MedLogger from "../components/MedLogger";
 
-export default function Loggers({ session, loggers, openNap }) {
+export default function Loggers({
+  session,
+  loggers,
+  openNap,
+  openBreastLeft,
+  openBreastRight,
+}) {
   const loggerComponents = {
+    breastfeedings: BreastLogger,
     bottles: BottleLogger,
     naps: NapLogger,
     foods: FoodLogger,
@@ -25,6 +33,8 @@ export default function Loggers({ session, loggers, openNap }) {
             session={session}
             logger={logger}
             openNap={openNap}
+            openBreastLeft={openBreastLeft}
+            openBreastRight={openBreastRight}
           />
         ) : null;
       })}

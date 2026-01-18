@@ -4,7 +4,7 @@ export default function OverviewFoodTodayItem({ log: food }) {
     <div className="flex items-center justify-start">
       <div className="flex flex-1 items-center justify-between">
         <div className="flex items-center gap-2">
-          <p>🥕</p>
+          <p>🥦</p>
           <p>{food.food}</p>
         </div>
         <p>{food.g} g</p>

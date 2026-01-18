@@ -24,7 +24,7 @@ export default function OverviewFoodAllItem({
         <div className="flex items-center justify-start hover:shadow-sm">
           <div className="flex flex-1 items-center justify-between">
             <div className="flex items-center gap-2">
-              <p>🥕</p>
+              <p>🥦</p>
               <p>{food.food}</p>
             </div>
             <p>{food.g} g</p>

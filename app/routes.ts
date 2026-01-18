@@ -19,6 +19,8 @@ export default [
   route("poop-logger", "./routes/poopLoggerAction.jsx"),
   route("temp-logger", "./routes/tempLoggerAction.jsx"),
   route("med-logger", "./routes/medLoggerAction.jsx"),
+  route("breastleft-logger", "./routes/breastLeftLoggerAction.jsx"),
+  route("breastright-logger", "./routes/breastRightLoggerAction.jsx"),
   route("select-todayview", "./routes/selectTodayViewAction.jsx"),
   route("select-allview", "./routes/selectAllViewAction.jsx"),
   route("edit-bottle", "./routes/editBottleAction.jsx"),

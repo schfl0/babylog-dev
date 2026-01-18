@@ -8,12 +8,36 @@ export async function getLoggers(email) {
   return res?.loggers ?? [];
 }
 
-export async function getRunningNap(email) {
+export async function getOpenNap(email) {
   const client = await mongoClientPromise;
   const db = client.db();
 
   const res = await db.collection("naps").findOne({
     email,
+    stop: { $exists: false },
+  });
+  return res;
+}
+
+export async function getOpenBreastLeft(email) {
+  const client = await mongoClientPromise;
+  const db = client.db();
+
+  const res = await db.collection("breasts").findOne({
+    email,
+    position: "l",
+    stop: { $exists: false },
+  });
+  return res;
+}
+
+export async function getOpenBreastRight(email) {
+  const client = await mongoClientPromise;
+  const db = client.db();
+
+  const res = await db.collection("breasts").findOne({
+    email,
+    position: "r",
     stop: { $exists: false },
   });
   return res;

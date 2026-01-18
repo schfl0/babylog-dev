@@ -84,6 +84,86 @@ export async function logNap(email, triggerNap) {
   return { error: "Unknown trigger" };
 }
 
+export async function logBreastLeft(email, triggerBreastLeft) {
+  const date = new Date();
+  const client = await mongoClientPromise;
+  const db = client.db();
+
+  if (triggerBreastLeft === "start") {
+    const openBreastLeft = await db
+      .collection("breasts")
+      .findOne({ email, position: "l", stop: { $exists: false } });
+
+    if (openBreastLeft) {
+      return { error: "Breastfeeding left already in progress" };
+    }
+
+    const res = await db
+      .collection("breasts")
+      .insertOne({ email, log: "breast", position: "l", start: date });
+    return { status: "Breastfeeding left started", start: date };
+  }
+
+  if (triggerBreastLeft === "stop") {
+    const openBreastLeft = await db.collection("breasts").findOneAndUpdate(
+      {
+        email,
+        position: "l",
+        stop: { $exists: false },
+      },
+      { $set: { stop: date } },
+      { sort: { start: -1 }, returnDocument: "after" },
+    );
+
+    if (!openBreastLeft) {
+      return { error: "No breastfeeding left in progress" };
+    }
+
+    return { status: "stopped", breastLeft: openBreastLeft };
+  }
+  return { error: "Unknown trigger" };
+}
+
+export async function logBreastRight(email, triggerBreastRight) {
+  const date = new Date();
+  const client = await mongoClientPromise;
+  const db = client.db();
+
+  if (triggerBreastRight === "start") {
+    const openBreastRight = await db
+      .collection("breasts")
+      .findOne({ email, position: "r", stop: { $exists: false } });
+
+    if (openBreastRight) {
+      return { error: "Breastfeeding right already in progress" };
+    }
+
+    const res = await db
+      .collection("breasts")
+      .insertOne({ email, log: "breast", position: "r", start: date });
+    return { status: "Breastfeeding right started", start: date };
+  }
+
+  if (triggerBreastRight === "stop") {
+    const openBreastRight = await db.collection("breasts").findOneAndUpdate(
+      {
+        email,
+        position: "r",
+        stop: { $exists: false },
+      },
+      { $set: { stop: date } },
+      { sort: { start: -1 }, returnDocument: "after" },
+    );
+
+    if (!openBreastRight) {
+      return { error: "No breastfeeding right in progress" };
+    }
+
+    return { status: "stopped", nap: openBreastRight };
+  }
+  return { error: "Unknown trigger" };
+}
+
 export async function logPoop(email, poop, date) {
   const client = await mongoClientPromise;
   const db = client.db();
