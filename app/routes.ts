@@ -31,4 +31,6 @@ export default [
   route("edit-temp", "./routes/editTempAction.jsx"),
   route("edit-med", "./routes/editMedAction.jsx"),
   route("set-timezone", "./routes/setTimezoneAction.jsx"),
+  route("set-today", "./routes/setTodayAction.jsx"),
+  route("set-todayview", "./routes/setTodayViewAction.jsx"),
 ] satisfies RouteConfig;

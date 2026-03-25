@@ -318,3 +318,16 @@ export async function setTimezone(email, tz) {
       { returnDocument: "after" },
     );
 }
+
+export async function setTodayView(email, logs, todayView) {
+  const client = await mongoClientPromise;
+  const db = client.db();
+
+  const res = await db
+    .collection("todayViews")
+    .findOneAndUpdate(
+      { email },
+      { $set: { [logs]: todayView } },
+      { upsert: true },
+    );
+}

@@ -173,6 +173,13 @@ export async function getTodayView(email) {
   return res?.todayView || "overview";
 }
 
+export async function getTodayVieww(email) {
+  const client = await mongoClientPromise;
+  const db = client.db();
+  const doc = await db.collection("todayViews").findOne({ email });
+  return doc;
+}
+
 export async function getNapLogs(email) {
   const client = await mongoClientPromise;
   const db = client.db();

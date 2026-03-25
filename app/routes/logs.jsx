@@ -78,25 +78,8 @@ export default function Logs({ loaderData }) {
 
   return (
     <div className="p-4 text-sm">
-      <div className="mt-2">
-        <h1 className="mb-2 text-sm font-bold">Today</h1>
-        <SelectTodayView todayView={todayView} />
-      </div>
-      <div className="mt-6">
-        <TodayView
-          todayView={todayView}
-          isTodayEdit={isTodayEdit}
-          setIsTodayEdit={setIsTodayEdit}
-          todayBottles={todayBottles}
-          todayFoods={todayFoods}
-          todayNaps={todayNaps}
-          todayPoops={todayPoops}
-          todayTemps={todayTemps}
-          todayMeds={todayMeds}
-        />
-      </div>
       <div className="mt-8">
-        <h1 className="mb-2 text-sm font-bold">All logs</h1>
+        <h1 className="mb-2 text-sm font-bold">Logs</h1>
         <SelectAllView allView={allView} />
       </div>
       <div className="mt-4">
