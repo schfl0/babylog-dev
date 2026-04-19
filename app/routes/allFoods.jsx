@@ -1,6 +1,15 @@
-import { useSearchParams, useSubmit } from "react-router";
-import { getAllLogs, getDateLogs } from "../../loaders.server";
+import { useOutletContext, useSearchParams } from "react-router";
+import {
+  getTodayLogs,
+  getAllLogs,
+  getDateLogs,
+  getTodayVieww,
+} from "../../loaders.server";
 import FoodAllItem from "../components/FoodAllItem";
+import FoodTodayItem from "../components/FoodTodayItem";
+import DateRadio from "../components/DateRadio";
+import DateSelector from "../components/DateSelector.jsx";
+
 import { buildUrl } from "appconfig";
 
 export async function loader({ request }) {
@@ -14,65 +23,69 @@ export async function loader({ request }) {
   if (!session?.user) throw redirect("/");
   const { email, timezone } = session.user;
 
+  const todayFoodLogs = await getTodayLogs("foods", email, timezone);
+  const todayView = await getTodayVieww(email);
+
   const url = new URL(request.url);
   const date = url.searchParams.get("date");
 
   if (date && date !== "") {
     const foodLogs = await getDateLogs("foods", email, date, timezone);
-    return { foodLogs };
+    return { todayFoodLogs, todayView, foodLogs };
   } else {
     const foodLogs = await getAllLogs("foods", email);
-    return { foodLogs: foodLogs.items };
+    return { todayFoodLogs, todayView, foodLogs: foodLogs.items };
   }
 }
 
 export default function AllFoods({ loaderData }) {
-  const { foodLogs } = loaderData;
+  const { todayFoodLogs, todayView, foodLogs } = loaderData;
+  const [isEdit, setIsEdit] = useOutletContext();
   const [searchParams] = useSearchParams();
-  const submit = useSubmit();
   const date = searchParams.get("date") ?? "";
 
   return (
     <div className="text-3xs rounded-md border border-gray-200 px-2 py-4 shadow-md">
-      <h2 className="text-xs font-bold">🥦 Foods</h2>
-      <form
-        method="get"
-        action="/logs/foods"
-        className="flex flex-1 items-center justify-end gap-2"
-      >
-        <label htmlFor="date">
-          By date:
-          <input
-            className="ml-2 rounded-sm border border-gray-400 bg-white px-1 py-0.5"
-            type="date"
-            id="date"
-            name="date"
-            defaultValue={date}
-          />
-        </label>
-        <button
-          type="submit"
-          className="text-2xs cursor-pointer rounded-sm bg-pink-600 px-2 py-1 text-white transition-all hover:opacity-60"
-        >
-          🔎 Select
-        </button>
-        <button
-          type="button"
-          onClick={() => submit(null, { method: "get", action: "/logs/foods" })}
-          className="text-2xs cursor-pointer rounded-sm bg-pink-600 px-2 py-1 text-white transition-all hover:opacity-60"
-        >
-          🗓️ All
-        </button>
-      </form>
-      <div className="mt-4 flex flex-col justify-center">
-        {foodLogs.length > 0 ? (
-          foodLogs.map((log, index) => {
-            return <FoodAllItem log={log} key={index} />;
+      <div className="mb-4 flex items-center justify-between">
+        <h2 className="text-xs font-bold">🥦 Foods</h2>
+        <DateRadio todayView={todayView} logs="foods" />
+      </div>
+      {!todayView.foods && (
+        <>
+          <DateSelector logs="foods" date={date} />
+          <div className="mt-4 flex flex-col justify-center">
+            {foodLogs.length > 0 ? (
+              foodLogs.map((log, index) => {
+                return (
+                  <FoodAllItem
+                    log={log}
+                    key={index}
+                    isEdit={isEdit}
+                    setIsEdit={setIsEdit}
+                  />
+                );
+              })
+            ) : (
+              <p>No logs yet.</p>
+            )}
+          </div>
+        </>
+      )}
+      {todayView.foods &&
+        (todayFoodLogs.length > 0 ? (
+          todayFoodLogs.map((log, index) => {
+            return (
+              <FoodTodayItem
+                log={log}
+                key={index}
+                isEdit={isEdit}
+                setIsEdit={setIsEdit}
+              />
+            );
           })
         ) : (
           <p>No logs yet.</p>
-        )}
-      </div>
+        ))}
     </div>
   );
 }

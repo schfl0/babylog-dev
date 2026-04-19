@@ -1,7 +1,15 @@
-import { useSearchParams, useSubmit } from "react-router";
-import { getAllLogs, getDateLogs } from "../../loaders.server";
+import { useSearchParams, useOutletContext } from "react-router";
+import {
+  getTodayLogs,
+  getTodayVieww,
+  getAllLogs,
+  getDateLogs,
+} from "../../loaders.server";
 import PoopAllItem from "../components/PoopAllItem";
+import PoopTodayItem from "../components/PoopTodayItem";
 import { buildUrl } from "appconfig";
+import DateRadio from "../components/DateRadio";
+import DateSelector from "../components/DateSelector";
 
 export async function loader({ request }) {
   const res = await fetch(buildUrl("api/auth/session"), {
@@ -14,65 +22,69 @@ export async function loader({ request }) {
   if (!session?.user) throw redirect("/");
   const { email, timezone } = session.user;
 
+  const todayPoopLogs = await getTodayLogs("poops", email, timezone);
+  const todayView = await getTodayVieww(email);
+
   const url = new URL(request.url);
   const date = url.searchParams.get("date");
 
   if (date && date !== "") {
     const poopLogs = await getDateLogs("poops", email, date, timezone);
-    return { poopLogs };
+    return { todayPoopLogs, todayView, poopLogs };
   } else {
     const poopLogs = await getAllLogs("poops", email);
-    return { poopLogs: poopLogs.items };
+    return { todayPoopLogs, todayView, poopLogs: poopLogs.items };
   }
 }
 
 export default function AllPoops({ loaderData }) {
-  const { poopLogs } = loaderData;
+  const { todayPoopLogs, todayView, poopLogs } = loaderData;
+  const [isEdit, setIsEdit] = useOutletContext();
   const [searchParams] = useSearchParams();
-  const submit = useSubmit();
   const date = searchParams.get("date") ?? "";
 
   return (
     <div className="text-3xs rounded-md border border-gray-200 px-2 py-4 shadow-md">
-      <h2 className="text-xs font-bold">💩 Poops</h2>
-      <form
-        method="get"
-        action="/logs/poops"
-        className="flex flex-1 items-center justify-end gap-2"
-      >
-        <label htmlFor="date">
-          By date:
-          <input
-            className="ml-2 rounded-sm border border-gray-400 bg-white px-1 py-0.5"
-            type="date"
-            id="date"
-            name="date"
-            defaultValue={date}
-          />
-        </label>
-        <button
-          type="submit"
-          className="text-2xs cursor-pointer rounded-sm bg-pink-600 px-2 py-1 text-white transition-all hover:opacity-60"
-        >
-          🔎 Select
-        </button>
-        <button
-          type="button"
-          onClick={() => submit(null, { method: "get", action: "/logs/poops" })}
-          className="text-2xs cursor-pointer rounded-sm bg-pink-600 px-2 py-1 text-white transition-all hover:opacity-60"
-        >
-          🗓️ All
-        </button>
-      </form>
-      <div className="mt-4 flex flex-col justify-center">
-        {poopLogs.length > 0 ? (
-          poopLogs.map((log, index) => {
-            return <PoopAllItem log={log} key={index} />;
+      <div className="mb-4 flex items-center justify-between">
+        <h2 className="text-xs font-bold">💩 Poops</h2>
+        <DateRadio todayView={todayView} logs="poops" />
+      </div>
+      {!todayView.poops && (
+        <>
+          <DateSelector logs="poops" date={date} />
+          <div className="mt-4 flex flex-col justify-center">
+            {poopLogs.length > 0 ? (
+              poopLogs.map((log, index) => {
+                return (
+                  <PoopAllItem
+                    log={log}
+                    key={index}
+                    isEdit={isEdit}
+                    setIsEdit={setIsEdit}
+                  />
+                );
+              })
+            ) : (
+              <p>No logs yet.</p>
+            )}
+          </div>
+        </>
+      )}
+      {todayView.poops &&
+        (todayPoopLogs.length > 0 ? (
+          todayPoopLogs.map((log, index) => {
+            return (
+              <PoopTodayItem
+                log={log}
+                key={index}
+                isEdit={isEdit}
+                setIsEdit={setIsEdit}
+              />
+            );
           })
         ) : (
           <p>No logs yet.</p>
-        )}
-      </div>
+        ))}
     </div>
   );
 }

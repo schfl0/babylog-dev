@@ -1,9 +1,4 @@
-import {
-  useSearchParams,
-  useSubmit,
-  useOutletContext,
-  useFetcher,
-} from "react-router";
+import { useSearchParams, useOutletContext } from "react-router";
 import { useState } from "react";
 import {
   getTodayLogs,
@@ -13,6 +8,8 @@ import {
 } from "../../loaders.server";
 import BottleAllItem from "../components/BottleAllItem";
 import BottleTodayItem from "../components/BottleTodayItem";
+import DateRadio from "../components/DateRadio";
+import DateSelector from "../components/DateSelector.jsx";
 import { buildUrl } from "appconfig";
 
 export async function loader({ request }) {
@@ -45,82 +42,28 @@ export default function AllBottles({ loaderData }) {
   const { todayBottleLogs, todayView, bottleLogs } = loaderData;
   const [isEdit, setIsEdit] = useOutletContext();
   const [searchParams] = useSearchParams();
-  const submit = useSubmit();
   const date = searchParams.get("date") ?? "";
-
-  const fetcher = useFetcher();
-
-  const [isToday, setIsToday] = useState(true);
 
   return (
     <div className="text-3xs rounded-md border border-gray-200 px-2 py-4 shadow-md">
       <div className="mb-4 flex items-center justify-between">
         <h2 className="text-xs font-bold">🍼 Bottles</h2>
-        <fetcher.Form
-          method="post"
-          action="/set-todayview"
-          className="flex gap-2"
-        >
-          <input type="hidden" name="logs" value="bottles" />
-          <label className="flex items-center gap-1">
-            <input
-              type="radio"
-              name="setTodayView"
-              value="today"
-              defaultChecked={todayView.bottles}
-              onChange={(e) => e.currentTarget.form.requestSubmit()}
-            />
-            Today
-          </label>
-          <label className="flex items-center gap-1">
-            <input
-              type="radio"
-              name="setTodayView"
-              value="byDate"
-              defaultChecked={!todayView.bottles}
-              onChange={(e) => e.currentTarget.form.requestSubmit()}
-            />
-            By date
-          </label>
-        </fetcher.Form>
+        <DateRadio todayView={todayView} logs="bottles" />
       </div>
       {!todayView.bottles && (
         <>
-          <form
-            method="get"
-            action="/logs/bottles"
-            className="flex flex-1 items-center justify-end gap-2"
-          >
-            <label htmlFor="date">
-              By date:
-              <input
-                className="ml-2 rounded-sm border border-gray-400 bg-white px-1 py-0.5"
-                type="date"
-                id="date"
-                name="date"
-                defaultValue={date}
-              />
-            </label>
-            <button
-              type="submit"
-              className="text-2xs cursor-pointer rounded-sm bg-pink-600 px-2 py-1 text-white transition-all hover:opacity-60"
-            >
-              🔎 Select
-            </button>
-            <button
-              type="button"
-              onClick={() =>
-                submit(null, { method: "get", action: "/logs/bottles" })
-              }
-              className="text-2xs cursor-pointer rounded-sm bg-pink-600 px-2 py-1 text-white transition-all hover:opacity-60"
-            >
-              🗓️ All
-            </button>
-          </form>
+          <DateSelector logs="bottles" date={date} />
           <div className="mt-4 flex flex-col justify-center">
             {bottleLogs.length > 0 ? (
               bottleLogs.map((log, index) => {
-                return <BottleAllItem log={log} key={index} />;
+                return (
+                  <BottleAllItem
+                    log={log}
+                    key={index}
+                    isEdit={isEdit}
+                    setIsEdit={setIsEdit}
+                  />
+                );
               })
             ) : (
               <p>No logs yet.</p>
