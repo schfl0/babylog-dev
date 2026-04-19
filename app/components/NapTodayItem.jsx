@@ -3,23 +3,16 @@ import { useFetcher } from "react-router";
 import { useEffect } from "react";
 import NapItemEdit from "../components/NapItemEdit";
 
-export default function NapTodayItem({
-  log: nap,
-  isEdit,
-  setIsEdit,
-  isTodayEdit,
-  setIsTodayEdit,
-}) {
+export default function NapTodayItem({ log: nap, isEdit, setIsEdit }) {
   const fetcher = useFetcher();
 
   function handleClick() {
     setIsEdit(nap.id);
-    setIsTodayEdit(true);
   }
 
   return (
     <>
-      {isEdit === nap.id && isTodayEdit ? (
+      {isEdit === nap.id ? (
         <NapItemEdit nap={nap} setIsEdit={setIsEdit} />
       ) : (
         <div className="flex items-center justify-start hover:shadow-sm">
