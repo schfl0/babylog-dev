@@ -6,20 +6,16 @@ export default function OverviewBottleAllItem({
   log: bottle,
   isEdit,
   setIsEdit,
-  isTodayEdit,
-  setIsTodayEdit,
 }) {
   const fetcher = useFetcher();
 
   function handleClick() {
-    console.log("Clicky");
-    setIsTodayEdit(false);
     setIsEdit(bottle.id);
   }
 
   return (
     <>
-      {isEdit === bottle.id && !isTodayEdit ? (
+      {isEdit === bottle.id ? (
         <BottleItemEdit bottle={bottle} setIsEdit={setIsEdit} />
       ) : (
         <div className="flex items-center justify-start hover:shadow-sm">

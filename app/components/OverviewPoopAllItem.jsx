@@ -2,23 +2,16 @@ import { useFetcher } from "react-router";
 import { formatTime, formatDate } from "../utils";
 import PoopItemEdit from "../components/PoopItemEdit";
 
-export default function OverviewPoopAllItem({
-  log: poop,
-  isEdit,
-  setIsEdit,
-  isTodayEdit,
-  setIsTodayEdit,
-}) {
+export default function OverviewPoopAllItem({ log: poop, isEdit, setIsEdit }) {
   const fetcher = useFetcher();
 
   function handleClick() {
-    setIsTodayEdit(false);
     setIsEdit(poop.id);
   }
 
   return (
     <>
-      {isEdit === poop.id && !isTodayEdit ? (
+      {isEdit === poop.id ? (
         <PoopItemEdit poop={poop} setIsEdit={setIsEdit} />
       ) : (
         <div className="flex items-center justify-start hover:shadow-lg">

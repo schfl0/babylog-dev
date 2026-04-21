@@ -14,7 +14,7 @@ export default function Nav() {
     })();
   }, []);
   return (
-    <nav className="flex items-center gap-4 p-4 text-xs">
+    <nav className="flex items-center gap-4 p-4 text-sm">
       <NavLink
         to="/"
         className={({ isActive }) =>
@@ -23,7 +23,7 @@ export default function Nav() {
             : "font-bold text-black transition-all hover:opacity-60"
         }
       >
-        👶 BabyLog
+        👶 BBLog
       </NavLink>
       <NavLink
         to="/logs"
@@ -46,7 +46,7 @@ export default function Nav() {
           <input type="hidden" name="csrfToken" value={csrfToken} />
           <button
             type="submit"
-            className="cursor-pointer rounded-sm bg-pink-600 px-2 py-1 text-white transition-all hover:opacity-60"
+            className="cursor-pointer rounded-sm bg-pink-600 px-2 py-1 text-xs text-white transition-all hover:opacity-60"
           >
             🔒 Sign out
           </button>

@@ -6,7 +6,7 @@ export default function OverviewBottleTodayItem({ log: bottle }) {
       <div className="flex flex-1 items-center justify-between">
         <div className="flex items-center gap-2">
           <p>🍼</p>
-          <p>{capitalizeStr(bottle.type)}</p>
+          <p>{bottle.type}</p>
         </div>
         <p>{bottle.ml} ml</p>
       </div>

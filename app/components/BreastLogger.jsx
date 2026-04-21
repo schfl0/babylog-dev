@@ -106,7 +106,7 @@ export default function BreastLogger({
           </div>
           <button
             type="submit"
-            className="mt-2 w-full cursor-pointer rounded-sm bg-rose-50 p-2 transition-all hover:opacity-70"
+            className="mt-2 w-full cursor-pointer rounded-sm bg-rose-100 p-2 transition-all hover:opacity-70"
           >
             🤱 {isLeftFeeding ? "End" : "Start"}
           </button>
@@ -134,7 +134,7 @@ export default function BreastLogger({
           </div>
           <button
             type="submit"
-            className="mt-2 w-full cursor-pointer rounded-sm bg-rose-50 p-2 transition-all hover:opacity-70"
+            className="mt-2 w-full cursor-pointer rounded-sm bg-rose-100 p-2 transition-all hover:opacity-70"
           >
             🤱 {isRightFeeding ? "End" : "Start"}
           </button>

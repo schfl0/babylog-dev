@@ -1,23 +1,16 @@
 import { useFetcher } from "react-router";
 import { getNapDuration, formatTime, formatDate } from "../utils";
 import NapItemEdit from "../components/NapItemEdit";
-export default function OverviewNapAllItem({
-  log: nap,
-  isEdit,
-  setIsEdit,
-  isTodayEdit,
-  setIsTodayEdit,
-}) {
+export default function OverviewNapAllItem({ log: nap, isEdit, setIsEdit }) {
   const fetcher = useFetcher();
 
   function handleClick() {
-    setIsTodayEdit(false);
     setIsEdit(nap.id);
   }
 
   return (
     <>
-      {isEdit === nap.id && !isTodayEdit ? (
+      {isEdit === nap.id ? (
         <NapItemEdit nap={nap} setIsEdit={setIsEdit} />
       ) : (
         <div className="flex items-center justify-start hover:shadow-sm">
