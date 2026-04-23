@@ -2,7 +2,7 @@ import { formatTime } from "../utils";
 
 export default function OverviewTempTodayItem({ log: temp }) {
   return (
-    <div className="flex items-center justify-start">
+    <div className="flex items-center justify-start hover:shadow-sm">
       <div className="flex flex-1 items-center justify-between">
         <div className="flex items-center gap-2">
           <p>🌡️</p>
