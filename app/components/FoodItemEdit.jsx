@@ -22,7 +22,7 @@ export default function FoodItemEdit({ food, setIsEdit }) {
     <fetcher.Form
       method="post"
       action="/edit-food"
-      className="text-4xs my-1 flex flex-col items-start justify-center gap-1 rounded-sm border border-gray-100 bg-orange-100 px-1 py-1.5 shadow-sm"
+      className="text-4xs my-1 flex flex-col items-start justify-center gap-1 rounded-sm border border-gray-100 bg-green-100 px-1 py-1.5 shadow-sm"
     >
       <div className="flex w-full items-center justify-start gap-2">
         <input type="hidden" name="id" id="id" value={food.id} />
@@ -31,7 +31,7 @@ export default function FoodItemEdit({ food, setIsEdit }) {
             Food:
           </label>
           <input
-            className="w-full rounded-sm border border-gray-400 bg-orange-50 px-1 py-0.5 text-[9px]"
+            className="w-full rounded-sm border border-gray-400 bg-green-50 px-1 py-0.5 text-[9px]"
             type="text"
             name="food"
             id="food"
@@ -50,7 +50,7 @@ export default function FoodItemEdit({ food, setIsEdit }) {
             G:
           </label>
           <input
-            className="w-10 max-w-full rounded-sm border border-gray-400 bg-orange-50 px-1 py-0.5 text-[9px]"
+            className="w-10 max-w-full rounded-sm border border-gray-400 bg-green-50 px-1 py-0.5 text-[9px]"
             type="number"
             name="g"
             id="g"
@@ -71,7 +71,7 @@ export default function FoodItemEdit({ food, setIsEdit }) {
               Date:
             </label>
             <input
-              className="w-20 max-w-full rounded-sm border border-gray-400 bg-orange-50 px-1 py-0.5 text-[9px]"
+              className="w-20 max-w-full rounded-sm border border-gray-400 bg-green-50 px-1 py-0.5 text-[9px]"
               type="date"
               name="date"
               id="date"
@@ -90,7 +90,7 @@ export default function FoodItemEdit({ food, setIsEdit }) {
               Time:
             </label>
             <input
-              className="w-15 max-w-full rounded-sm border border-gray-400 bg-orange-50 px-1 text-[9px]"
+              className="w-15 max-w-full rounded-sm border border-gray-400 bg-green-50 px-1 text-[9px]"
               type="time"
               name="time"
               id="time"

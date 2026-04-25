@@ -1,18 +1,45 @@
+import { useFetcher } from "react-router";
 import { getNapDuration, formatTime } from "../utils";
-export default function OverviewNapTodayItem({ log: nap }) {
+import NapItemEdit from "../components/NapItemEdit";
+export default function OverviewNapTodayItem({ log: nap, isEdit, setIsEdit }) {
+  const fetcher = useFetcher();
+
+  function handleClick() {
+    setIsEdit(nap.id);
+  }
   return (
-    <div className="flex items-center justify-start hover:shadow-sm">
-      <div className="flex flex-1 items-center justify-between">
-        <div className="flex items-center gap-2">
-          <p>💤</p>
-          <p>Nap</p>
+    <>
+      {isEdit === nap.id ? (
+        <NapItemEdit nap={nap} setIsEdit={setIsEdit} />
+      ) : (
+        <div className="flex items-center justify-start hover:shadow-sm">
+          <div className="flex flex-1 items-center justify-between">
+            <div className="flex items-center gap-2">
+              <p>💤</p>
+              <p>Nap</p>
+            </div>
+            <p>{getNapDuration(nap)}</p>
+          </div>
+          <div className="flex min-w-25 items-center justify-end">
+            <p className="ml-4">{formatTime(nap.start)}</p>-
+            <p>{formatTime(nap.stop)}</p>
+          </div>
+
+          <button
+            className="ml-2 cursor-pointer hover:opacity-60"
+            onClick={handleClick}
+          >
+            📝
+          </button>
+          <fetcher.Form method="post" action="/delete-log" className="ml-1">
+            <input type="hidden" name="id" id="id" value={nap.id} />
+            <input type="hidden" name="log" id="log" value={nap.log} />
+            <button className="cursor-pointer transition-all hover:opacity-60">
+              🗑️
+            </button>
+          </fetcher.Form>
         </div>
-        <p>{getNapDuration(nap)}</p>
-      </div>
-      <div className="flex min-w-25 items-center justify-end">
-        <p className="ml-4">{formatTime(nap.start)}</p>-
-        <p>{formatTime(nap.stop)}</p>
-      </div>
-    </div>
+      )}
+    </>
   );
 }
