@@ -1,4 +1,4 @@
-import { useSearchParams, useOutletContext } from "react-router";
+import { useSearchParams } from "react-router";
 import { useState, useEffect } from "react";
 import {
   getTodayVieww,
@@ -142,9 +142,11 @@ export default function AllOverview({ loaderData }) {
   }, [bottleLogs, foodLogs, napLogs, poopLogs, tempLogs, medLogs]);
 
   const [isEdit, setIsEdit] = useState(null);
-  const [isTodayEdit, setIsTodayEdit] = useOutletContext();
-
   const date = searchParams.get("date") ?? "";
+
+  useEffect(() => {
+    setIsEdit(null);
+  }, [todayView]);
 
   const overviewAllItems = {
     bottle: OverviewBottleAllItem,

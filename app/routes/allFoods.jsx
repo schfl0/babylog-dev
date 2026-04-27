@@ -1,4 +1,5 @@
-import { useOutletContext, useSearchParams } from "react-router";
+import { useSearchParams } from "react-router";
+import { useState, useEffect } from "react";
 import {
   getTodayLogs,
   getAllLogs,
@@ -40,9 +41,13 @@ export async function loader({ request }) {
 
 export default function AllFoods({ loaderData }) {
   const { todayFoodLogs, todayView, foodLogs } = loaderData;
-  const [isEdit, setIsEdit] = useOutletContext();
+  const [isEdit, setIsEdit] = useState();
   const [searchParams] = useSearchParams();
   const date = searchParams.get("date") ?? "";
+
+  useEffect(() => {
+    setIsEdit(null);
+  }, [todayView]);
 
   return (
     <div className="text-3xs rounded-md border border-gray-200 px-2 py-4 shadow-md">

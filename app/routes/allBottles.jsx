@@ -1,5 +1,5 @@
-import { useSearchParams, useOutletContext } from "react-router";
-import { useState } from "react";
+import { useSearchParams } from "react-router";
+import { useState, useEffect } from "react";
 import {
   getTodayLogs,
   getAllLogs,
@@ -40,15 +40,19 @@ export async function loader({ request }) {
 
 export default function AllBottles({ loaderData }) {
   const { todayBottleLogs, todayView, bottleLogs } = loaderData;
-  const [isEdit, setIsEdit] = useOutletContext();
+  const [isEdit, setIsEdit] = useState(null);
   const [searchParams] = useSearchParams();
   const date = searchParams.get("date") ?? "";
+
+  useEffect(() => {
+    setIsEdit(null);
+  }, [todayView]);
 
   return (
     <div className="text-3xs rounded-md border border-gray-200 px-2 py-4 shadow-md">
       <div className="mb-4 flex items-center justify-between">
         <h2 className="text-xs font-bold">🍼 Bottles</h2>
-        <DateRadio todayView={todayView} logs="bottles" />
+        <DateRadio todayView={todayView} logs="bottles" setIsEdit={setIsEdit} />
       </div>
       {!todayView.bottles && (
         <>

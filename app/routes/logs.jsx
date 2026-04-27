@@ -49,7 +49,6 @@ export async function loader({ request }) {
   ]);
 
   return {
-    // session,
     allView,
     todayView,
     todayBottles,
@@ -63,7 +62,6 @@ export async function loader({ request }) {
 
 export default function Logs({ loaderData }) {
   const {
-    // session,
     allView,
     todayView,
     todayBottles,
@@ -74,8 +72,6 @@ export default function Logs({ loaderData }) {
     todayMeds,
   } = loaderData;
 
-  const [isTodayEdit, setIsTodayEdit] = useState(false);
-
   return (
     <div className="p-4 text-sm">
       <div className="mt-8">
@@ -83,18 +79,7 @@ export default function Logs({ loaderData }) {
         <SelectAllView allView={allView} />
       </div>
       <div className="mt-4">
-        {/* <AllView
-          allView={allView}
-          isTodayEdit={isTodayEdit}
-          setIsTodayEdit={setIsTodayEdit}
-          bottleLogs={bottleLogs}
-          foodLogs={foodLogs}
-          napLogs={napLogs}
-          poopLogs={poopLogs}
-          tempLogs={tempLogs}
-          medLogs={medLogs}
-        /> */}
-        <Outlet context={[isTodayEdit, setIsTodayEdit]} />
+        <Outlet />
       </div>
     </div>
   );
