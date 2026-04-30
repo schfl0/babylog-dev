@@ -23,7 +23,7 @@ export default function Nav() {
             : "font-bold text-black transition-all hover:opacity-60"
         }
       >
-        👶 BBLog
+        👶 BByLog
       </NavLink>
       <NavLink
         to="/logs"

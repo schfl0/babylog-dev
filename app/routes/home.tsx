@@ -7,8 +7,8 @@ import { buildUrl } from "../../appconfig";
 
 export function meta({}) {
   return [
-    { title: "BabyLog" },
-    { name: "BabyLog", content: "Welcome to BabyLog!" },
+    { title: "BByLog" },
+    { name: "BByLog", content: "Welcome to BByLog!" },
   ];
 }
 
