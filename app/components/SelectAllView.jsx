@@ -23,9 +23,8 @@ export default function SelectAllView({ allView }) {
     <fetcher.Form
       method="post"
       action="/select-allview"
-      className="flex items-center justify-start gap-4 text-xs"
+      className="flex items-center justify-start gap-4 text-sm"
     >
-      <label htmlFor="selectAllView">Select view:</label>
       <select
         className="rounded-sm border px-2 py-0.5"
         name="selectAllView"

@@ -26,36 +26,39 @@ export default function AddLogger({ loggers }) {
   }, [fetcher.state, fetcher.data]);
 
   return (
-    <fetcher.Form
-      method="post"
-      action="/add-logger"
-      className="flex items-center justify-start gap-4 text-sm"
-    >
-      <label htmlFor="addLogger">Add logger:</label>
-      <select
-        className="rounded-sm border px-2 py-0.5"
-        name="addLogger"
-        id="addLogger"
-        value={noOptionsLeft ? "" : selectedLogger}
-        onChange={(e) => setSelectedLogger(e.target.value)}
-        disabled={noOptionsLeft}
+    <>
+      <h1 className="mb-2 text-sm font-bold">Add logger</h1>
+
+      <fetcher.Form
+        method="post"
+        action="/add-logger"
+        className="flex items-center justify-start gap-4 text-sm"
       >
-        {noOptionsLeft ? (
-          <option value="">---</option>
-        ) : (
-          availableOptions.map((option) => (
-            <option key={option} value={option}>
-              {capitalizeStr(option)}
-            </option>
-          ))
-        )}
-      </select>
-      <button
-        type="submit"
-        className="cursor-pointer rounded-sm bg-pink-600 px-2 py-1 text-white transition-all hover:opacity-60"
-      >
-        📝 Add
-      </button>
-    </fetcher.Form>
+        <select
+          className="rounded-sm border px-2 py-0.5"
+          name="addLogger"
+          id="addLogger"
+          value={noOptionsLeft ? "" : selectedLogger}
+          onChange={(e) => setSelectedLogger(e.target.value)}
+          disabled={noOptionsLeft}
+        >
+          {noOptionsLeft ? (
+            <option value="">---</option>
+          ) : (
+            availableOptions.map((option) => (
+              <option key={option} value={option}>
+                {capitalizeStr(option)}
+              </option>
+            ))
+          )}
+        </select>
+        <button
+          type="submit"
+          className="cursor-pointer rounded-sm bg-pink-600 px-2 py-1 text-white transition-all hover:opacity-60"
+        >
+          📝 Add
+        </button>
+      </fetcher.Form>
+    </>
   );
 }
