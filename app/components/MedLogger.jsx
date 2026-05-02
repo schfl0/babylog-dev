@@ -40,7 +40,7 @@ export default function MedLogger({ session, logger }) {
   const options = ["g", "mg", "mcg", "ng", "l", "ml", "drops", "u"];
 
   return (
-    <div className="text-2xs rounded-md border border-gray-200 p-4 leading-tight shadow-md">
+    <div className="rounded-md border border-gray-200 p-4 text-sm leading-tight shadow-md">
       <deleteFetcher.Form
         method="delete"
         action="/delete-logger"
@@ -56,9 +56,11 @@ export default function MedLogger({ session, logger }) {
       </deleteFetcher.Form>
 
       <fetcher.Form method="post" action="/med-logger">
-        <div className="mt-2 mb-2 flex flex-col items-start justify-center gap-1">
+        <div className="mt-2 mb-2 flex flex-col items-center justify-center gap-1">
           <div className="flex w-full flex-1 flex-col">
-            <label htmlFor="med">Medication:</label>
+            <label htmlFor="med" className="text-2xs">
+              Medication
+            </label>
             <input
               className="w-full rounded-sm border border-gray-400 px-1 py-0.5"
               type="text"
@@ -68,9 +70,11 @@ export default function MedLogger({ session, logger }) {
               onChange={(e) => setInputMed(e.target.value)}
             />
           </div>
-          <div className="flex items-center justify-start gap-2">
+          <div className="flex items-center justify-center gap-4">
             <div className="flex flex-col">
-              <label htmlFor="unit">Unit:</label>
+              <label htmlFor="unit" className="text-2xs">
+                Unit
+              </label>
               <select
                 className="rounded-sm border border-gray-400 px-2 py-0.5"
                 name="unit"
@@ -86,7 +90,9 @@ export default function MedLogger({ session, logger }) {
               </select>
             </div>
             <div className="flex flex-col">
-              <label htmlFor="quantity">Quantity:</label>
+              <label htmlFor="quantity" className="text-2xs">
+                Dose
+              </label>
               <input
                 className="w-20 rounded-sm border border-gray-400 px-1 py-0.5"
                 type="number"

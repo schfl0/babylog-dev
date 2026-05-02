@@ -33,7 +33,7 @@ export default function NapLogger({ session, logger, openNap }) {
   }, [napStart]);
 
   return (
-    <div className="text-2xs rounded-md border border-gray-200 p-4 shadow-md">
+    <div className="rounded-md border border-gray-200 p-4 text-sm shadow-md">
       <deleteFetcher.Form
         method="delete"
         action="/delete-logger"
@@ -56,10 +56,15 @@ export default function NapLogger({ session, logger, openNap }) {
             id="triggerNap"
             value={isSleeping ? "stop" : "start"}
           />
-          <div className="flex items-center justify-center gap-2">
-            <p>🏁 Start: {napStart ? `${formatTime(napStart)}` : "--"}</p>
-            <p>/</p>
-            <p>⏱️ Nap: {napDuration || "--"}</p>
+          <div className="flex items-center justify-center gap-6">
+            <div className="flex flex-col items-start justify-center">
+              <p className="text-2xs">🏁 Start</p>
+              <p>{napStart ? `${formatTime(napStart)}` : "--:--"}</p>
+            </div>
+            <div>
+              <p className="text-2xs">⏱️ Nap</p>
+              <p>{napDuration || "--:--:--"}</p>
+            </div>
           </div>
         </div>
         <button

@@ -29,7 +29,7 @@ export default function AddLogger({ loggers }) {
     <fetcher.Form
       method="post"
       action="/add-logger"
-      className="flex items-center justify-start gap-4 text-xs"
+      className="flex items-center justify-start gap-4 text-sm"
     >
       <label htmlFor="addLogger">Add logger:</label>
       <select

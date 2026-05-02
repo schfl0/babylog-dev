@@ -46,13 +46,13 @@ export default function Home({ loaderData }) {
   }, []);
 
   return (
-    <div className="flex flex-col p-4 text-sm">
+    <div className="flex flex-col text-sm">
       {session?.user ? (
         <>
-          <div className="mt-2">
+          <div className="mt-6">
             <AddLogger loggers={loggers} />
           </div>
-          <div className="mt-6">
+          <div className="mt-4">
             <Loggers
               session={session}
               loggers={loggers}

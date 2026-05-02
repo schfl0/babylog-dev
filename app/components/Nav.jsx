@@ -14,7 +14,7 @@ export default function Nav() {
     })();
   }, []);
   return (
-    <nav className="flex items-center gap-4 p-4 text-sm">
+    <nav className="text-md flex items-center gap-4 py-4">
       <NavLink
         to="/"
         className={({ isActive }) =>
@@ -39,14 +39,14 @@ export default function Nav() {
         <form
           action="/api/auth/signout"
           method="POST"
-          className="ml-auto flex items-center justify-center gap-2"
+          className="ml-auto flex items-center justify-center gap-4"
         >
           <img className="h-8 w-8 rounded-full" src={session.user.image} />
 
           <input type="hidden" name="csrfToken" value={csrfToken} />
           <button
             type="submit"
-            className="cursor-pointer rounded-sm bg-pink-600 px-2 py-1 text-xs text-white transition-all hover:opacity-60"
+            className="cursor-pointer rounded-sm bg-pink-600 px-2 py-1 text-sm text-white transition-all hover:opacity-60"
           >
             🔒 Sign out
           </button>

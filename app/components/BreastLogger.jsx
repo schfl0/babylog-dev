@@ -68,7 +68,7 @@ export default function BreastLogger({
   }, [breastRightStart]);
 
   return (
-    <div className="text-2xs rounded-md border border-gray-200 p-4 shadow-md">
+    <div className="rounded-md border border-gray-200 p-4 text-sm shadow-md">
       <deleteFetcher.Form
         method="delete"
         action="/delete-logger"
@@ -97,11 +97,14 @@ export default function BreastLogger({
             />
             <div>
               <p className="mb-2 text-center font-bold">L</p>
-              <p>
-                🏁 Start:{" "}
-                {breastLeftStart ? `${formatTime(breastLeftStart)}` : "--"}
-              </p>
-              <p>⏱️ Feeding: {breastLeftDuration || "--"}</p>
+              <div className="flex flex-col items-start justify-center">
+                <p className="text-2xs">🏁 Start</p>
+                <p>
+                  {breastLeftStart ? `${formatTime(breastLeftStart)}` : "--:--"}
+                </p>
+                <p className="text-2xs mt-1">⏱️ Feeding</p>
+                <p> {breastLeftDuration || "--:--:--"}</p>
+              </div>
             </div>
           </div>
           <button
@@ -125,11 +128,16 @@ export default function BreastLogger({
             />
             <div>
               <p className="mb-2 text-center font-bold">R</p>
-              <p>
-                🏁 Start:{" "}
-                {breastRightStart ? `${formatTime(breastRightStart)}` : "--"}
-              </p>
-              <p>⏱️ Feeding: {breastRightDuration || "--"}</p>
+              <div className="flex flex-col items-start justify-center">
+                <p className="text-2xs">🏁 Start</p>
+                <p>
+                  {breastRightStart
+                    ? `${formatTime(breastRightStart)}`
+                    : "--:--"}
+                </p>
+                <p className="text-2xs mt-1">⏱️ Feeding</p>
+                <p> {breastRightDuration || "--:--:--"}</p>
+              </div>
             </div>
           </div>
           <button

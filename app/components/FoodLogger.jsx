@@ -32,7 +32,7 @@ export default function FoodLogger({ session, logger }) {
   }, [fetcher.data]);
 
   return (
-    <div className="text-2xs rounded-md border border-gray-200 p-4 shadow-md">
+    <div className="rounded-md border border-gray-200 p-4 text-sm shadow-md">
       <deleteFetcher.Form
         method="delete"
         action="/delete-logger"
@@ -46,29 +46,35 @@ export default function FoodLogger({ session, logger }) {
           ❌
         </button>
       </deleteFetcher.Form>
-
       <fetcher.Form method="post" action="/food-logger">
-        <div className="mt-2 mb-2 flex items-center justify-center gap-2">
-          <label htmlFor="food">Food:</label>
-          <input
-            className="w-full rounded-sm border border-gray-400 px-1 py-0.5"
-            type="text"
-            name="food"
-            id="food"
-            value={inputFood}
-            onChange={(e) => setInputFood(e.target.value)}
-          />
-
-          <label htmlFor="g">g:</label>
-          <input
-            className="w-20 rounded-sm border border-gray-400 px-1 py-0.5"
-            type="number"
-            min="0"
-            name="g"
-            id="g"
-            value={inputG}
-            onChange={(e) => setInputG(e.target.value)}
-          />
+        <div className="mt-2 mb-2 flex items-center justify-center gap-4">
+          <div className="w-full flex-col items-start justify-center">
+            <label htmlFor="food" className="text-2xs">
+              Food
+            </label>
+            <input
+              className="w-full rounded-sm border border-gray-400 px-1 py-0.5"
+              type="text"
+              name="food"
+              id="food"
+              value={inputFood}
+              onChange={(e) => setInputFood(e.target.value)}
+            />
+          </div>
+          <div className="mt-2 mb-2 flex flex-col items-start justify-center">
+            <label htmlFor="g" className="text-2xs">
+              g
+            </label>
+            <input
+              className="w-20 rounded-sm border border-gray-400 px-1 py-0.5"
+              type="number"
+              min="0"
+              name="g"
+              id="g"
+              value={inputG}
+              onChange={(e) => setInputG(e.target.value)}
+            />
+          </div>
         </div>
         {errorMsg && (
           <p className="mt-0.5 text-center text-[9px] opacity-50">

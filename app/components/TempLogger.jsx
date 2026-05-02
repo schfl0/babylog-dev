@@ -26,7 +26,7 @@ export default function TempLogger({ session, logger }) {
   }, [fetcher.data]);
 
   return (
-    <div className="text-2xs rounded-md border border-gray-200 p-4 shadow-md">
+    <div className="rounded-md border border-gray-200 p-4 text-sm shadow-md">
       <deleteFetcher.Form
         method="delete"
         action="/delete-logger"
@@ -43,16 +43,20 @@ export default function TempLogger({ session, logger }) {
 
       <fetcher.Form method="post" action="/temp-logger">
         <div className="mt-2 mb-2 flex items-center justify-center gap-2">
-          <label htmlFor="temp">Temp (°C):</label>
-          <input
-            className="w-20 rounded-sm border border-gray-400 px-1 py-0.5"
-            type="number"
-            name="temp"
-            id="temp"
-            min="0"
-            value={inputTemp}
-            onChange={(e) => setInputTemp(e.target.value)}
-          />
+          <div className="flex flex-col items-start justify-center">
+            <label htmlFor="temp" className="text-2xs">
+              °C
+            </label>
+            <input
+              className="w-20 rounded-sm border border-gray-400 px-1 py-0.5"
+              type="number"
+              name="temp"
+              id="temp"
+              min="0"
+              value={inputTemp}
+              onChange={(e) => setInputTemp(e.target.value)}
+            />
+          </div>
         </div>
         {errorMsg && (
           <p className="mt-0.5 text-center text-[9px] opacity-50">

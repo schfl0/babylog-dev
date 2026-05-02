@@ -28,7 +28,7 @@ export default function PoopLogger({ session, logger }) {
   }, [fetcher.data]);
 
   return (
-    <div className="text-2xs rounded-md border border-gray-200 p-4 shadow-md">
+    <div className="rounded-md border border-gray-200 p-4 text-sm shadow-md">
       <deleteFetcher.Form
         method="delete"
         action="/delete-logger"
@@ -44,21 +44,25 @@ export default function PoopLogger({ session, logger }) {
       </deleteFetcher.Form>
 
       <fetcher.Form method="post" action="/poop-logger">
-        <div className="mt-2 mb-2 flex items-center justify-center gap-2">
-          <label htmlFor="poop">Poop:</label>
-          <select
-            className="rounded-sm border border-gray-400 px-2 py-0.5"
-            name="poop"
-            id="poop"
-            value={inputPoop}
-            onChange={(e) => setInputPoop(e.target.value)}
-          >
-            {options.map((option) => (
-              <option key={option} value={option}>
-                {option.toUpperCase()}
-              </option>
-            ))}
-          </select>
+        <div className="mt-2 mb-2 flex items-center justify-center">
+          <div className="flex flex-col items-start justify-center">
+            <label htmlFor="poop" className="text-2xs">
+              Size
+            </label>
+            <select
+              className="rounded-sm border border-gray-400 px-2 py-0.5"
+              name="poop"
+              id="poop"
+              value={inputPoop}
+              onChange={(e) => setInputPoop(e.target.value)}
+            >
+              {options.map((option) => (
+                <option key={option} value={option}>
+                  {option.toUpperCase()}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
         {errorMsg && (
           <p className="mt-0.5 text-center text-[9px] opacity-50">
