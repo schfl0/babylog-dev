@@ -27,8 +27,7 @@ export default function AddLogger({ loggers }) {
 
   return (
     <>
-      <h1 className="mb-2 text-sm font-bold">Add logger</h1>
-
+      <h1 className="mb-2 font-bold">Add logger</h1>
       <fetcher.Form
         method="post"
         action="/add-logger"

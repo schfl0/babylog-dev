@@ -14,7 +14,7 @@ export default function Nav() {
     })();
   }, []);
   return (
-    <nav className="text-md flex items-center gap-4 py-4">
+    <nav className="flex items-center gap-6 py-4">
       <NavLink
         to="/"
         className={({ isActive }) =>
@@ -46,7 +46,7 @@ export default function Nav() {
           <input type="hidden" name="csrfToken" value={csrfToken} />
           <button
             type="submit"
-            className="cursor-pointer rounded-sm bg-pink-600 px-2 py-1 text-sm text-white transition-all hover:opacity-60"
+            className="cursor-pointer rounded-sm bg-pink-600 px-2 py-1 text-white transition-all hover:opacity-60"
           >
             🔒 Sign out
           </button>
