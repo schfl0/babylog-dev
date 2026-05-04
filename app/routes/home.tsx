@@ -46,7 +46,7 @@ export default function Home({ loaderData }) {
   }, []);
 
   return (
-    <div className="flex flex-col text-sm">
+    <div className="flex flex-col">
       {session?.user ? (
         <>
           <div className="mt-6">

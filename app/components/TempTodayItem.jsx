@@ -14,7 +14,7 @@ export default function TempTodayItem({ log: temp, isEdit, setIsEdit }) {
       {isEdit === temp.id ? (
         <TempItemEdit temp={temp} setIsEdit={setIsEdit} />
       ) : (
-        <div className="flex items-center justify-start hover:shadow-md">
+        <div className="flex items-center justify-start text-xs hover:shadow-md">
           <div className="flex flex-1 items-center justify-between">
             <div className="flex items-center gap-2">
               <p>Temp</p>

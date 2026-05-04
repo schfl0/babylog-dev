@@ -14,7 +14,7 @@ export default function PoopTodayItem({ log: poop, isEdit, setIsEdit }) {
       {isEdit === poop.id ? (
         <PoopItemEdit poop={poop} setIsEdit={setIsEdit} />
       ) : (
-        <div className="flex items-center justify-start hover:shadow-sm">
+        <div className="flex items-center justify-start hover:shadow-xs">
           <div className="flex flex-1 items-center justify-between">
             <div className="flex items-center gap-2">
               <p>Poop</p>

@@ -50,9 +50,9 @@ export default function AllFoods({ loaderData }) {
   }, [todayView]);
 
   return (
-    <div className="text-3xs rounded-md border border-gray-200 px-2 py-4 shadow-md">
+    <div className="rounded-md border border-gray-200 px-2 py-4 text-sm shadow-md">
       <div className="mb-4 flex items-center justify-between">
-        <h2 className="text-xs font-bold">🥦 Foods</h2>
+        <h2 className="font-bold">🥦 Foods</h2>
         <DateRadio todayView={todayView} logs="foods" />
       </div>
       {!todayView.foods && (
@@ -71,7 +71,7 @@ export default function AllFoods({ loaderData }) {
                 );
               })
             ) : (
-              <p>No logs yet.</p>
+              <p className="text-xs">No logs yet.</p>
             )}
           </div>
         </>

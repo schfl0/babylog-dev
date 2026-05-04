@@ -14,7 +14,7 @@ export default function MedAllItem({ log: med, isEdit, setIsEdit }) {
       {isEdit === med.id ? (
         <MedItemEdit med={med} setIsEdit={setIsEdit} />
       ) : (
-        <div className="flex items-center justify-start">
+        <div className="flex items-center justify-start text-xs">
           <div className="flex flex-1 items-center justify-between">
             <div className="flex items-center gap-2">
               <p>{med.med}</p>

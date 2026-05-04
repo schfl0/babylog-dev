@@ -41,7 +41,7 @@ export default function Nav() {
           method="POST"
           className="ml-auto flex items-center justify-center gap-4"
         >
-          <img className="h-8 w-8 rounded-full" src={session.user.image} />
+          <img className="h-10 w-10 rounded-full" src={session.user.image} />
 
           <input type="hidden" name="csrfToken" value={csrfToken} />
           <button
