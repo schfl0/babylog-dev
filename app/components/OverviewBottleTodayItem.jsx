@@ -18,7 +18,7 @@ export default function OverviewBottleTodayItem({
       {isEdit === bottle.id ? (
         <BottleItemEdit bottle={bottle} setIsEdit={setIsEdit} />
       ) : (
-        <div className="flex items-center justify-start hover:shadow-sm">
+        <div className="flex items-center justify-start text-xs hover:shadow-sm">
           <div className="flex flex-1 items-center justify-between">
             <div className="flex items-center gap-2">
               <p>🍼</p>
