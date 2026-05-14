@@ -21,40 +21,53 @@ export default function TempItemEdit({ temp, setIsEdit }) {
     <fetcher.Form
       method="post"
       action="/edit-temp"
-      className="text-4xs my-1 flex items-start justify-between gap-3 rounded-sm border border-gray-100 bg-red-100 px-1 py-1.5 shadow-sm"
+      className="text-3xs mt-1 flex w-full flex-col items-start gap-1 border-t border-gray-300 pt-1"
     >
       <input type="hidden" name="id" id="id" value={temp.id} />
-      <div className="flex flex-col items-start">
-        <div className="flex flex-col items-start">
-          <label htmlFor="temp">Temp (°C):</label>
+      <div className="flex w-full justify-between">
+        <div className="flex flex-col gap-0.5">
+          <label htmlFor="temp">°C</label>
           <input
-            className="w-10 rounded-sm border border-gray-400 bg-red-50 px-1 py-0.5"
+            className="rounded-sm border border-gray-400 bg-red-50 px-1 py-0.5"
             type="number"
             name="temp"
             id="temp"
             value={inputTemp}
             onChange={(e) => setInputTemp(e.target.value)}
           />
+          {fetcher?.data?.temp?.[0] && (
+            <p className="mt-0.5 text-[9px] leading-none text-red-500">
+              {fetcher.data.temp[0]}
+            </p>
+          )}
         </div>
-        {fetcher?.data?.temp?.[0] && (
-          <p className="mt-0.5 text-[9px] leading-none text-red-500">
-            {fetcher.data.temp[0]}
-          </p>
-        )}
+        <div className="ml-auto flex items-center gap-1 self-center">
+          <button
+            type="submit"
+            className="cursor-pointer text-xs transition-all hover:opacity-60"
+          >
+            ✅
+          </button>
+          <button
+            type="button"
+            className="cursor-pointer text-xs transition-all hover:opacity-60"
+            onClick={() => setIsEdit(null)}
+          >
+            🚫
+          </button>
+        </div>
       </div>
 
-      <div className="flex flex-col items-start">
-        <div className="flex flex-col items-start">
-          <label htmlFor="date">Date:</label>
-          <input
-            className="w-20 rounded-sm border border-gray-400 bg-red-50 px-1 py-0.5"
-            type="date"
-            name="date"
-            id="date"
-            value={inputDate}
-            onChange={(e) => setInputDate(e.target.value)}
-          />
-        </div>
+      <div className="flex flex-col gap-0.5">
+        <label htmlFor="date">Date</label>
+        <input
+          className="rounded-sm border border-gray-400 bg-red-50 px-1 py-0.5"
+          type="date"
+          name="date"
+          id="date"
+          value={inputDate}
+          onChange={(e) => setInputDate(e.target.value)}
+        />
         {fetcher?.data?.date?.[0] && (
           <p className="mt-0.5 text-[8px] leading-none text-red-500">
             {fetcher.data.date[0]}
@@ -62,18 +75,16 @@ export default function TempItemEdit({ temp, setIsEdit }) {
         )}
       </div>
 
-      <div className="flex flex-col items-start">
-        <div className="flex flex-col items-start">
-          <label htmlFor="time">Time:</label>
-          <input
-            className="w-15 rounded-sm border border-gray-400 bg-red-50 px-1"
-            type="time"
-            name="time"
-            id="time"
-            value={inputTime}
-            onChange={(e) => setInputTime(e.target.value)}
-          />
-        </div>
+      <div className="flex flex-col gap-0.5">
+        <label htmlFor="time">Time</label>
+        <input
+          className="rounded-sm border border-gray-400 bg-red-50 px-1"
+          type="time"
+          name="time"
+          id="time"
+          value={inputTime}
+          onChange={(e) => setInputTime(e.target.value)}
+        />
         {fetcher?.data?.time?.[0] && (
           <p className="mt-0.5 text-[8px] leading-none text-red-500">
             {fetcher.data.time[0]}
@@ -86,22 +97,6 @@ export default function TempItemEdit({ temp, setIsEdit }) {
         id="timezoneOffset"
         value={new Date().getTimezoneOffset()}
       />
-
-      <div className="ml-auto flex items-center gap-1 self-center">
-        <button
-          type="submit"
-          className="cursor-pointer text-xs transition-all hover:opacity-60"
-        >
-          ✅
-        </button>
-        <button
-          type="button"
-          className="cursor-pointer text-xs transition-all hover:opacity-60"
-          onClick={() => setIsEdit(null)}
-        >
-          🚫
-        </button>
-      </div>
     </fetcher.Form>
   );
 }

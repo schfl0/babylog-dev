@@ -13,7 +13,7 @@ export default function OverviewPoopAllItem({ log: poop, isEdit, setIsEdit }) {
     <div
       className={`text-xs hover:shadow-sm ${isEdit === poop.id ? "my-1 rounded-md border border-gray-200 p-2" : ""}`}
     >
-      <div className="flex items-center justify-start text-xs">
+      <div className="flex items-center justify-start">
         <div className="flex flex-1 items-center justify-between">
           <div className="flex items-center gap-2">
             <p>💩</p>

@@ -1,6 +1,6 @@
 import { redirect, Outlet } from "react-router";
 import { useState } from "react";
-import { getTodayView, getAllView, getTodayLogs } from "../../loaders.server";
+import { getAllView, getTodayLogs } from "../../loaders.server";
 import SelectTodayView from "../components/SelectTodayView";
 import TodayView from "../components/TodayView";
 import AllView from "../components/AllView";
@@ -30,7 +30,7 @@ export async function loader({ request }) {
     throw redirect(`/logs/${allView}`);
   }
   const { email, timezone } = session?.user;
-  const todayView = await getTodayView(session?.user.email);
+  //  const todayView = await getTodayView(session?.user.email);
 
   const [
     todayBottles,
@@ -50,7 +50,7 @@ export async function loader({ request }) {
 
   return {
     allView,
-    todayView,
+    //  todayView,
     todayBottles,
     todayFoods,
     todayNaps,
@@ -63,7 +63,7 @@ export async function loader({ request }) {
 export default function Logs({ loaderData }) {
   const {
     allView,
-    todayView,
+    //  todayView,
     todayBottles,
     todayFoods,
     todayNaps,

@@ -176,8 +176,23 @@ export async function getTodayView(email) {
 export async function getTodayVieww(email) {
   const client = await mongoClientPromise;
   const db = client.db();
-  const res = await db.collection("todayViews").findOne({ email });
-  return res?.todayView || "overview";
+  const doc = await db.collection("todayViews").findOneAndUpdate(
+    { email },
+    {
+      $setOnInsert: {
+        email,
+        overview: true,
+        bottles: true,
+        foods: true,
+        naps: true,
+        poops: true,
+        temps: true,
+        meds: true,
+      },
+    },
+    { upsert: true, returnDocument: "after" },
+  );
+  return doc;
 }
 
 export async function getNapLogs(email) {
