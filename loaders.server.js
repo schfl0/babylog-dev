@@ -176,8 +176,8 @@ export async function getTodayView(email) {
 export async function getTodayVieww(email) {
   const client = await mongoClientPromise;
   const db = client.db();
-  const doc = await db.collection("todayViews").findOne({ email });
-  return doc;
+  const res = await db.collection("todayViews").findOne({ email });
+  return res?.todayView || "overview";
 }
 
 export async function getNapLogs(email) {
