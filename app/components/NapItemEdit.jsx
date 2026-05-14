@@ -28,16 +28,16 @@ export default function NapItemEdit({ nap, setIsEdit }) {
     <fetcher.Form
       method="post"
       action="/edit-nap"
-      className="text-4xs my-1 flex max-w-full flex-wrap items-start justify-between gap-3 overflow-hidden rounded-sm border border-gray-100 bg-blue-100 px-2 py-2 shadow-sm sm:flex-nowrap"
+      className="text-3xs mt-1 flex w-full flex-col items-start gap-1 border-t border-gray-300 pt-1"
     >
       <input type="hidden" name="id" id="id" value={nap.id} />
 
-      <div className="flex flex-shrink-0 flex-col items-start">
+      <div className="flex flex-col gap-0.5">
         <label htmlFor="startDate" className="font-medium">
-          Start date:
+          Start date
         </label>
         <input
-          className="w-20 max-w-full rounded-sm border border-gray-400 bg-blue-50 px-1 py-0.5 text-[9px]"
+          className="rounded-sm border border-gray-400 bg-blue-50 px-1 py-0.5"
           type="date"
           name="startDate"
           id="startDate"
@@ -51,12 +51,12 @@ export default function NapItemEdit({ nap, setIsEdit }) {
         )}
       </div>
 
-      <div className="flex flex-shrink-0 flex-col items-start">
+      <div className="flex flex-col gap-0.5">
         <label htmlFor="startTime" className="font-medium">
-          Start time:
+          Start time
         </label>
         <input
-          className="w-15 max-w-full rounded-sm border border-gray-400 bg-blue-50 px-1 text-[9px]"
+          className="rounded-sm border border-gray-400 bg-blue-50 px-1"
           type="time"
           name="startTime"
           id="startTime"
@@ -70,12 +70,12 @@ export default function NapItemEdit({ nap, setIsEdit }) {
         )}
       </div>
 
-      <div className="flex flex-shrink-0 flex-col items-start">
+      <div className="flex flex-col gap-0.5">
         <label htmlFor="stopDate" className="font-medium">
-          Stop date:
+          Stop date
         </label>
         <input
-          className="w-20 max-w-full rounded-sm border border-gray-400 bg-blue-50 px-1 py-0.5 text-[9px]"
+          className="rounded-sm border border-gray-400 bg-blue-50 px-1 py-0.5"
           type="date"
           name="stopDate"
           id="stopDate"
@@ -89,12 +89,12 @@ export default function NapItemEdit({ nap, setIsEdit }) {
         )}
       </div>
 
-      <div className="flex flex-shrink-0 flex-col items-start">
+      <div className="flex flex-col gap-0.5">
         <label htmlFor="stopTime" className="font-medium">
-          Stop time:
+          Stop time
         </label>
         <input
-          className="w-15 max-w-full rounded-sm border border-gray-400 bg-blue-50 px-1 text-[9px]"
+          className="rounded-sm border border-gray-400 bg-blue-50 px-1"
           type="time"
           name="stopTime"
           id="stopTime"
@@ -114,16 +114,16 @@ export default function NapItemEdit({ nap, setIsEdit }) {
         value={new Date().getTimezoneOffset()}
       />
 
-      <div className="ml-auto flex flex-shrink-0 items-center gap-1 self-center">
+      <div className="mt-1 flex gap-2 text-sm">
         <button
           type="submit"
-          className="cursor-pointer text-xs transition-all hover:opacity-60"
+          className="cursor-pointer transition-all hover:opacity-60"
         >
           ✅
         </button>
         <button
           type="button"
-          className="cursor-pointer text-xs transition-all hover:opacity-60"
+          className="cursor-pointer transition-all hover:opacity-60"
           onClick={() => setIsEdit(null)}
         >
           🚫

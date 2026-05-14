@@ -23,12 +23,12 @@ export default function PoopItemEdit({ poop, setIsEdit }) {
     <fetcher.Form
       method="post"
       action="/edit-poop"
-      className="text-4xs my-1 flex items-start justify-between gap-3 rounded-sm border border-gray-100 bg-[#f2e7d8] px-1 py-1.5 shadow-sm"
+      className="text-3xs mt-1 flex w-full flex-col items-start gap-1 border-t border-gray-300 pt-1"
     >
       <input type="hidden" name="id" id="id" value={poop.id} />
-      <div className="flex flex-shrink-0 flex-col items-start">
+      <div className="flex flex-col gap-0.5">
         <label htmlFor="poop" className="font-medium">
-          Poop:
+          Poop
         </label>
         <select
           className="rounded-sm border border-gray-400 bg-[#f6f0e8] px-1 py-0.5"
@@ -50,12 +50,12 @@ export default function PoopItemEdit({ poop, setIsEdit }) {
         )}
       </div>
 
-      <div className="flex flex-shrink-0 flex-col items-start">
+      <div className="flex flex-col gap-0.5">
         <label htmlFor="date" className="font-medium">
-          Date:
+          Date
         </label>
         <input
-          className="w-20 max-w-full rounded-sm border border-gray-400 bg-[#f6f0e8] px-1 py-0.5 text-[9px]"
+          className="rounded-sm border border-gray-400 bg-[#f6f0e8] px-1 py-0.5"
           type="date"
           name="date"
           id="date"
@@ -69,12 +69,12 @@ export default function PoopItemEdit({ poop, setIsEdit }) {
         )}
       </div>
 
-      <div className="flex flex-shrink-0 flex-col items-start">
+      <div className="flex flex-col gap-0.5">
         <label htmlFor="time" className="font-medium">
-          Time:
+          Time
         </label>
         <input
-          className="w-15 max-w-full rounded-sm border border-gray-400 bg-[#f6f0e8] px-1 text-[9px]"
+          className="rounded-sm border border-gray-400 bg-[#f6f0e8] px-1"
           type="time"
           name="time"
           id="time"
@@ -94,16 +94,16 @@ export default function PoopItemEdit({ poop, setIsEdit }) {
         value={new Date().getTimezoneOffset()}
       />
 
-      <div className="ml-auto flex flex-shrink-0 items-center gap-1 self-center">
+      <div className="mt-1 flex gap-2 text-sm">
         <button
           type="submit"
-          className="cursor-pointer text-xs transition-all hover:opacity-60"
+          className="cursor-pointer transition-all hover:opacity-60"
         >
           ✅
         </button>
         <button
           type="button"
-          className="cursor-pointer text-xs transition-all hover:opacity-60"
+          className="cursor-pointer transition-all hover:opacity-60"
           onClick={() => setIsEdit(null)}
         >
           🚫
