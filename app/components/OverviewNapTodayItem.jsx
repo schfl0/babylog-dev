@@ -8,38 +8,41 @@ export default function OverviewNapTodayItem({ log: nap, isEdit, setIsEdit }) {
     setIsEdit(nap.id);
   }
   return (
-    <>
-      {isEdit === nap.id ? (
-        <NapItemEdit nap={nap} setIsEdit={setIsEdit} />
-      ) : (
-        <div className="flex items-center justify-start text-xs hover:shadow-sm">
-          <div className="flex flex-1 items-center justify-between">
-            <div className="flex items-center gap-2">
-              <p>💤</p>
-              <p>Nap</p>
-            </div>
-            <p>{getNapDuration(nap)}</p>
+    <div
+      className={`text-xs hover:shadow-sm ${isEdit === nap.id ? "my-1 rounded-md border border-gray-200 p-2" : ""}`}
+    >
+      <div className="flex items-center justify-start">
+        <div className="flex flex-1 items-center justify-between">
+          <div className="flex items-center gap-2">
+            <p>💤</p>
+            <p>Nap</p>
           </div>
-          <div className="flex min-w-25 items-center justify-end">
-            <p className="ml-4">{formatTime(nap.start)}</p>-
-            <p>{formatTime(nap.stop)}</p>
-          </div>
-
-          <button
-            className="ml-2 cursor-pointer hover:opacity-60"
-            onClick={handleClick}
-          >
-            📝
-          </button>
-          <fetcher.Form method="post" action="/delete-log" className="ml-1">
-            <input type="hidden" name="id" id="id" value={nap.id} />
-            <input type="hidden" name="log" id="log" value={nap.log} />
-            <button className="cursor-pointer transition-all hover:opacity-60">
-              🗑️
-            </button>
-          </fetcher.Form>
+          <p>{getNapDuration(nap)}</p>
         </div>
-      )}
-    </>
+        <div className="flex min-w-25 items-center justify-end">
+          <p className="ml-4">{formatTime(nap.start)}</p>-
+          <p>{formatTime(nap.stop)}</p>
+        </div>
+
+        {isEdit !== nap.id && (
+          <>
+            <button
+              className="ml-2 cursor-pointer hover:opacity-60"
+              onClick={handleClick}
+            >
+              📝
+            </button>
+            <fetcher.Form method="post" action="/delete-log" className="ml-1">
+              <input type="hidden" name="id" id="id" value={nap.id} />
+              <input type="hidden" name="log" id="log" value={nap.log} />
+              <button className="cursor-pointer transition-all hover:opacity-60">
+                🗑️
+              </button>
+            </fetcher.Form>
+          </>
+        )}
+      </div>
+      {isEdit === nap.id && <NapItemEdit setIsEdit={setIsEdit} nap={nap} />}
+    </div>
   );
 }
