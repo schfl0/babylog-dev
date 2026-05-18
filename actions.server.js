@@ -267,6 +267,23 @@ export async function editNap(id, startDateISO, stopDateISO) {
     );
 }
 
+export async function editBreast(id, position, startDateISO, stopDateISO) {
+  const client = await mongoClientPromise;
+  const db = client.db();
+
+  const res = await db.collection("breasts").findOneAndUpdate(
+    { _id: new ObjectId(id) },
+    {
+      $set: {
+        position,
+        start: new Date(startDateISO),
+        stop: new Date(stopDateISO),
+      },
+    },
+    { returnDocument: "after" },
+  );
+}
+
 export async function editPoop(id, poop, dateISO) {
   const client = await mongoClientPromise;
   const db = client.db();

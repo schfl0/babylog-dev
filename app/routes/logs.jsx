@@ -1,8 +1,8 @@
 import { redirect, Outlet } from "react-router";
 import { useState } from "react";
-import { getAllView, getTodayLogs } from "../../loaders.server";
+import { getAllView } from "../../loaders.server";
 import SelectTodayView from "../components/SelectTodayView";
-import TodayView from "../components/TodayView";
+// import TodayView from "../components/TodayView";
 import AllView from "../components/AllView";
 import SelectAllView from "../components/SelectAllView";
 import { buildUrl } from "../../appconfig";
@@ -29,34 +29,37 @@ export async function loader({ request }) {
   if (pathname === "/logs") {
     throw redirect(`/logs/${allView}`);
   }
-  const { email, timezone } = session?.user;
-  //  const todayView = await getTodayView(session?.user.email);
+  // const { email, timezone } = session?.user;
+  // //  const todayView = await getTodayView(session?.user.email);
 
-  const [
-    todayBottles,
-    todayFoods,
-    todayNaps,
-    todayPoops,
-    todayTemps,
-    todayMeds,
-  ] = await Promise.all([
-    getTodayLogs("bottles", email, timezone),
-    getTodayLogs("foods", email, timezone),
-    getTodayLogs("naps", email, timezone),
-    getTodayLogs("poops", email, timezone),
-    getTodayLogs("temps", email, timezone),
-    getTodayLogs("meds", email, timezone),
-  ]);
+  // const [
+  //   todayBottles,
+  //   todayFoods,
+  //   todayNaps,
+  //   todayPoops,
+  //   todayTemps,
+  //   todayMeds,
+  //   todayBreasts,
+  // ] = await Promise.all([
+  //   getTodayLogs("bottles", email, timezone),
+  //   getTodayLogs("foods", email, timezone),
+  //   getTodayLogs("naps", email, timezone),
+  //   getTodayLogs("poops", email, timezone),
+  //   getTodayLogs("temps", email, timezone),
+  //   getTodayLogs("meds", email, timezone),
+  //   getTodayLogs("breasts", email, timezone),
+  // ]);
 
   return {
     allView,
-    //  todayView,
-    todayBottles,
-    todayFoods,
-    todayNaps,
-    todayPoops,
-    todayTemps,
-    todayMeds,
+    // //  todayView,
+    // todayBottles,
+    // todayFoods,
+    // todayNaps,
+    // todayPoops,
+    // todayTemps,
+    // todayMeds,
+    // todayBreasts,
   };
 }
 
@@ -64,12 +67,13 @@ export default function Logs({ loaderData }) {
   const {
     allView,
     //  todayView,
-    todayBottles,
+    /* todayBottles,
     todayFoods,
     todayNaps,
     todayPoops,
     todayTemps,
     todayMeds,
+    todayBreasts, */
   } = loaderData;
 
   return (

@@ -82,7 +82,8 @@ export async function getTodayLogs(collection, email, timezone) {
     nowInTz.getDate() + 1,
   );
 
-  const dateField = collection === "naps" ? "start" : "date";
+  const dateField =
+    collection === "naps" || collection === "breasts" ? "start" : "date";
 
   const docs = await db
     .collection(collection)
@@ -100,8 +101,8 @@ export async function getAllLogs(collection, email, { cursor, limit } = {}) {
   const client = await mongoClientPromise;
   const db = client.db();
 
-  const isNap = collection === "naps";
-  const timeField = isNap ? "start" : "date";
+  const isTimed = collection === "naps" || "breasts";
+  const timeField = isTimed ? "start" : "date";
 
   const query = {
     email,
@@ -156,7 +157,8 @@ export async function getDateLogs(collection, email, dateStr, timezone) {
   );
   const end = new Date(startInTz.getTime() + 24 * 60 * 60 * 1000);
 
-  const dateField = collection === "naps" ? "start" : "date";
+  const dateField =
+    collection === "naps" || collection === "breasts" ? "start" : "date";
 
   const docs = await db
     .collection(collection)

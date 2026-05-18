@@ -12,6 +12,7 @@ export default function SelectAllView({ allView }) {
     "poops",
     "temperature",
     "medication",
+    "breastfeedings",
   ];
 
   useEffect(() => {

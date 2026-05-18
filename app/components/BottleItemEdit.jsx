@@ -28,9 +28,7 @@ export default function BottleItemEdit({ bottle, setIsEdit }) {
       <input type="hidden" name="id" id="id" value={bottle.id} />
       <div className="flex w-full items-center justify-between">
         <div className="flex flex-col gap-0.5">
-          <label htmlFor="type" className="font-medium">
-            Type
-          </label>
+          <label htmlFor="type">Type</label>
           <select
             className="rounded-sm border border-gray-400 bg-yellow-50 px-1 py-0.5"
             name="type"

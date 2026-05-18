@@ -16,12 +16,14 @@ import OverviewNapAllItem from "../components/OverviewNapAllItem";
 import OverviewPoopAllItem from "../components/OverviewPoopAllItem";
 import OverviewTempAllItem from "../components/OverviewTempAllItem";
 import OverviewMedAllItem from "../components/OverviewMedAllItem";
+import OverviewBreastAllItem from "../components/OverviewBreastAllItem";
 import OverviewBottleTodayItem from "../components/OverviewBottleTodayItem.jsx";
 import OverviewFoodTodayItem from "../components/OverviewFoodTodayItem.jsx";
 import OverviewNapTodayItem from "../components/OverviewNapTodayItem.jsx";
 import OverviewPoopTodayItem from "../components/OverviewPoopTodayItem.jsx";
 import OverviewTempTodayItem from "../components/OverviewTempTodayItem.jsx";
 import OverviewMedTodayItem from "../components/OverviewMedTodayItem.jsx";
+import OverviewBreastTodayItem from "../components/OverviewBreastTodayItem.jsx";
 
 export async function loader({ request }) {
   const res = await fetch(buildUrl("api/auth/session"), {
@@ -42,6 +44,7 @@ export async function loader({ request }) {
     todayPoopLogs,
     todayTempLogs,
     todayMedLogs,
+    todayBreastLogs,
   ] = await Promise.all([
     getTodayLogs("bottles", email, timezone),
     getTodayLogs("foods", email, timezone),
@@ -49,21 +52,30 @@ export async function loader({ request }) {
     getTodayLogs("poops", email, timezone),
     getTodayLogs("temps", email, timezone),
     getTodayLogs("meds", email, timezone),
+    getTodayLogs("breasts", email, timezone),
   ]);
 
   const url = new URL(request.url);
   const date = url.searchParams.get("date");
 
   if (date && date !== "") {
-    const [bottleLogs, foodLogs, napLogs, poopLogs, tempLogs, medLogs] =
-      await Promise.all([
-        getDateLogs("bottles", email, date, "Europe/Zurich"),
-        getDateLogs("foods", email, date, "Europe/Zurich"),
-        getDateLogs("naps", email, date, "Europe/Zurich"),
-        getDateLogs("poops", email, date, "Europe/Zurich"),
-        getDateLogs("temps", email, date, "Europe/Zurich"),
-        getDateLogs("meds", email, date, "Europe/Zurich"),
-      ]);
+    const [
+      bottleLogs,
+      foodLogs,
+      napLogs,
+      poopLogs,
+      tempLogs,
+      medLogs,
+      breastLogs,
+    ] = await Promise.all([
+      getDateLogs("bottles", email, date, "Europe/Zurich"),
+      getDateLogs("foods", email, date, "Europe/Zurich"),
+      getDateLogs("naps", email, date, "Europe/Zurich"),
+      getDateLogs("poops", email, date, "Europe/Zurich"),
+      getDateLogs("temps", email, date, "Europe/Zurich"),
+      getDateLogs("meds", email, date, "Europe/Zurich"),
+      getDateLogs("breasts", email, date, "Europe/Zurich"),
+    ]);
     return {
       todayBottleLogs,
       todayFoodLogs,
@@ -71,6 +83,7 @@ export async function loader({ request }) {
       todayPoopLogs,
       todayTempLogs,
       todayMedLogs,
+      todayBreastLogs,
       todayView,
       bottleLogs,
       foodLogs,
@@ -78,17 +91,26 @@ export async function loader({ request }) {
       poopLogs,
       tempLogs,
       medLogs,
+      breastLogs,
     };
   } else {
-    const [bottleLogs, foodLogs, napLogs, poopLogs, tempLogs, medLogs] =
-      await Promise.all([
-        getAllLogs("bottles", email),
-        getAllLogs("foods", email),
-        getAllLogs("naps", email),
-        getAllLogs("poops", email),
-        getAllLogs("temps", email),
-        getAllLogs("meds", email),
-      ]);
+    const [
+      bottleLogs,
+      foodLogs,
+      napLogs,
+      poopLogs,
+      tempLogs,
+      medLogs,
+      breastLogs,
+    ] = await Promise.all([
+      getAllLogs("bottles", email),
+      getAllLogs("foods", email),
+      getAllLogs("naps", email),
+      getAllLogs("poops", email),
+      getAllLogs("temps", email),
+      getAllLogs("meds", email),
+      getAllLogs("breasts", email),
+    ]);
     return {
       todayBottleLogs,
       todayFoodLogs,
@@ -96,6 +118,7 @@ export async function loader({ request }) {
       todayPoopLogs,
       todayTempLogs,
       todayMedLogs,
+      todayBreastLogs,
       todayView,
       bottleLogs: bottleLogs.items,
       foodLogs: foodLogs.items,
@@ -103,6 +126,7 @@ export async function loader({ request }) {
       poopLogs: poopLogs.items,
       tempLogs: tempLogs.items,
       medLogs: medLogs.items,
+      breastLogs: breastLogs.items,
     };
   }
 }
@@ -115,6 +139,7 @@ export default function AllOverview({ loaderData }) {
     todayPoopLogs,
     todayTempLogs,
     todayMedLogs,
+    todayBreastLogs,
     todayView,
     bottleLogs,
     foodLogs,
@@ -122,10 +147,30 @@ export default function AllOverview({ loaderData }) {
     poopLogs,
     tempLogs,
     medLogs,
+    breastLogs,
   } = loaderData;
   const [searchParams] = useSearchParams();
   const [allLogs, setAllLogs] = useState(
-    getAllLogsDesc(bottleLogs, foodLogs, napLogs, poopLogs, tempLogs, medLogs),
+    getAllLogsDesc(
+      bottleLogs,
+      foodLogs,
+      napLogs,
+      poopLogs,
+      tempLogs,
+      medLogs,
+      breastLogs,
+    ),
+  );
+  const [allTodayLogs, setAllTodayLogs] = useState(
+    getAllLogsDesc(
+      todayBottleLogs,
+      todayFoodLogs,
+      todayNapLogs,
+      todayPoopLogs,
+      todayTempLogs,
+      todayMedLogs,
+      todayBreastLogs,
+    ),
   );
 
   useEffect(() => {
@@ -137,9 +182,32 @@ export default function AllOverview({ loaderData }) {
         poopLogs,
         tempLogs,
         medLogs,
+        breastLogs,
       ),
     );
-  }, [bottleLogs, foodLogs, napLogs, poopLogs, tempLogs, medLogs]);
+  }, [bottleLogs, foodLogs, napLogs, poopLogs, tempLogs, medLogs, breastLogs]);
+
+  useEffect(() => {
+    setAllTodayLogs(
+      getAllLogsDesc(
+        todayBottleLogs,
+        todayFoodLogs,
+        todayNapLogs,
+        todayPoopLogs,
+        todayTempLogs,
+        todayMedLogs,
+        todayBreastLogs,
+      ),
+    );
+  }, [
+    todayBottleLogs,
+    todayFoodLogs,
+    todayNapLogs,
+    todayPoopLogs,
+    todayTempLogs,
+    todayMedLogs,
+    todayBreastLogs,
+  ]);
 
   const [isEdit, setIsEdit] = useState(null);
   const date = searchParams.get("date") ?? "";
@@ -155,6 +223,7 @@ export default function AllOverview({ loaderData }) {
     poop: OverviewPoopAllItem,
     temp: OverviewTempAllItem,
     med: OverviewMedAllItem,
+    breast: OverviewBreastAllItem,
   };
   const overviewTodayItems = {
     bottle: OverviewBottleTodayItem,
@@ -163,6 +232,7 @@ export default function AllOverview({ loaderData }) {
     poop: OverviewPoopTodayItem,
     temp: OverviewTempTodayItem,
     med: OverviewMedTodayItem,
+    breast: OverviewBreastTodayItem,
   };
 
   return (
@@ -195,8 +265,8 @@ export default function AllOverview({ loaderData }) {
         </>
       )}
       {todayView.overview &&
-        (allLogs.length > 0 ? (
-          allLogs.map((log, index) => {
+        (allTodayLogs.length > 0 ? (
+          allTodayLogs.map((log, index) => {
             const ItemComponent = overviewTodayItems[log.log];
             return (
               <ItemComponent
