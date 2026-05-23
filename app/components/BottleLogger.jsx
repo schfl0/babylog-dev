@@ -35,7 +35,7 @@ export default function BottleLogger({ session, logger }) {
   const options = ["formula", "breast milk"];
 
   return (
-    <div className="rounded-md border border-gray-200 p-4 text-sm shadow-md">
+    <div className="rounded-md border border-gray-200 p-4 text-xs shadow-md md:text-sm">
       <deleteFetcher.Form
         method="delete"
         action="/delete-logger"
