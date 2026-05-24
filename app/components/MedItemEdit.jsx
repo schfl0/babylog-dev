@@ -25,12 +25,12 @@ export default function MedItemEdit({ med, setIsEdit }) {
     <fetcher.Form
       method="post"
       action="/edit-med"
-      className="text-3xs mt-1 flex w-full flex-col items-start gap-1 border-t border-gray-300 pt-1"
+      className="md:text-2xs text-3xs mt-1 flex w-full flex-col items-start gap-1 border-t border-gray-300 pt-1"
     >
       <input type="hidden" name="id" id="id" value={med.id} />
       <div className="flex w-full justify-between">
         <div className="flex flex-col gap-0.5">
-          <label htmlFor="med" className="font-medium">
+          <label htmlFor="med" className="text-4xs md:text-3xs">
             Medication
           </label>
           <input
@@ -50,7 +50,7 @@ export default function MedItemEdit({ med, setIsEdit }) {
         <div className="flex items-center gap-1 self-center">
           <button
             type="submit"
-            className="cursor-pointer text-sm transition-all hover:opacity-60"
+            className="cursor-pointer transition-all hover:opacity-60"
           >
             ✅
           </button>
@@ -65,7 +65,7 @@ export default function MedItemEdit({ med, setIsEdit }) {
       </div>
 
       <div className="flex flex-col gap-0.5">
-        <label htmlFor="unit" className="font-medium">
+        <label htmlFor="unit" className="text-4xs md:text-3xs">
           Unit
         </label>
         <select
@@ -89,7 +89,7 @@ export default function MedItemEdit({ med, setIsEdit }) {
       </div>
 
       <div className="flex flex-col gap-0.5">
-        <label htmlFor="quantity" className="font-medium">
+        <label htmlFor="quantity" className="text-4xs md:text-3xs">
           Dose
         </label>
         <input
@@ -108,7 +108,7 @@ export default function MedItemEdit({ med, setIsEdit }) {
       </div>
 
       <div className="flex flex-col gap-0.5">
-        <label htmlFor="date" className="font-medium">
+        <label htmlFor="date" className="text-4xs md:text-3xs">
           Date
         </label>
         <input
@@ -127,7 +127,7 @@ export default function MedItemEdit({ med, setIsEdit }) {
       </div>
 
       <div className="flex flex-col gap-0.5">
-        <label htmlFor="time" className="font-medium">
+        <label htmlFor="time" className="text-4xs md:text-3xs">
           Time
         </label>
         <input

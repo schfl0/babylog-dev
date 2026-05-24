@@ -15,7 +15,7 @@ export default function BreastAllItem({ log: breast, isEdit, setIsEdit }) {
 
   return (
     <div
-      className={`text-xs hover:shadow-sm ${isEdit === breast.id ? "my-1 rounded-md border border-gray-200 p-2" : ""}`}
+      className={`md:text-2xs text-3xs hover:shadow-sm ${isEdit === breast.id ? "my-1 rounded-md border border-gray-200 p-2" : ""}`}
     >
       <div className="flex items-center justify-start">
         <div className="flex flex-1 items-center justify-between">

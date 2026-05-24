@@ -49,7 +49,7 @@ export default function AllBottles({ loaderData }) {
   }, [todayView]);
 
   return (
-    <div className="rounded-md border border-gray-200 px-2 py-4 text-sm shadow-md">
+    <div className="rounded-md border border-gray-200 px-2 py-4 text-xs shadow-md md:text-sm">
       <div className="mb-4 flex items-center justify-between">
         <h2 className="font-bold">🍼 Bottles</h2>
         <DateRadio todayView={todayView} logs="bottles" setIsEdit={setIsEdit} />

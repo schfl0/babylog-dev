@@ -40,7 +40,7 @@ export default function MedLogger({ session, logger }) {
   const options = ["g", "mg", "mcg", "ng", "l", "ml", "drops", "u"];
 
   return (
-    <div className="rounded-md border border-gray-200 p-4 text-sm leading-tight shadow-md">
+    <div className="rounded-md border border-gray-200 p-4 shadow-md">
       <deleteFetcher.Form
         method="delete"
         action="/delete-logger"
@@ -56,13 +56,13 @@ export default function MedLogger({ session, logger }) {
       </deleteFetcher.Form>
 
       <fetcher.Form method="post" action="/med-logger">
-        <div className="mt-2 mb-2 flex flex-col items-center justify-center gap-1">
-          <div className="flex w-full flex-1 flex-col">
-            <label htmlFor="med" className="text-2xs">
+        <div className="mb-2 flex w-full flex-col gap-2">
+          <div className="flex w-full flex-col">
+            <label htmlFor="med" className="text-3xs md:text-2xs">
               Medication
             </label>
             <input
-              className="w-full rounded-sm border border-gray-400 px-1 py-0.5"
+              className="rounded-sm border border-gray-300 px-1 py-0.5"
               type="text"
               name="med"
               id="med"
@@ -70,38 +70,36 @@ export default function MedLogger({ session, logger }) {
               onChange={(e) => setInputMed(e.target.value)}
             />
           </div>
-          <div className="flex items-center justify-center gap-4">
-            <div className="flex flex-col">
-              <label htmlFor="unit" className="text-2xs">
-                Unit
-              </label>
-              <select
-                className="rounded-sm border border-gray-400 px-2 py-0.5"
-                name="unit"
-                id="unit"
-                value={inputUnit}
-                onChange={(e) => setInputUnit(e.target.value)}
-              >
-                {options.map((option) => (
-                  <option key={option} value={option}>
-                    {option.toUpperCase()}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div className="flex flex-col">
-              <label htmlFor="quantity" className="text-2xs">
-                Dose
-              </label>
-              <input
-                className="w-20 rounded-sm border border-gray-400 px-1 py-0.5"
-                type="number"
-                name="quantity"
-                id="quantity"
-                value={inputQuantity}
-                onChange={(e) => setInputQuantity(e.target.value)}
-              />
-            </div>
+          <div className="flex w-full flex-col">
+            <label htmlFor="unit" className="text-3xs md:text-2xs">
+              Unit
+            </label>
+            <select
+              className="rounded-sm border border-gray-300 px-2 py-0.5"
+              name="unit"
+              id="unit"
+              value={inputUnit}
+              onChange={(e) => setInputUnit(e.target.value)}
+            >
+              {options.map((option) => (
+                <option key={option} value={option}>
+                  {option.toUpperCase()}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="flex w-full flex-col">
+            <label htmlFor="quantity" className="text-3xs md:text-2xs">
+              Dose
+            </label>
+            <input
+              className="w-20 rounded-sm border border-gray-300 px-1 py-0.5"
+              type="number"
+              name="quantity"
+              id="quantity"
+              value={inputQuantity}
+              onChange={(e) => setInputQuantity(e.target.value)}
+            />
           </div>
         </div>
         {errorMsg && (
@@ -117,7 +115,7 @@ export default function MedLogger({ session, logger }) {
 
         <button
           type="submit"
-          className="mt-2 w-full cursor-pointer rounded-sm bg-neutral-100 p-2 transition-all hover:opacity-70"
+          className="mt-2 w-full cursor-pointer rounded-sm bg-gray-200 p-2 transition-all hover:opacity-70"
         >
           {fetcher.state === "submitting" ? "Logging..." : "💊 Medication"}
         </button>

@@ -52,7 +52,7 @@ export default function Home({ loaderData }) {
           <div className="mt-6">
             <AddLogger loggers={loggers} />
           </div>
-          <div className="mt-4">
+          <div className="mt-4 text-xs md:text-sm">
             <Loggers
               session={session}
               loggers={loggers}

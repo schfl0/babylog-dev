@@ -33,7 +33,7 @@ export default function NapLogger({ session, logger, openNap }) {
   }, [napStart]);
 
   return (
-    <div className="rounded-md border border-gray-200 p-4 text-sm shadow-md">
+    <div className="rounded-md border border-gray-200 p-4 shadow-md">
       <deleteFetcher.Form
         method="delete"
         action="/delete-logger"
@@ -49,27 +49,27 @@ export default function NapLogger({ session, logger, openNap }) {
       </deleteFetcher.Form>
 
       <fetcher.Form method="post" action="/nap-logger">
-        <div className="mt-2 mb-2">
+        <div className="mb-2">
           <input
             type="hidden"
             name="triggerNap"
             id="triggerNap"
             value={isSleeping ? "stop" : "start"}
           />
-          <div className="flex items-center justify-center gap-6">
+          <div className="flex items-center justify-center gap-8">
             <div className="flex flex-col items-start justify-center">
-              <p className="text-2xs">🏁 Start</p>
+              <p className="text-3xs md:text-2xs">🏁 Start</p>
               <p>{napStart ? `${formatTime(napStart)}` : "--:--"}</p>
             </div>
             <div>
-              <p className="text-2xs">⏱️ Nap</p>
+              <p className="text-3xs md:text-2xs">⏱️ Nap</p>
               <p>{napDuration || "--:--:--"}</p>
             </div>
           </div>
         </div>
         <button
           type="submit"
-          className="mt-2 w-full cursor-pointer rounded-sm bg-violet-100 p-2 transition-all hover:opacity-70"
+          className="mt-2 w-full cursor-pointer rounded-sm bg-blue-200 p-2 transition-all hover:opacity-70"
         >
           💤 {isSleeping ? "End" : "Start"} nap
         </button>

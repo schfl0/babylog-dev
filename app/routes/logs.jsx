@@ -36,7 +36,7 @@ export default function Logs({ loaderData }) {
   const { allView } = loaderData;
 
   return (
-    <div className="text">
+    <>
       <div className="mt-6">
         <h1 className="mb-2 font-bold">Logs</h1>
         <SelectAllView allView={allView} />
@@ -44,6 +44,6 @@ export default function Logs({ loaderData }) {
       <div className="mt-4">
         <Outlet />
       </div>
-    </div>
+    </>
   );
 }

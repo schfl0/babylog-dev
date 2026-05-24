@@ -48,7 +48,7 @@ export default function Nav() {
             type="submit"
             className="cursor-pointer rounded-sm bg-pink-600 px-2 py-1 text-white transition-all hover:opacity-60"
           >
-            🔒 Sign out
+            🔒
           </button>
         </form>
       )}

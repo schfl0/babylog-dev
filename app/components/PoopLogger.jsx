@@ -28,7 +28,7 @@ export default function PoopLogger({ session, logger }) {
   }, [fetcher.data]);
 
   return (
-    <div className="rounded-md border border-gray-200 p-4 text-sm shadow-md">
+    <div className="rounded-md border border-gray-200 p-4 shadow-md">
       <deleteFetcher.Form
         method="delete"
         action="/delete-logger"
@@ -44,13 +44,13 @@ export default function PoopLogger({ session, logger }) {
       </deleteFetcher.Form>
 
       <fetcher.Form method="post" action="/poop-logger">
-        <div className="mt-2 mb-2 flex items-center justify-center">
-          <div className="flex flex-col items-start justify-center">
-            <label htmlFor="poop" className="text-2xs">
+        <div className="mb-2 flex flex-col gap-2">
+          <div className="flex w-full flex-col">
+            <label htmlFor="poop" className="text-3xs md:text-2xs">
               Size
             </label>
             <select
-              className="rounded-sm border border-gray-400 px-2 py-0.5"
+              className="rounded-sm border border-gray-300 px-2 py-0.5"
               name="poop"
               id="poop"
               value={inputPoop}
@@ -77,7 +77,7 @@ export default function PoopLogger({ session, logger }) {
 
         <button
           type="submit"
-          className="mt-2 w-full cursor-pointer rounded-sm bg-[#f6f0e8] p-2 transition-all hover:opacity-70"
+          className="mt-2 w-full cursor-pointer rounded-sm bg-[#eed0b4] p-2 transition-all hover:opacity-70"
         >
           {fetcher.state === "submitting" ? "Logging..." : "💩 Poop"}
         </button>

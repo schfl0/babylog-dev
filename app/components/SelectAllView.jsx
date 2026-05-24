@@ -24,7 +24,7 @@ export default function SelectAllView({ allView }) {
     <fetcher.Form
       method="post"
       action="/select-allview"
-      className="flex items-center justify-start gap-4 text-sm"
+      className="flex items-center justify-start gap-4 text-xs md:text-sm"
     >
       <select
         className="rounded-sm border px-2 py-0.5"
@@ -42,7 +42,7 @@ export default function SelectAllView({ allView }) {
         type="submit"
         className="cursor-pointer rounded-sm bg-pink-600 px-2 py-1 text-white transition-all hover:opacity-60"
       >
-        🔎 View
+        🔎
       </button>
     </fetcher.Form>
   );

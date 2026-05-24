@@ -22,13 +22,13 @@ export default function FoodItemEdit({ food, setIsEdit }) {
     <fetcher.Form
       method="post"
       action="/edit-food"
-      className="text-3xs mt-1 flex w-full flex-col items-start gap-1 border-t border-gray-300 pt-1"
+      className="text-3xs md:text-2xs mt-1 flex w-full flex-col items-start gap-1 border-t border-gray-300 pt-1"
     >
       <input type="hidden" name="id" id="id" value={food.id} />
       <div className="flex w-full justify-between">
         {" "}
         <div className="flex flex-col gap-0.5">
-          <label htmlFor="food" className="font-medium">
+          <label htmlFor="food" className="text-4xs md:text-3xs">
             Food
           </label>
           <input
@@ -45,7 +45,7 @@ export default function FoodItemEdit({ food, setIsEdit }) {
             </p>
           )}
         </div>
-        <div className="mt-1 flex gap-2 text-sm">
+        <div className="mt-1 flex gap-2">
           <button
             type="submit"
             className="cursor-pointer transition-all hover:opacity-60"
@@ -63,8 +63,8 @@ export default function FoodItemEdit({ food, setIsEdit }) {
       </div>
 
       <div className="flex flex-col gap-0.5">
-        <label htmlFor="g" className="font-medium">
-          g
+        <label htmlFor="g" className="text-4xs md:text-3xs">
+          G
         </label>
         <input
           className="rounded-sm border border-gray-400 bg-green-50 px-1 py-0.5"
@@ -81,7 +81,7 @@ export default function FoodItemEdit({ food, setIsEdit }) {
         )}
       </div>
       <div className="flex flex-col gap-0.5">
-        <label htmlFor="date" className="font-medium">
+        <label htmlFor="date" className="text-4xs md:text-3xs">
           Date
         </label>
         <input
@@ -99,7 +99,7 @@ export default function FoodItemEdit({ food, setIsEdit }) {
         )}
       </div>
       <div className="flex flex-shrink-0 flex-col items-start">
-        <label htmlFor="time" className="font-medium">
+        <label htmlFor="time" className="text-4xs md:text-3xs">
           Time
         </label>
         <input

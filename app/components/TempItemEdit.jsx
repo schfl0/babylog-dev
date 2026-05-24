@@ -21,12 +21,14 @@ export default function TempItemEdit({ temp, setIsEdit }) {
     <fetcher.Form
       method="post"
       action="/edit-temp"
-      className="text-3xs mt-1 flex w-full flex-col items-start gap-1 border-t border-gray-300 pt-1"
+      className="text-3xs md:text-2xs mt-1 flex w-full flex-col items-start gap-1 border-t border-gray-300 pt-1"
     >
       <input type="hidden" name="id" id="id" value={temp.id} />
       <div className="flex w-full justify-between">
         <div className="flex flex-col gap-0.5">
-          <label htmlFor="temp">°C</label>
+          <label htmlFor="temp" className="text-4xs md:text-3xs">
+            °C
+          </label>
           <input
             className="rounded-sm border border-gray-400 bg-red-50 px-1 py-0.5"
             type="number"
@@ -44,7 +46,7 @@ export default function TempItemEdit({ temp, setIsEdit }) {
         <div className="ml-auto flex items-center gap-1 self-center">
           <button
             type="submit"
-            className="cursor-pointer text-xs transition-all hover:opacity-60"
+            className="cursor-pointer transition-all hover:opacity-60"
           >
             ✅
           </button>
@@ -59,7 +61,9 @@ export default function TempItemEdit({ temp, setIsEdit }) {
       </div>
 
       <div className="flex flex-col gap-0.5">
-        <label htmlFor="date">Date</label>
+        <label htmlFor="date" className="text-4xs md:text-3xs">
+          Date
+        </label>
         <input
           className="rounded-sm border border-gray-400 bg-red-50 px-1 py-0.5"
           type="date"
@@ -76,7 +80,9 @@ export default function TempItemEdit({ temp, setIsEdit }) {
       </div>
 
       <div className="flex flex-col gap-0.5">
-        <label htmlFor="time">Time</label>
+        <label htmlFor="time" className="text-4xs md:text-3xs">
+          Time
+        </label>
         <input
           className="rounded-sm border border-gray-400 bg-red-50 px-1"
           type="time"

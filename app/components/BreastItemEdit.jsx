@@ -34,16 +34,16 @@ export default function BreastItemEdit({ breast, setIsEdit }) {
     <fetcher.Form
       method="post"
       action="/edit-breast"
-      className="text-3xs mt-1 flex w-full flex-col items-start gap-1 border-t border-gray-300 pt-1"
+      className="md:text-2xs text-3xs mt-1 flex w-full flex-col items-start gap-1 border-t border-gray-300 pt-1"
     >
       <input type="hidden" name="id" id="id" value={breast.id} />
       <div className="flex w-full justify-between">
         <div className="flex flex-col gap-0.5">
-          <label htmlFor="position" className="font-medium">
+          <label htmlFor="position" className="text-4xs md:text-3xs">
             Position
           </label>
           <select
-            className="rounded-sm border border-gray-400 bg-rose-50 px-1 py-0.5"
+            className="rounded-sm border border-gray-400 bg-pink-50 px-1 py-0.5"
             name="position"
             id="position"
             value={inputPosition}
@@ -62,7 +62,7 @@ export default function BreastItemEdit({ breast, setIsEdit }) {
             </p>
           )}
         </div>
-        <div className="mt-1 flex gap-2 text-sm">
+        <div className="mt-1 flex gap-2">
           <button
             type="submit"
             className="cursor-pointer transition-all hover:opacity-60"
@@ -79,11 +79,11 @@ export default function BreastItemEdit({ breast, setIsEdit }) {
         </div>
       </div>
       <div className="flex flex-col gap-0.5">
-        <label htmlFor="startDate" className="font-medium">
+        <label htmlFor="startDate" className="text-4xs md:text-3xs">
           Start date
         </label>
         <input
-          className="rounded-sm border border-gray-400 bg-rose-50 px-1 py-0.5"
+          className="rounded-sm border border-gray-400 bg-pink-50 px-1 py-0.5"
           type="date"
           name="startDate"
           id="startDate"
@@ -98,11 +98,11 @@ export default function BreastItemEdit({ breast, setIsEdit }) {
       </div>
 
       <div className="flex flex-col gap-0.5">
-        <label htmlFor="startTime" className="font-medium">
+        <label htmlFor="startTime" className="text-4xs md:text-3xs">
           Start time
         </label>
         <input
-          className="rounded-sm border border-gray-400 bg-rose-50 px-1"
+          className="rounded-sm border border-gray-400 bg-pink-50 px-1"
           type="time"
           name="startTime"
           id="startTime"
@@ -117,11 +117,11 @@ export default function BreastItemEdit({ breast, setIsEdit }) {
       </div>
 
       <div className="flex flex-col gap-0.5">
-        <label htmlFor="stopDate" className="font-medium">
+        <label htmlFor="stopDate" className="text-4xs md:text-3xs">
           Stop date
         </label>
         <input
-          className="rounded-sm border border-gray-400 bg-rose-50 px-1 py-0.5"
+          className="rounded-sm border border-gray-400 bg-pink-50 px-1 py-0.5"
           type="date"
           name="stopDate"
           id="stopDate"
@@ -136,11 +136,11 @@ export default function BreastItemEdit({ breast, setIsEdit }) {
       </div>
 
       <div className="flex flex-col gap-0.5">
-        <label htmlFor="stopTime" className="font-medium">
+        <label htmlFor="stopTime" className="text-4xs md:text-3xs">
           Stop time
         </label>
         <input
-          className="rounded-sm border border-gray-400 bg-rose-50 px-1"
+          className="rounded-sm border border-gray-400 bg-pink-50 px-1"
           type="time"
           name="stopTime"
           id="stopTime"

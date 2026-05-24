@@ -68,7 +68,7 @@ export default function BreastLogger({
   }, [breastRightStart]);
 
   return (
-    <div className="rounded-md border border-gray-200 p-4 text-sm shadow-md">
+    <div className="rounded-md border border-gray-200 p-4 shadow-md">
       <deleteFetcher.Form
         method="delete"
         action="/delete-logger"
@@ -98,18 +98,18 @@ export default function BreastLogger({
             <div>
               <p className="mb-2 text-center font-bold">L</p>
               <div className="flex flex-col items-start justify-center">
-                <p className="text-2xs">🏁 Start</p>
+                <p className="text-3xs md:text-2xs">🏁 Start</p>
                 <p>
                   {breastLeftStart ? `${formatTime(breastLeftStart)}` : "--:--"}
                 </p>
-                <p className="text-2xs mt-1">⏱️ Feeding</p>
+                <p className="text-3xs md:text-2xs mt-1">⏱️ Feeding</p>
                 <p> {breastLeftDuration || "--:--:--"}</p>
               </div>
             </div>
           </div>
           <button
             type="submit"
-            className="mt-2 w-full cursor-pointer rounded-sm bg-rose-100 p-2 transition-all hover:opacity-70"
+            className="mt-2 w-full cursor-pointer rounded-sm bg-pink-200 p-2 transition-all hover:opacity-70"
           >
             🤱 {isLeftFeeding ? "End" : "Start"}
           </button>
@@ -129,20 +129,20 @@ export default function BreastLogger({
             <div>
               <p className="mb-2 text-center font-bold">R</p>
               <div className="flex flex-col items-start justify-center">
-                <p className="text-2xs">🏁 Start</p>
+                <p className="text-3xs md:text-2xs">🏁 Start</p>
                 <p>
                   {breastRightStart
                     ? `${formatTime(breastRightStart)}`
                     : "--:--"}
                 </p>
-                <p className="text-2xs mt-1">⏱️ Feeding</p>
+                <p className="text-3xs md:text-2xs mt-1">⏱️ Feeding</p>
                 <p> {breastRightDuration || "--:--:--"}</p>
               </div>
             </div>
           </div>
           <button
             type="submit"
-            className="mt-2 w-full cursor-pointer rounded-sm bg-rose-100 p-2 transition-all hover:opacity-70"
+            className="mt-2 w-full cursor-pointer rounded-sm bg-pink-200 p-2 transition-all hover:opacity-70"
           >
             🤱 {isRightFeeding ? "End" : "Start"}
           </button>

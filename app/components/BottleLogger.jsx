@@ -35,7 +35,7 @@ export default function BottleLogger({ session, logger }) {
   const options = ["formula", "breast milk"];
 
   return (
-    <div className="rounded-md border border-gray-200 p-4 text-xs shadow-md md:text-sm">
+    <div className="rounded-md border border-gray-200 p-4 shadow-md">
       <deleteFetcher.Form
         method="delete"
         action="/delete-logger"
@@ -50,13 +50,13 @@ export default function BottleLogger({ session, logger }) {
         </button>
       </deleteFetcher.Form>
       <fetcher.Form method="post" action="/bottle-logger">
-        <div className="mt-2 mb-2 flex items-center justify-center gap-4">
-          <div className="flex flex-col items-start justify-center">
-            <label htmlFor="type" className="text-2xs">
+        <div className="mb-2 flex w-full flex-col gap-2">
+          <div className="flex flex-col">
+            <label htmlFor="type" className="text-3xs md:text-2xs">
               Type
             </label>
             <select
-              className="rounded-sm border border-gray-400 px-2 py-0.5"
+              className="rounded-sm border border-gray-300 px-2 py-0.5"
               name="type"
               id="type"
               value={inputType}
@@ -69,12 +69,12 @@ export default function BottleLogger({ session, logger }) {
               ))}
             </select>
           </div>
-          <div className="flex flex-col items-start justify-center">
-            <label htmlFor="ml" className="text-2xs">
-              ml
+          <div className="flex flex-col">
+            <label htmlFor="ml" className="md:text-2xs text-3xs">
+              Ml
             </label>
             <input
-              className="w-20 rounded-sm border border-gray-400 px-1 py-0.5"
+              className="rounded-sm border border-gray-300 px-1 py-0.5"
               type="number"
               min="0"
               name="ml"
@@ -97,7 +97,7 @@ export default function BottleLogger({ session, logger }) {
 
         <button
           type="submit"
-          className="mt-2 w-full cursor-pointer rounded-sm bg-yellow-100 p-2 transition-all hover:opacity-70"
+          className="mt-2 w-full cursor-pointer rounded-sm bg-yellow-200 p-2 transition-all hover:opacity-70"
         >
           {fetcher.state === "submitting" ? "Logging..." : "🍼 Bottle"}
         </button>

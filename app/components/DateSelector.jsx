@@ -19,14 +19,14 @@ export default function DateSelector({ logs, date }) {
         type="submit"
         className="cursor-pointer rounded-sm bg-pink-600 px-2 py-1 text-white transition-all hover:opacity-60"
       >
-        🔎 View
+        🔎
       </button>
       <button
         type="button"
         onClick={() => submit(null, { method: "get", action: `/logs/${logs}` })}
         className="cursor-pointer rounded-sm bg-pink-600 px-2 py-1 text-white transition-all hover:opacity-60"
       >
-        🗓️ All
+        🗓️
       </button>
     </form>
   );
