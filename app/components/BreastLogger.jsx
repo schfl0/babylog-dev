@@ -98,11 +98,11 @@ export default function BreastLogger({
             <div>
               <p className="mb-2 text-center font-bold">L</p>
               <div className="flex flex-col items-start justify-center">
-                <p className="text-3xs md:text-2xs">🏁 Start</p>
+                <p className="text-2xs">🏁 Start</p>
                 <p>
                   {breastLeftStart ? `${formatTime(breastLeftStart)}` : "--:--"}
                 </p>
-                <p className="text-3xs md:text-2xs mt-1">⏱️ Feeding</p>
+                <p className="text-2xs mt-1">⏱️ Feeding</p>
                 <p> {breastLeftDuration || "--:--:--"}</p>
               </div>
             </div>
@@ -129,13 +129,13 @@ export default function BreastLogger({
             <div>
               <p className="mb-2 text-center font-bold">R</p>
               <div className="flex flex-col items-start justify-center">
-                <p className="text-3xs md:text-2xs">🏁 Start</p>
+                <p className="text-2xs">🏁 Start</p>
                 <p>
                   {breastRightStart
                     ? `${formatTime(breastRightStart)}`
                     : "--:--"}
                 </p>
-                <p className="text-3xs md:text-2xs mt-1">⏱️ Feeding</p>
+                <p className="text-2xs mt-1">⏱️ Feeding</p>
                 <p> {breastRightDuration || "--:--:--"}</p>
               </div>
             </div>

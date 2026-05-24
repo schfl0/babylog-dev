@@ -14,7 +14,7 @@ export default function Nav() {
     })();
   }, []);
   return (
-    <nav className="flex items-center gap-6 py-4">
+    <nav className="flex items-center gap-6 py-4 text-lg">
       <NavLink
         to="/"
         className={({ isActive }) =>

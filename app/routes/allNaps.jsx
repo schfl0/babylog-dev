@@ -49,7 +49,7 @@ export default function AllNaps({ loaderData }) {
   }, [todayView]);
 
   return (
-    <div className="rounded-md border border-gray-200 px-2 py-4 text-xs shadow-md md:text-sm">
+    <div className="rounded-md border border-gray-200 px-2 py-4 shadow-md">
       <div className="mb-4 flex items-center justify-between">
         <h2 className="font-bold">💤 Naps</h2>
         <DateRadio todayView={todayView} logs="naps" />

@@ -67,7 +67,7 @@ export default function App({ loaderData }) {
   const { session } = loaderData;
   return (
     <SessionProvider value={{ session }}>
-      <div className="mx-auto max-w-md bg-white p-4 text-sm md:text-base">
+      <div className="mx-auto max-w-md bg-white p-4">
         <Nav />
         <Outlet />
       </div>

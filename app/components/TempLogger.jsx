@@ -44,7 +44,7 @@ export default function TempLogger({ session, logger }) {
       <fetcher.Form method="post" action="/temp-logger">
         <div className="mb-2 flex items-center justify-center gap-2">
           <div className="flex w-full flex-col">
-            <label htmlFor="temp" className="text-3xs md:text-2xs">
+            <label htmlFor="temp" className="text-2xs">
               °C
             </label>
             <input

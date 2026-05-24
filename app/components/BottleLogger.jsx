@@ -52,7 +52,7 @@ export default function BottleLogger({ session, logger }) {
       <fetcher.Form method="post" action="/bottle-logger">
         <div className="mb-2 flex w-full flex-col gap-2">
           <div className="flex flex-col">
-            <label htmlFor="type" className="text-3xs md:text-2xs">
+            <label htmlFor="type" className="text-2xs">
               Type
             </label>
             <select
@@ -70,7 +70,7 @@ export default function BottleLogger({ session, logger }) {
             </select>
           </div>
           <div className="flex flex-col">
-            <label htmlFor="ml" className="md:text-2xs text-3xs">
+            <label htmlFor="ml" className="text-2xs">
               Ml
             </label>
             <input

@@ -49,7 +49,7 @@ export default function FoodLogger({ session, logger }) {
       <fetcher.Form method="post" action="/food-logger">
         <div className="mb-2 flex flex-col gap-2">
           <div className="flex w-full flex-col">
-            <label htmlFor="food" className="text-3xs md:text-2xs">
+            <label htmlFor="food" className="text-2xs">
               Food
             </label>
             <input
@@ -62,7 +62,7 @@ export default function FoodLogger({ session, logger }) {
             />
           </div>
           <div className="flex w-full flex-col">
-            <label htmlFor="g" className="text-3xs md:text-2xs">
+            <label htmlFor="g" className="text-2xs">
               G
             </label>
             <input

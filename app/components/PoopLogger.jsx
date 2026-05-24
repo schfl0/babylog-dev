@@ -46,7 +46,7 @@ export default function PoopLogger({ session, logger }) {
       <fetcher.Form method="post" action="/poop-logger">
         <div className="mb-2 flex flex-col gap-2">
           <div className="flex w-full flex-col">
-            <label htmlFor="poop" className="text-3xs md:text-2xs">
+            <label htmlFor="poop" className="text-2xs">
               Size
             </label>
             <select

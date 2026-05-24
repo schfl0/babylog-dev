@@ -15,7 +15,7 @@ export default function OverviewBottleTodayItem({
 
   return (
     <div
-      className={`text-2xs hover:shadow-sm md:text-xs ${isEdit === bottle.id ? "my-1 rounded-md border border-gray-200 p-2" : ""}`}
+      className={`text-xs hover:shadow-sm ${isEdit === bottle.id ? "my-1 rounded-md border border-gray-200 p-2" : ""}`}
     >
       <div className="flex items-center justify-start">
         <div className="flex flex-1 items-center justify-between">
@@ -32,7 +32,7 @@ export default function OverviewBottleTodayItem({
         {isEdit !== bottle.id && (
           <>
             <button
-              className="ml-2 cursor-pointer hover:opacity-60"
+              className="ml-2 cursor-pointer text-sm hover:opacity-60"
               onClick={handleClick}
             >
               📝

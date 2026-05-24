@@ -23,12 +23,12 @@ export default function BottleItemEdit({ bottle, setIsEdit }) {
     <fetcher.Form
       method="post"
       action="/edit-bottle"
-      className="md:text-2xs text-3xs mt-1 flex w-full flex-col items-start gap-1 border-t border-gray-300 pt-1"
+      className="text-2xs mt-1 flex w-full flex-col items-start gap-1 border-t border-gray-300 pt-1"
     >
       <input type="hidden" name="id" id="id" value={bottle.id} />
       <div className="flex w-full items-center justify-between">
         <div className="flex flex-col gap-0.5">
-          <label htmlFor="type" className="text-4xs md:text-3xs">
+          <label htmlFor="type" className="text-3xs">
             Type
           </label>
           <select
@@ -50,7 +50,7 @@ export default function BottleItemEdit({ bottle, setIsEdit }) {
             </p>
           )}
         </div>
-        <div className="mt-1 flex gap-2">
+        <div className="mt-1 flex gap-2 text-sm">
           <button
             type="submit"
             className="cursor-pointer transition-all hover:opacity-60"
@@ -70,7 +70,7 @@ export default function BottleItemEdit({ bottle, setIsEdit }) {
       </div>
 
       <div className="flex flex-col gap-0.5">
-        <label htmlFor="ml" className="text-4xs md:text-3xs">
+        <label htmlFor="ml" className="text-3xs">
           Ml
         </label>
         <input
@@ -89,7 +89,7 @@ export default function BottleItemEdit({ bottle, setIsEdit }) {
       </div>
 
       <div className="flex flex-col gap-0.5">
-        <label htmlFor="date" className="text-4xs md:text-3xs">
+        <label htmlFor="date" className="text-3xs">
           Date
         </label>
         <input
@@ -108,7 +108,7 @@ export default function BottleItemEdit({ bottle, setIsEdit }) {
       </div>
 
       <div className="flex flex-col gap-0.5">
-        <label htmlFor="time" className="text-4xs md:text-3xs">
+        <label htmlFor="time" className="text-3xs">
           Time
         </label>
         <input

@@ -28,12 +28,12 @@ export default function NapItemEdit({ nap, setIsEdit }) {
     <fetcher.Form
       method="post"
       action="/edit-nap"
-      className="text-3xs md:text-2xs mt-1 flex w-full flex-col items-start gap-1 border-t border-gray-300 pt-1"
+      className="text-2xs mt-1 flex w-full flex-col items-start gap-1 border-t border-gray-300 pt-1"
     >
       <input type="hidden" name="id" id="id" value={nap.id} />
       <div className="flex w-full justify-between">
         <div className="flex flex-col gap-0.5">
-          <label htmlFor="startDate" className="text-4xs md:text-3xs">
+          <label htmlFor="startDate" className="text-3xs">
             Start date
           </label>
           <input
@@ -50,7 +50,7 @@ export default function NapItemEdit({ nap, setIsEdit }) {
             </p>
           )}
         </div>
-        <div className="mt-1 flex gap-2">
+        <div className="mt-1 flex gap-2 text-sm">
           <button
             type="submit"
             className="cursor-pointer transition-all hover:opacity-60"
@@ -67,7 +67,7 @@ export default function NapItemEdit({ nap, setIsEdit }) {
         </div>
       </div>
       <div className="flex flex-col gap-0.5">
-        <label htmlFor="startTime" className="text-4xs md:text-3xs">
+        <label htmlFor="startTime" className="text-3xs">
           Start time
         </label>
         <input
@@ -86,7 +86,7 @@ export default function NapItemEdit({ nap, setIsEdit }) {
       </div>
 
       <div className="flex flex-col gap-0.5">
-        <label htmlFor="stopDate" className="text-4xs md:text-3xs">
+        <label htmlFor="stopDate" className="text-3xs">
           Stop date
         </label>
         <input
@@ -105,7 +105,7 @@ export default function NapItemEdit({ nap, setIsEdit }) {
       </div>
 
       <div className="flex flex-col gap-0.5">
-        <label htmlFor="stopTime" className="text-4xs md:text-3xs">
+        <label htmlFor="stopTime" className="text-3xs">
           Stop time
         </label>
         <input

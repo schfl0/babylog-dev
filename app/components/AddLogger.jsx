@@ -31,7 +31,7 @@ export default function AddLogger({ loggers }) {
       <fetcher.Form
         method="post"
         action="/add-logger"
-        className="flex items-center justify-start gap-4 text-xs md:text-sm"
+        className="flex items-center justify-start gap-4"
       >
         <select
           className="rounded-sm border px-2 py-0.5"

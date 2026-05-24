@@ -58,7 +58,7 @@ export default function MedLogger({ session, logger }) {
       <fetcher.Form method="post" action="/med-logger">
         <div className="mb-2 flex w-full flex-col gap-2">
           <div className="flex w-full flex-col">
-            <label htmlFor="med" className="text-3xs md:text-2xs">
+            <label htmlFor="med" className="text-2xs">
               Medication
             </label>
             <input
@@ -71,7 +71,7 @@ export default function MedLogger({ session, logger }) {
             />
           </div>
           <div className="flex w-full flex-col">
-            <label htmlFor="unit" className="text-3xs md:text-2xs">
+            <label htmlFor="unit" className="text-2xs">
               Unit
             </label>
             <select
@@ -89,7 +89,7 @@ export default function MedLogger({ session, logger }) {
             </select>
           </div>
           <div className="flex w-full flex-col">
-            <label htmlFor="quantity" className="text-3xs md:text-2xs">
+            <label htmlFor="quantity" className="text-2xs">
               Dose
             </label>
             <input

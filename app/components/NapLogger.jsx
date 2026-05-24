@@ -58,11 +58,11 @@ export default function NapLogger({ session, logger, openNap }) {
           />
           <div className="flex items-center justify-center gap-8">
             <div className="flex flex-col items-start justify-center">
-              <p className="text-3xs md:text-2xs">🏁 Start</p>
+              <p className="text-2xs">🏁 Start</p>
               <p>{napStart ? `${formatTime(napStart)}` : "--:--"}</p>
             </div>
             <div>
-              <p className="text-3xs md:text-2xs">⏱️ Nap</p>
+              <p className="text-2xs">⏱️ Nap</p>
               <p>{napDuration || "--:--:--"}</p>
             </div>
           </div>

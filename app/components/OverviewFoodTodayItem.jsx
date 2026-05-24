@@ -14,7 +14,7 @@ export default function OverviewFoodTodayItem({
 
   return (
     <div
-      className={`text-2xs hover:shadow-sm md:text-xs ${isEdit === food.id ? "my-1 rounded-md border border-gray-200 p-2" : ""}`}
+      className={`text-xs hover:shadow-sm ${isEdit === food.id ? "my-1 rounded-md border border-gray-200 p-2" : ""}`}
     >
       <div className="flex items-center justify-start text-xs hover:shadow-sm">
         <div className="flex flex-1 items-center justify-between">
@@ -31,7 +31,7 @@ export default function OverviewFoodTodayItem({
         {isEdit !== food.id && (
           <>
             <button
-              className="ml-2 cursor-pointer hover:opacity-60"
+              className="ml-2 cursor-pointer text-sm hover:opacity-60"
               onClick={handleClick}
             >
               📝
