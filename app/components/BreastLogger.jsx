@@ -97,7 +97,7 @@ export default function BreastLogger({
             />
             <div>
               <p className="mb-2 text-center font-bold">L</p>
-              <div className="flex flex-col items-start justify-center">
+              <div className="flex flex-col items-center justify-center">
                 <p className="text-2xs">🏁 Start</p>
                 <p>
                   {breastLeftStart ? `${formatTime(breastLeftStart)}` : "--:--"}
@@ -128,7 +128,7 @@ export default function BreastLogger({
             />
             <div>
               <p className="mb-2 text-center font-bold">R</p>
-              <div className="flex flex-col items-start justify-center">
+              <div className="flex flex-col items-center justify-center">
                 <p className="text-2xs">🏁 Start</p>
                 <p>
                   {breastRightStart

@@ -19,7 +19,7 @@ export default function OverviewBreastAllItem({
 
   return (
     <div
-      className={`text-xs hover:shadow-sm ${isEdit === breast.id ? "my-1 rounded-md border border-gray-200 p-2" : ""}`}
+      className={`text-2xs hover:shadow-sm ${isEdit === breast.id ? "my-1 rounded-md border border-gray-200 p-2" : ""}`}
     >
       <div className="flex items-center justify-start">
         <div className="flex flex-1 items-center justify-between">

@@ -56,7 +56,7 @@ export default function NapLogger({ session, logger, openNap }) {
             id="triggerNap"
             value={isSleeping ? "stop" : "start"}
           />
-          <div className="flex items-center justify-center gap-8">
+          <div className="flex items-center justify-center gap-10">
             <div className="flex flex-col items-start justify-center">
               <p className="text-2xs">🏁 Start</p>
               <p>{napStart ? `${formatTime(napStart)}` : "--:--"}</p>

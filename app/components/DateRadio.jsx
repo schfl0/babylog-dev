@@ -4,7 +4,11 @@ export default function DateRadio({ todayView, logs }) {
   const fetcher = useFetcher();
 
   return (
-    <fetcher.Form method="post" action="/set-todayview" className="flex gap-2">
+    <fetcher.Form
+      method="post"
+      action="/set-todayview"
+      className="flex gap-2 text-sm"
+    >
       <input type="hidden" name="logs" value={logs} />
       <label className="flex items-center gap-1">
         <input
