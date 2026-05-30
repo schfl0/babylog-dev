@@ -27,7 +27,7 @@ export default function SelectAllView({ allView }) {
       className="flex items-center justify-start gap-2"
     >
       <select
-        className="rounded-sm border px-2 py-0.5"
+        className="rounded-lg border border-white/20 bg-white/10 p-2 backdrop-blur-sm"
         name="selectAllView"
         id="selectAllView"
         defaultValue={allView}

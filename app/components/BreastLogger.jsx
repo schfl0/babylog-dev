@@ -68,7 +68,7 @@ export default function BreastLogger({
   }, [breastRightStart]);
 
   return (
-    <div className="rounded-md border border-gray-200 p-4 shadow-md">
+    <div className="rounded-xl border border-white/30 bg-white/30 p-4 shadow-md backdrop-blur-xl">
       <deleteFetcher.Form
         method="delete"
         action="/delete-logger"
@@ -86,7 +86,7 @@ export default function BreastLogger({
         <leftBreast.Form
           method="post"
           action="/breastleft-logger"
-          className="flex-1 p-2 shadow-sm"
+          className="flex-1 rounded-lg p-2 shadow-sm"
         >
           <div className="mb-2">
             <input
@@ -109,7 +109,7 @@ export default function BreastLogger({
           </div>
           <button
             type="submit"
-            className="mt-2 w-full cursor-pointer rounded-sm bg-pink-200 p-2 transition-all hover:opacity-70"
+            className="mt-2 w-full cursor-pointer rounded-lg bg-pink-200 p-2 transition-all hover:opacity-70"
           >
             🤱 {isLeftFeeding ? "End" : "Start"}
           </button>
@@ -117,7 +117,7 @@ export default function BreastLogger({
         <rightBreast.Form
           method="post"
           action="/breastright-logger"
-          className="flex-1 p-2 shadow-sm"
+          className="flex-1 rounded-lg p-2 shadow-sm"
         >
           <div className="mb-2">
             <input
@@ -142,7 +142,7 @@ export default function BreastLogger({
           </div>
           <button
             type="submit"
-            className="mt-2 w-full cursor-pointer rounded-sm bg-pink-200 p-2 transition-all hover:opacity-70"
+            className="mt-2 w-full cursor-pointer rounded-lg bg-pink-200 p-2 transition-all hover:opacity-70"
           >
             🤱 {isRightFeeding ? "End" : "Start"}
           </button>

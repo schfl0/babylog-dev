@@ -12,6 +12,7 @@ export default function DateRadio({ todayView, logs }) {
       <input type="hidden" name="logs" value={logs} />
       <label className="flex items-center gap-1">
         <input
+          className="h-4 w-4 border border-white/10 accent-pink-600"
           type="radio"
           name="setTodayView"
           value="today"
@@ -22,6 +23,7 @@ export default function DateRadio({ todayView, logs }) {
       </label>
       <label className="flex items-center gap-1">
         <input
+          className="h-4 w-4 border border-white/10 accent-pink-600"
           type="radio"
           name="setTodayView"
           value="byDate"

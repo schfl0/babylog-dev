@@ -26,7 +26,7 @@ export default function TempLogger({ session, logger }) {
   }, [fetcher.data]);
 
   return (
-    <div className="rounded-md border border-gray-200 p-4 shadow-md">
+    <div className="rounded-xl border border-white/30 bg-white/30 p-4 shadow-md backdrop-blur-xl">
       <deleteFetcher.Form
         method="delete"
         action="/delete-logger"
@@ -48,7 +48,7 @@ export default function TempLogger({ session, logger }) {
               °C
             </label>
             <input
-              className="rounded-sm border border-gray-300 px-1 py-0.5"
+              className="rounded-lg border border-white/20 bg-white/10 p-2 backdrop-blur-sm"
               type="number"
               name="temp"
               id="temp"
@@ -70,7 +70,7 @@ export default function TempLogger({ session, logger }) {
         )}
         <button
           type="submit"
-          className="mt-2 w-full cursor-pointer rounded-sm bg-red-200 p-2 transition-all hover:opacity-70"
+          className="mt-2 w-full cursor-pointer rounded-lg bg-red-200 p-2 transition-all hover:opacity-70"
         >
           {fetcher.state === "submitting" ? "Logging..." : "🌡️ Temperature"}
         </button>

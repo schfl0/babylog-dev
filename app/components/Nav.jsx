@@ -14,13 +14,13 @@ export default function Nav() {
     })();
   }, []);
   return (
-    <nav className="flex items-center gap-6 py-4 text-lg">
+    <nav className="flex items-center gap-6 rounded-xl border border-white/30 bg-white/30 p-4 shadow-lg backdrop-blur-xl">
       <NavLink
         to="/"
         className={({ isActive }) =>
           isActive
             ? "font-bold text-pink-600"
-            : "font-bold text-black transition-all hover:opacity-60"
+            : "font-bold text-slate-700 transition-all hover:opacity-60"
         }
       >
         👶 BByLog
@@ -30,7 +30,7 @@ export default function Nav() {
         className={({ isActive }) =>
           isActive
             ? "text-pink-600"
-            : "text-black transition-all hover:opacity-60"
+            : "text-slate-700 transition-all hover:opacity-60"
         }
       >
         📝 Logs
