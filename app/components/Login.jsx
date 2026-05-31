@@ -23,7 +23,7 @@ export default function Login() {
     >
       <input type="hidden" name="csrfToken" value={csrfToken} />
       <button
-        className="flex w-full cursor-pointer items-center justify-between rounded-lg border border-white/20 bg-white/10 px-4 py-3 text-base shadow-md transition-all hover:opacity-60"
+        className="flex w-full cursor-pointer items-center justify-between rounded-lg border border-white/30 bg-white/30 px-4 py-3 text-base shadow-md backdrop-blur-xl transition-all hover:opacity-60"
         type="submit"
       >
         <p>Sign in with Google</p>

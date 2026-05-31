@@ -56,7 +56,7 @@ export default function BottleLogger({ session, logger }) {
               Type
             </label>
             <select
-              className="rounded-lg border border-black/10 bg-yellow-100/10 p-2 backdrop-blur-sm"
+              className="rounded-lg border border-white/20 bg-white/10 p-2 backdrop-blur-sm"
               name="type"
               id="type"
               value={inputType}

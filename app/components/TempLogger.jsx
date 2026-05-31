@@ -48,7 +48,7 @@ export default function TempLogger({ session, logger }) {
               °C
             </label>
             <input
-              className="rounded-lg border border-white/30 bg-white/10 p-2 backdrop-blur-sm"
+              className="rounded-lg border border-white/20 bg-white/10 p-2 backdrop-blur-sm"
               type="number"
               name="temp"
               id="temp"

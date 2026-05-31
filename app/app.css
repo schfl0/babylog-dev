@@ -19,6 +19,5 @@
 
 html,
 body {
-  @apply min-h-screen text-slate-700;
-  background: linear-gradient(to bottom left, #d9bde0, #e6e3c6, #75c8e6);
+  @apply min-h-screen text-slate-700 bg-gradient-to-br from-sky-100 via-blue-100 to-pink-100
 }
