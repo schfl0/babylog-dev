@@ -20,6 +20,5 @@
 html,
 body {
   @apply min-h-screen text-slate-700;
-  background:
-    linear-gradient(135deg, #a78bfa, #f9a8d4, #fcd34d);
+  background: linear-gradient(to bottom left, #d9bde0, #e6e3c6, #75c8e6);
 }
