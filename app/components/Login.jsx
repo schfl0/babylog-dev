@@ -16,10 +16,9 @@ export default function Login() {
 
   return (
     <form
-      className="w-full"
+      className="mt-8 w-full"
       action="/api/auth/signin/google"
       method="POST"
-      className="mt-8"
     >
       <input type="hidden" name="csrfToken" value={csrfToken} />
       <button

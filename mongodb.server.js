@@ -8,7 +8,10 @@ if (!uri) {
   throw new Error("MONGODB_URI is not defined");
 }
 
-const client = new MongoClient(uri);
+const client = new MongoClient(uri, {
+  tls: true,
+  tlsAllowInvalidCertificates: true,
+});
 const mongoClientPromise = client.connect();
 
 export default mongoClientPromise;
