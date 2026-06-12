@@ -27,7 +27,7 @@ export default function SelectAllView({ allView }) {
       className="flex items-center justify-start gap-2"
     >
       <select
-        className="rounded-lg border border-white/20 bg-white/10 p-2 backdrop-blur-sm"
+        className="rounded-lg border border-white/30 bg-white/30 p-2 backdrop-blur-sm"
         name="selectAllView"
         id="selectAllView"
         defaultValue={allView}
@@ -40,7 +40,7 @@ export default function SelectAllView({ allView }) {
       </select>
       <button
         type="submit"
-        className="cursor-pointer rounded-sm bg-pink-600 px-1.5 py-0.5 text-white transition-all hover:opacity-60"
+        className="cursor-pointer rounded-full bg-pink-600 px-3 py-1 text-white transition-all hover:opacity-60"
       >
         🔎
       </button>

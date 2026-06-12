@@ -14,7 +14,7 @@ export default function Nav() {
     })();
   }, []);
   return (
-    <nav className="flex items-center gap-6 rounded-xl border border-white/30 bg-white/30 p-4 shadow-lg backdrop-blur-xl">
+    <nav className="flex items-center gap-6 rounded-xl border border-white/30 bg-white/30 p-4 px-4 shadow-lg backdrop-blur-xl">
       <NavLink
         to="/"
         className={({ isActive }) =>
@@ -41,12 +41,12 @@ export default function Nav() {
           method="POST"
           className="ml-auto flex items-center justify-center gap-4"
         >
-          <img className="h-10 w-10 rounded-full" src={session.user.image} />
+          <img className="h-8 w-8 rounded-full" src={session.user.image} />
 
           <input type="hidden" name="csrfToken" value={csrfToken} />
           <button
             type="submit"
-            className="cursor-pointer rounded-sm bg-pink-600 px-1.5 py-0.5 text-white transition-all hover:opacity-60"
+            className="cursor-pointer rounded-full bg-pink-600 px-3 py-1 text-white transition-all hover:opacity-60"
           >
             🔒
           </button>
