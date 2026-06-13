@@ -1,6 +1,7 @@
 import { useFetcher } from "react-router";
 import { useState, useEffect, useRef } from "react";
 import { capitalizeStr } from "../utils";
+import { FaXmark } from "react-icons/fa6";
 
 export default function BottleLogger({ session, logger }) {
   const fetcher = useFetcher();
@@ -44,9 +45,9 @@ export default function BottleLogger({ session, logger }) {
         <input type="hidden" name="deleteLogger" value={logger} />
         <button
           type="submit"
-          className="cursor-pointer transition-all hover:opacity-50"
+          className="mb-2 cursor-pointer text-pink-600 transition-all hover:opacity-50"
         >
-          ❌
+          <FaXmark />
         </button>
       </deleteFetcher.Form>
       <fetcher.Form method="post" action="/bottle-logger">

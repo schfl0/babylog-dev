@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { capitalizeStr } from "../utils";
 import { useFetcher } from "react-router";
 import { nonoptional } from "zod";
+import { FaPlus } from "react-icons/fa";
 
 export default function AddLogger({ loggers }) {
   const fetcher = useFetcher();
@@ -53,9 +54,9 @@ export default function AddLogger({ loggers }) {
         </select>
         <button
           type="submit"
-          className="cursor-pointer rounded-full bg-pink-600 px-3 py-1 text-white transition-all hover:opacity-60"
+          className="cursor-pointer rounded-full bg-pink-600 px-3 py-1.5 text-white transition-all hover:opacity-60"
         >
-          📝
+          <FaPlus />
         </button>
       </fetcher.Form>
     </>

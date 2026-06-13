@@ -1,6 +1,7 @@
 import { NavLink } from "react-router";
 import { useEffect, useState } from "react";
 import { useSession } from "../sessionContext";
+import { FaArrowRightFromBracket } from "react-icons/fa6";
 
 export default function Nav() {
   const { session } = useSession();
@@ -14,7 +15,7 @@ export default function Nav() {
     })();
   }, []);
   return (
-    <nav className="flex items-center gap-6 rounded-xl border border-white/30 bg-white/30 p-4 px-4 shadow-lg backdrop-blur-xl">
+    <nav className="flex items-center gap-6 rounded-xl border border-white/30 bg-white/30 p-6 px-4 shadow-lg backdrop-blur-xl">
       <NavLink
         to="/"
         className={({ isActive }) =>
@@ -46,9 +47,9 @@ export default function Nav() {
           <input type="hidden" name="csrfToken" value={csrfToken} />
           <button
             type="submit"
-            className="cursor-pointer rounded-full bg-pink-600 px-3 py-1 text-white transition-all hover:opacity-60"
+            className="cursor-pointer rounded-full bg-pink-600 px-3 py-1.5 text-white transition-all hover:opacity-60"
           >
-            🔒
+            <FaArrowRightFromBracket />
           </button>
         </form>
       )}

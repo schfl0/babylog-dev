@@ -1,4 +1,6 @@
 import { useSubmit } from "react-router";
+import { FaMagnifyingGlass } from "react-icons/fa6";
+import { FaRegCalendarAlt } from "react-icons/fa";
 export default function DateSelector({ logs, date }) {
   const submit = useSubmit();
 
@@ -17,16 +19,16 @@ export default function DateSelector({ logs, date }) {
       />
       <button
         type="submit"
-        className="cursor-pointer rounded-full bg-pink-600 px-3 py-1 text-white transition-all hover:opacity-60"
+        className="cursor-pointer rounded-full bg-pink-600 px-3 py-1.5 text-white transition-all hover:opacity-60"
       >
-        🔎
+        <FaMagnifyingGlass />
       </button>
       <button
         type="button"
         onClick={() => submit(null, { method: "get", action: `/logs/${logs}` })}
-        className="cursor-pointer rounded-full bg-pink-600 px-3 py-1 text-white transition-all hover:opacity-60"
+        className="cursor-pointer rounded-full bg-pink-600 px-3 py-1.5 text-white transition-all hover:opacity-60"
       >
-        🗓️
+        <FaRegCalendarAlt />
       </button>
     </form>
   );

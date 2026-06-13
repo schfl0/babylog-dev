@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { capitalizeStr } from "../utils";
 import { useFetcher } from "react-router";
+import { FaMagnifyingGlass } from "react-icons/fa6";
 
 export default function SelectAllView({ allView }) {
   const fetcher = useFetcher();
@@ -40,9 +41,9 @@ export default function SelectAllView({ allView }) {
       </select>
       <button
         type="submit"
-        className="cursor-pointer rounded-full bg-pink-600 px-3 py-1 text-white transition-all hover:opacity-60"
+        className="cursor-pointer rounded-full bg-pink-600 px-3 py-1.5 text-white transition-all hover:opacity-60"
       >
-        🔎
+        <FaMagnifyingGlass />
       </button>
     </fetcher.Form>
   );

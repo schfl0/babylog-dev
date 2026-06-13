@@ -1,5 +1,6 @@
 import { useFetcher } from "react-router";
 import { useState, useEffect } from "react";
+import { FaXmark } from "react-icons/fa6";
 
 export default function FoodLogger({ session, logger }) {
   const fetcher = useFetcher();
@@ -41,9 +42,9 @@ export default function FoodLogger({ session, logger }) {
         <input type="hidden" name="deleteLogger" value={logger} />
         <button
           type="submit"
-          className="cursor-pointer transition-all hover:opacity-50"
+          className="mb-2 cursor-pointer text-pink-600 transition-all hover:opacity-50"
         >
-          ❌
+          <FaXmark />
         </button>
       </deleteFetcher.Form>
       <fetcher.Form method="post" action="/food-logger">
