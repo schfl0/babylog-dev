@@ -19,5 +19,5 @@
 
 html,
 body {
-  @apply min-h-screen text-slate-700 bg-gradient-to-br from-indigo-200 via-blue-200 to-pink-300
+  @apply min-h-screen text-slate-700 bg-gradient-to-br from-sky-100 via-blue-100 to-pink-100
 }
