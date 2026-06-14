@@ -47,7 +47,7 @@ export default function Nav() {
           <input type="hidden" name="csrfToken" value={csrfToken} />
           <button
             type="submit"
-            className="cursor-pointer rounded-full bg-pink-600 px-3 py-1.5 text-white transition-all hover:opacity-60"
+            className="cursor-pointer rounded-full bg-pink-500 px-3 py-1.5 text-white transition-all hover:opacity-60"
           >
             <FaArrowRightFromBracket />
           </button>

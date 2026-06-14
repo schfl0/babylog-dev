@@ -54,7 +54,7 @@ export default function AddLogger({ loggers }) {
         </select>
         <button
           type="submit"
-          className="cursor-pointer rounded-full bg-pink-600 px-3 py-1.5 text-white transition-all hover:opacity-60"
+          className="cursor-pointer rounded-full bg-pink-500 px-3 py-1.5 text-white transition-all hover:opacity-60"
         >
           <FaPlus />
         </button>

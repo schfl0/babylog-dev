@@ -38,7 +38,7 @@ export default function PoopLogger({ session, logger }) {
         <input type="hidden" name="deleteLogger" value={logger} />
         <button
           type="submit"
-          className="mb-2 cursor-pointer text-pink-600 transition-all hover:opacity-50"
+          className="mb-2 cursor-pointer text-pink-500 transition-all hover:opacity-50"
         >
           <FaXmark />
         </button>

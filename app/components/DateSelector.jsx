@@ -8,10 +8,10 @@ export default function DateSelector({ logs, date }) {
     <form
       method="get"
       action={`/logs/${logs}`}
-      className="flex flex-1 items-center justify-end gap-2 text-sm"
+      className="flex flex-1 items-center justify-end gap-2 text-xs"
     >
       <input
-        className="rounded-lg border border-white/20 bg-white/10 p-2 backdrop-blur-sm"
+        className="w-full rounded-lg border border-white/20 bg-white/10 p-2 backdrop-blur-sm"
         type="date"
         id="date"
         name="date"
@@ -19,14 +19,14 @@ export default function DateSelector({ logs, date }) {
       />
       <button
         type="submit"
-        className="cursor-pointer rounded-full bg-pink-600 px-3 py-1.5 text-white transition-all hover:opacity-60"
+        className="cursor-pointer rounded-full bg-slate-600 px-3 py-1.5 text-white transition-all hover:opacity-60"
       >
         <FaMagnifyingGlass />
       </button>
       <button
         type="button"
         onClick={() => submit(null, { method: "get", action: `/logs/${logs}` })}
-        className="cursor-pointer rounded-full bg-pink-600 px-3 py-1.5 text-white transition-all hover:opacity-60"
+        className="cursor-pointer rounded-full bg-slate-600 px-3 py-1.5 text-white transition-all hover:opacity-60"
       >
         <FaRegCalendarAlt />
       </button>
